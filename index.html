@@ -1,8 +1,10 @@
 <script type="text/javascript">
-  alert("Hello World");
+  function ___frameLoaded() {
+    alert("Loaded!");
+  }
 </script>
 <frameset rows="100%">
   <frameset cols="100%">
-    <frame src="https://withjoy.com/niko-und-carina" frameborder="0" scrolling="auto">
+    <frame src="https://withjoy.com/niko-und-carina" frameborder="0" scrolling="auto" onload="___frameLoaded(this)">
   </frameset>
 </frameset>
