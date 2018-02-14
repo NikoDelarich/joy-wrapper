@@ -24,10 +24,17 @@
       s1.setAttribute('crossorigin','*');
       s0.parentNode.insertBefore(s1,s0);
       })();
+         
+      function onloadFn() {
+         document.getElementsByTagName("iframe");
+         for(i = 0; i < frames.length; i++) {
+            if(frames[i].src == "about:blank" && frames[i].style.right == "15px") frames[i].style.right="25px";
+         } 
+      }
       </script>
     <!--End of Tawk.to Script-->
    </head>
-   <body>
+   <body onload="onloadFn()">
       <iframe src="https://withjoy.com/niko-und-carina" style="position:fixed; top:0px; bottom:0px; right:0px; width: 100%; border: none; margin:0; padding:0; overflow: hidden; z-index:999999; height: 100%;">
    </body>
 </html>
