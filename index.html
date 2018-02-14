@@ -26,7 +26,7 @@
       })();
          
       function onloadFn() {
-         document.getElementsByTagName("iframe");
+         var frames = document.getElementsByTagName("iframe");
          for(i = 0; i < frames.length; i++) {
             if(frames[i].src == "about:blank" && frames[i].style.right == "15px") frames[i].style.right="25px";
          } 
