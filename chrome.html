@@ -19,31 +19,21 @@
          html {
             height: 100vh;
          }
-         body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, form, fieldset, input, textarea, p, blockquote, th, td {
-           margin: 0;
-           padding: 0;
-         }
          body {
             overflow: hidden;
             padding: 0;
             margin: 0;
             position: relative;
          }
-         #wrapper {
-            position: relative;
-         }
-         #tabs {
-            overflow: auto;
-            height: 100vh;
-         }
-         #tabs #result {
+         #iframe-wrapper {
             padding: 0;
             height: 100vh;
+            overflow: auto;
+            position: relative;
+            margin: 0;
+            padding: 0;
          }
-         #tabs .tCont.active {
-            display: block;
-         }
-         #tabs #result iframe {
+         #iframe-wrapper > iframe {
             width: 100%;
             height: 100%;
             border: none;
@@ -53,12 +43,8 @@
       </style>
    </head>
    <body>
-      <div id="wrapper">
-         <div id="tabs">
-            <div class="tCont result active" id="result">
-               <iframe src="https://withjoy.com/niko-und-carina" frameborder="0" sandbox="allow-forms allow-scripts allow-same-origin allow-modals allow-popups" allow="midi; geolocation; microphone; camera"></iframe>
-            </div>
-         </div>      
+      <div id="iframe-wrapper">
+         <iframe src="https://withjoy.com/niko-und-carina" frameborder="0" sandbox="allow-forms allow-scripts allow-same-origin allow-modals allow-popups" allow="midi; geolocation; microphone; camera"></iframe>
       </div>
    </body>
 </html>
