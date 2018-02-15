@@ -41,10 +41,32 @@
             margin: 0;
          }
       </style>
+      <script type="text/javascript">
+         function onloadFn() {
+            var frames = document.getElementsByTagName("iframe");
+            for(i = 0; i < frames.length; i++) {
+               if(frames[i].src == "about:blank" && frames[i].style.right == "15px") frames[i].style.right="32px";
+            } 
+         }
+      </script>
    </head>
-   <body>
+   <body onload="onloadFn()">
       <div id="iframe-wrapper">
          <iframe src="https://withjoy.com/niko-und-carina" frameborder="0" sandbox="allow-forms allow-scripts allow-same-origin allow-modals allow-popups" allow="midi; geolocation; microphone; camera"></iframe>
       </div>
+      
+       <!--Start of Tawk.to Script-->
+      <script type="text/javascript">
+         var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+         (function(){
+         var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+         s1.async=true;
+         s1.src='https://embed.tawk.to/5a847c74d7591465c707abcf/default';
+         s1.charset='UTF-8';
+         s1.setAttribute('crossorigin','*');
+         s0.parentNode.insertBefore(s1,s0);
+         })();
+      </script>
+    <!--End of Tawk.to Script-->
    </body>
 </html>
