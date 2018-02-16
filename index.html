@@ -1,77 +1,497 @@
 <!DOCTYPE html>
 <html>
-   <head>
-      <title>Niko &amp; Carina - 26. Mai 2018</title>
-      <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png?v=lkdKBov8vl">
-      <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png?v=lkdKBov8vl">
-      <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png?v=lkdKBov8vl">
-      <link rel="manifest" href="site.webmanifest?v=lkdKBov8vl">
-      <link rel="mask-icon" href="safari-pinned-tab.svg?v=lkdKBov8vl" color="#dec0fe">
-      <link rel="shortcut icon" href="favicon.ico?v=lkdKBov8vl">
-      <meta name="apple-mobile-web-app-title" content="Niko &amp; Carina - 26. Mai 2018">
-      <meta name="application-name" content="Niko &amp; Carina - 26. Mai 2018">
-      <meta name="msapplication-TileColor" content="#dec0fe">
-      <meta name="theme-color" content="#dec0fe">
-      <meta charset="utf-8">
-      <meta http-equiv="content-type" content="text/html; charset=UTF-8">
-      <meta name="viewport" content="width=device-width, initial-scale=1">
-      <script language=javascript>
-      if(RegExp(/iP(ad|hone|od).+Version\/[\d\.]+.*Safari/i).test(navigator.userAgent)) {
-         location.replace("https://withjoy.com/niko-und-carina");
-      }
-      </script>
-      <style type="text/css">
-         html {
-            height: 100vh;
-         }
-         body {
-            overflow: hidden;
-            padding: 0;
-            margin: 0;
-            position: relative;
-         }
-         #iframe-wrapper {
-            padding: 0;
-            height: 100vh;
-            overflow: auto;
-            position: relative;
-            margin: 0;
-            padding: 0;
-         }
-         #iframe-wrapper > iframe {
-            width: 100%;
-            height: 100%;
-            border: none;
-            display: block;
-            margin: 0;
-         }
-      </style>
-      <script type="text/javascript">
-         function onloadFn() {
-            var frames = document.getElementsByTagName("iframe");
-            for(i = 0; i < frames.length; i++) {
-               if(frames[i].src == "about:blank" && frames[i].style.right == "15px") frames[i].style.right="32px";
-            } 
-         }
-      </script>
-   </head>
-   <body onload="onloadFn()">
-      <div id="iframe-wrapper">
-         <iframe src="https://withjoy.com/niko-und-carina" frameborder="0" sandbox="allow-forms allow-scripts allow-same-origin allow-modals allow-popups" allow="midi; geolocation; microphone; camera"></iframe>
-      </div>
-      
-       <!--Start of Tawk.to Script-->
-      <script type="text/javascript">
-         var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
-         (function(){
-         var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
-         s1.async=true;
-         s1.src='https://embed.tawk.to/5a847c74d7591465c707abcf/default';
-         s1.charset='UTF-8';
-         s1.setAttribute('crossorigin','*');
-         s0.parentNode.insertBefore(s1,s0);
-         })();
-      </script>
-    <!--End of Tawk.to Script-->
-   </body>
+<head>
+    <title>Niko &amp; Carina - 26. Mai 2018</title>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Parisienne:400">
+    <link rel="stylesheet" href="v2/joy.css">
+    <link type="text/css" rel="stylesheet" href="v2/md-styles.css">
+    <link rel="stylesheet" type="text/css" class="ng-scope" href="v2/base.css">
+    <link rel="stylesheet" type="text/css" class="ng-scope" href="v2/color.css">
+    
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png?v=lkdKBov8vl">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png?v=lkdKBov8vl">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png?v=lkdKBov8vl">
+    <link rel="manifest" href="/site.webmanifest?v=lkdKBov8vl">
+    <link rel="mask-icon" href="/safari-pinned-tab.svg?v=lkdKBov8vl" color="#dec0fe">
+    <link rel="shortcut icon" href="/favicon.ico?v=lkdKBov8vl">
+    <meta name="apple-mobile-web-app-title" content="Niko &amp; Carina - 26. Mai 2018">
+    <meta name="application-name" content="Niko &amp; Carina - 26. Mai 2018">
+    <meta name="msapplication-TileColor" content="#dec0fe">
+    <meta name="theme-color" content="#dec0fe">
+    
+    <script type="text/javascript" src="v2/jquery-3.3.1.min.js"></script>
+    <script type="text/javascript" src="v2/main.js"></script>
+    <script>
+    $(function() {
+      domReadyFn();
+    });
+    </script>
+</head>
+<body onload="mainInit()">
+    <div class="joy-stage ng-scope" ui-view="" style="">
+        <ui-view class="ng-scope">
+            <div id="joy-wedding-page" class="joy-wedding-page joy-wedding-home scrollingOnOff ng-scope">
+                <div class="joy-primary-pane joy-primary-pane-welcome" style="background-color: rgb(222, 192, 254);">
+                    <div class="primary-photo ng-scope background-image" event-id="ef503b6545ac03b374b375ede47b484d04f4f50893d5dc4d2"
+                        ng-attr-asset="{{(coverPhotos[activeItem])}}" background-image="../images/light_s.jpg"
+                        asset="{&quot;assetId&quot;:&quot;wtdlXZNxStaYgOZJxRRb_light_s.jpg&quot;,&quot;height&quot;:1440,&quot;key&quot;:&quot;-L5J-2wHk0Ui7ZiqcbQs&quot;,&quot;mimetype&quot;:&quot;image/jpeg&quot;,&quot;size&quot;:210464,&quot;width&quot;:2304}">
+                        <div id="primary-photo-b" class="buffer"></div>
+                        <div id="primary-photo-a" class="buffer" style="opacity: 1; background-image: url(&quot;../images/light_s.jpg&quot;);"></div>
+                        <!-- background-image="{{ (coverPhotos && coverPhotos[activeItem] && coverPhotos[activeItem].primaryPhotoHorizontal && coverPhotos[activeItem].primaryPhotoHorizontal.getOriginalUrlSync('f')) ||
+                                               (weddingInfo && weddingInfo.primaryPhotoHorizontal && weddingInfo.primaryPhotoHorizontal.getOriginalUrlSync('m')) ||
+                                               (weddingInfo && weddingInfo.primaryPhoto && weddingInfo.primaryPhoto.getOriginalUrlSync('m')) ||
+                                               (assets.sampleWeddingPlaceholder4) || 'http://www.billboard.com/files/media/Ariana-Grande-Jimmy-Fallon-03-a-2016-billboard-1548.jpg' }}" -->
+                        <div class="primary-photo-alpha-overlay"></div>
+                    </div>
+                    <div class="joy-wedding-intro invisible fadeInOnLoad">
+                        <div class="intro-contents">
+                            <!-- -->
+                            <div id="wedding-text" class="">
+                                <h1 class="left wedding-names ng-binding ng-scope" style="">
+                                    Niko &amp;
+                                    <br> Carina
+                                </h1>
+                                <!-- ngIf: ownerName.split(' ')[0].length >= fianceeName.split(' ')[0].length -->
+                                <h3 class="right wedding-message ng-isolate-scope" tabindex="0">
+                                    <p class="ng-scope">Wir freuen uns schon, diesen besonderen Tag mit euch zu verbringen! :-)</p>
+                                </h3>
+                            </div>
+                            
+                            <h2 id="wedding-place" class="ng-scope ng-binding invisible">
+                                Stiftskirche Klosterneuburg
+                                <br> Samstag, 26. Mai 2018
+                            </h2>
+                            
+                            <countdown-timer class="countdown-timer-wrapper ng-isolate-scope invisible" target-time="1527332400000" id="wedding-countdown">
+                                <div class="countdown-timer vertical" ng-class="{vertical: !horizontal, horizontal: horizontal}">
+                                    <div class="counter ng-scope invisible fadeInOnLoad">
+                                        <div class="time-unit">
+                                            <h1 class="time-left ng-binding">--</h1><h1 class="unit ng-scope">tage</h1>
+                                        </div>
+                                        <div class="time-unit">
+                                            <h1 class="time-left ng-binding">--</h1><h1 class="unit ng-scope">std</h1>
+                                        </div>
+                                        <div class="time-unit">
+                                          <h1 class="time-left ng-binding">--</h1><h1 class="unit ng-scope">min</h1>
+                                        </div>
+                                        <div class="time-unit">
+                                          <h1 class="time-left ng-binding">--</h1><h1 class="unit ng-scope" style="">secs</h1>
+                                        </div>
+                                    </div>
+                                </div>
+                            </countdown-timer>
+                        </div>
+                    </div>
+                    <!--div class="joy-wedding-camera-icon" tabindex="0">
+                        <img src="v2/svg/iconRetroCamera.svg">
+                    </div-->
+                </div>
+                <div id="wedding-details-panels" class="joy-secondary-pane joy-wedding-info scrollingOnOff ng-scope" ng-style="{'width': widthRightPane}">
+                    <div class="joy-primary-pane-mobile joy-primary-pane joy-content-card joy-content-intro joy-primary-pane-preview" ng-class="{'joy-primary-pane-preview': !$state.includes('event.home.moments'), 'joy-primary-pane-full': $state.includes('event.home.moments')}"
+                        ng-style="eventTheme.accent">
+                        <ui-view class="ng-scope">
+                            <h1 class="ng-scope"></h1>
+                        </ui-view>
+                        <div id="primary-photo-mobile" class="primary-photo ng-scope background-image" event-id="ef503b6545ac03b374b375ede47b484d04f4f50893d5dc4d2" ng-attr-asset="{{(coverPhotos.primaryPhoto)}}"
+                            background-image="/images/dark_s.jpg"
+                            asset="{&quot;assetId&quot;:&quot;mTFPJ4gHSQeMEAC73zJc_dark_s.jpg&quot;,&quot;height&quot;:1067,&quot;key&quot;:&quot;-L5J-2w8N3gWkyx0EHlw&quot;,&quot;mimetype&quot;:&quot;image/jpeg&quot;,&quot;size&quot;:86930,&quot;width&quot;:1600}">
+                            <div id="primary-photo-b" class="buffer"></div>
+                            <div id="primary-photo-a" class="buffer" style="opacity: 1; background-image: url(&quot;/images/dark_s.jpg&quot;);"></div>
+                            <div class="primary-photo-alpha-overlay"></div>
+                            <!-- ng-style="{'background-image': weddingInfo && weddingInfo.primaryPhoto ? 'url(' + weddingInfo.primaryPhoto.getRenditionUrlSync('m') + ')' : 'url(' + assets.sampleWeddingPlaceholder4 + ')'}"> -->
+                        </div>
+                        <div class="joy-wedding-intro ng-scope" >
+                            <h2 ng-show="activeItem !== 'schedule'" class="left wedding-names ng-binding ng-scope" aria-hidden="false" style="">
+                                Niko &amp;
+                                <br> Carina
+                            </h2>
+                            <!-- ngIf: ownerName.split(' ')[0].length >= fianceeName.split(' ')[0].length -->
+                            <h3 class="right wedding-message ng-isolate-scope" ng-click="$event.stopPropagation()" marked="eventMessage.substring(0,140)"
+                                compile="true" role="button" tabindex="0">
+                                <p class="ng-scope">Wir freuen uns schon, diesen besonderen Tag mit euch zu verbringen! :-)</p>
+                            </h3>
+                        </div>
+                    </div>
+                    <div id="welcome" data-scrolltarget="wedding-text" class="joy-content-card joy-content-intro active" ng-style="eventTheme.primary"
+                        style="background-color: rgb(222, 192, 254); border-color: rgb(58, 60, 62); color: rgb(58, 60, 62);">
+                        <div class="welcomeDetails invisible fadeInOnLoad">
+                            <!-- monogram -->
+                            <h1 ng-show="welcomeDetails.initials" style="text-align:center; font-size: 320%; letter-spacing: 5px; margin: 0;" class="ng-binding ng-hide"
+                                aria-hidden="true">
+                                <span style="opacity:0.5;">&amp;</span>
+                            </h1>
+                            <!-- location -->
+                            <h2 class="ng-binding">
+                                Stiftskirche Klosterneuburg
+                            </h2>
+                            <!-- date -->
+                            <h2 ng-show="welcomeDetails.date &amp;&amp; !welcomeDetails.primaryLocation" class="ng-binding ng-hide" aria-hidden="true">
+                                Samstag, 26. Mai 2018
+                            </h2>
+                            <h4 ng-show="welcomeDetails.date &amp;&amp; welcomeDetails.primaryLocation" class="ng-binding" aria-hidden="false">
+                                Samstag, 26. Mai 2018
+                            </h4>
+                            <countdown-timer class="countdown-timer-wrapper ng-isolate-scope" target-time="1527332400000" horizontal="true">
+                                <div class="countdown-timer horizontal">
+                                    <div class="counter ng-scope invisible fadeInOnLoad">
+                                        <div class="time-unit">
+                                            <h1 class="time-left ng-binding">--</h1><h1 class="unit ng-scope">tage</h1>
+                                        </div>
+                                        <div class="time-unit">
+                                            <h1 class="time-left ng-binding">--</h1><h1 class="unit ng-scope">std</h1>
+                                        </div>
+                                        <div class="time-unit">
+                                          <h1 class="time-left ng-binding">--</h1><h1 class="unit ng-scope">min</h1>
+                                        </div>
+                                        <div class="time-unit">
+                                          <h1 class="time-left ng-binding">--</h1><h1 class="unit ng-scope" style="">sek</h1>
+                                        </div>
+                                    </div>
+                                </div>
+                            </countdown-timer>
+                        </div>
+                        <rsvp-button>
+                            <div id="cta-update" class="button-container invisible fadeInOnLoad">
+                                <cta-prompt eventid="eventid" class="ng-isolate-scope">
+                                    <div class="cta-prompt-independent joykit-minilabel rsvp-button color-thief ng-binding"><!--Hallo Niko!--></div>
+                                </cta-prompt>
+                                <div class="rsvp-button btn btn-animate" onclick="location.href='https://niko-carina.wedding/rsvp.html'" tabindex="0" style="background-color: rgb(222, 192, 254); border-color: rgb(58, 60, 62); color: rgb(58, 60, 62); cursor: pointer;">
+                                    <span class="ng-binding">Antworten</span>
+                                </div>
+                                <div ng-show="joinError" class="joykit-minilabel ng-hide" aria-hidden="true">Hmm, something's not right. Try refreshing and please contact the Joy team if the problem persists.</div>
+                            </div>
+                        </rsvp-button>
+                    </div>
+                    <!--<div ></div>-->
+                    <div class="ng-scope" style="">
+                        <!--Schedule-->
+                        <div data-scrolltarget="wedding-countdown" id="schedule" class="joy-content-card joy-content-info schedule-card ng-scope">
+                            <h2 class="title ng-binding">Zeitplan</h2>
+                            <div id="schedule-timeline" ng-style="{'border-color': eventTheme.primary['background-color']}" style="border-color: rgb(222, 192, 254);">
+                                <div class="schedule-day ng-scope" style="">
+                                    <div class="schedule-day-title ng-scope" >
+                                        <div class="label ng-binding">Samstag, 26. Mai 2018</div>
+                                        <span class="line"></span>
+                                    </div>
+                                    <div class="slot ng-scope" >
+                                        <div class="information">
+                                            <div class="time-container">
+                                                <div class="time ng-scope" >
+                                                    <div class="start-time ng-binding"> 12:30</div>
+                                                    <div class="dash ng-hide" ng-show="vevent.dtend" aria-hidden="true">-</div>
+                                                    <div class="end-time ng-binding"> </div>
+                                                </div>
+                                            </div>
+                                            <div class="event">
+                                                <div class="name ng-binding ng-scope" >Eintreffen</div>
+                                                <div class="location ng-scope" >
+                                                    <a href="https://www.google.com/maps?daddr=Stiftskirche+Klosterneuburg,+Stiftsplatz,+Klosterneuburg,+Austria" target="_blank" class="ng-binding">Stiftskirche Klosterneuburg</a>
+                                                </div>
+                                                <div class="dress-code ng-binding ng-scope" >
+                                                    <span>Dress Code:</span> Elegant
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="intrinsic-container intrinsic-container-16x9">
+                                          <iframe frameborder="0" style="border:0" class="vidDefer"
+                                          data-src="https://www.google.com/maps/embed/v1/place?q=Stift%20Klosterneuburg&key=AIzaSyDZz1G-HBdRfAeCMgtTE_TytLWuFVozlcM" allowfullscreen></iframe>
+                                        </div>
+                                    </div>
+                                    <div class="slot ng-scope" >
+                                        <div class="information">
+                                            <div class="time-container">
+                                                <div class="time ng-scope" >
+                                                    <div class="start-time ng-binding"> 13:00</div>
+                                                    <div class="dash ng-hide" ng-show="vevent.dtend" aria-hidden="true">-</div>
+                                                    <div class="end-time ng-binding"> </div>
+                                                </div>
+                                            </div>
+                                            <div class="event">
+                                                <div class="name ng-binding ng-scope" >Trauung</div>
+                                                <div class="location ng-scope" >
+                                                    <a href="https://www.google.com/maps?daddr=Stiftskirche+Klosterneuburg,+Stiftsplatz,+Klosterneuburg,+Austria" target="_blank" class="ng-binding">Stiftskirche Klosterneuburg</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="slot ng-scope" >
+                                        <div class="information">
+                                            <div class="time-container">
+                                                <div class="time ng-scope" >
+                                                    <div class="start-time ng-binding"> 13:45</div>
+                                                    <div class="dash ng-hide" ng-show="vevent.dtend" aria-hidden="true">-</div>
+                                                    <div class="end-time ng-binding"> </div>
+                                                </div>
+                                            </div>
+                                            <div class="event">
+                                                <div class="name ng-binding ng-scope" >Auszug &amp; Gruppenfoto</div>
+                                                <div class="location ng-scope" >
+                                                    <a href="https://www.google.com/maps?daddr=Stiftskirche+Klosterneuburg,+Stiftsplatz,+Klosterneuburg,+Austria" target="_blank" class="ng-binding">Stiftskirche Klosterneuburg</a>
+                                                </div>
+                                                <div class="details ng-binding ng-scope" >
+                                                    <p>Direkt nach der Trauung und unserem festlichen Auszug würden wir gerne
+                                                        mit allen gemeinsam ein paar Gruppenfotos auf den Stiegen vor der
+                                                        Kirche schießen - also bitte nicht davonlaufen :P</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="slot ng-scope" >
+                                        <div class="information">
+                                            <div class="time-container">
+                                                <div class="time ng-scope" >
+                                                    <div class="start-time ng-binding"> 14:30</div>
+                                                    <div class="dash ng-hide" ng-show="vevent.dtend" aria-hidden="true">-</div>
+                                                    <div class="end-time ng-binding"> </div>
+                                                </div>
+                                            </div>
+                                            <div class="event">
+                                                <div class="name ng-binding ng-scope" >Agape</div>
+                                                <div class="location ng-scope" >
+                                                    <a href="https://www.google.com/maps?daddr=Cafe+Escorial,+Stiftsplatz,+Klosterneuburg,+Austria" target="_blank" class="ng-binding">Café Escorial, Stiftsplatz, Klosterneuburg</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="slot ng-scope" >
+                                        <div class="information">
+                                            <div class="time-container">
+                                                <div class="time ng-scope" >
+                                                    <div class="start-time ng-binding"> 17:30</div>
+                                                    <div class="dash ng-hide" ng-show="vevent.dtend" aria-hidden="true">-</div>
+                                                    <div class="end-time ng-binding"> </div>
+                                                </div>
+                                            </div>
+                                            <div class="event">
+                                                <div class="name ng-binding ng-scope" >Sektempfang</div>
+                                                <div class="location ng-scope" >
+                                                    <a href="https://www.google.com/maps?daddr=Imperial+Riding+School+Renaissance+Hotel,+Wien,+Austria" target="_blank" class="ng-binding">Imperial Riding School Renaissance Vienna Hotel, Ungargasse, Wien</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="intrinsic-container intrinsic-container-16x9">
+                                          <iframe frameborder="0" style="border:0" class="vidDefer"
+                                          data-src="https://www.google.com/maps/embed/v1/place?q=Imperial%20Riding%20School&key=AIzaSyDZz1G-HBdRfAeCMgtTE_TytLWuFVozlcM" allowfullscreen></iframe>
+                                        </div>
+                                    </div>
+                                    <div class="slot ng-scope" >
+                                        <div class="information">
+                                            <div class="time-container">
+                                                <div class="time ng-scope" >
+                                                    <div class="start-time ng-binding"> 18:30</div>
+                                                    <div class="dash ng-hide" ng-show="vevent.dtend" aria-hidden="true">-</div>
+                                                    <div class="end-time ng-binding"> </div>
+                                                </div>
+                                            </div>
+                                            <div class="event">
+                                                <div class="name ng-binding ng-scope" >Abendessen</div>
+                                                <div class="location ng-scope" >
+                                                    <a href="https://www.google.com/maps?daddr=Imperial+Riding+School+Renaissance+Hotel,+Wien,+Austria" target="_blank" class="ng-binding">Imperial Riding School Renaissance Vienna Hotel, Ungargasse, Wien</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="schedule-day ng-scope" >
+                                    <div class="schedule-day-title ng-scope" >
+                                        <div class="label ng-binding">Sonntag, 27. Mai 2018
+                                        </div>
+                                        <span class="line"></span>
+                                    </div>
+                                    <div class="slot ng-scope" >
+                                        <div class="information">
+                                            <div class="time-container">
+                                                <div class="time ng-scope" >
+                                                    <div class="start-time ng-binding"> ca. ab 9:00</div>
+                                                    <div class="dash ng-hide" ng-show="vevent.dtend" aria-hidden="true">-</div>
+                                                    <div class="end-time ng-binding"> </div>
+                                                </div>
+                                            </div>
+                                            <div class="event">
+                                                <div class="name ng-binding ng-scope" >Hochzeitsfrühstück</div>
+                                                <div class="location ng-scope" >
+                                                    <a href="https://www.google.com/maps?daddr=Imperial+Riding+School+Renaissance+Hotel,+Wien,+Austria" target="_blank" class="ng-binding">Imperial Riding School Renaissance Vienna Hotel, Ungargasse, Wien</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div id="map"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ng-scope">
+                        <!-- Travel -->
+                        <div data-scrolltarget="wedding-place" id="travel" class="joy-content-card joy-content-info travel-card ng-scope" >
+                            <h2 class="title ng-binding">Anreise</h2>
+                            <div class="travel-items">
+                                <section class="ng-scope"
+                                    style="">
+                                    <img src="v2/svg/iconTravelNote.svg" class="ng-scope">
+                                    <div class="name ng-binding">Parkmöglichkeiten</div>
+                                    <div class="ng-binding ng-scope">
+                                        <p>Beim Stift Klosterneuburg: Direkt vor dem Stift oder am Rathausplatz</p>
+                                        <p>Beim Hotel: Entweder auf der Straße (keine Kurzparkzone) oder in der (kostenpflichtigen)
+                                            Hotel-Garage</p>
+                                    </div>
+                                </section>
+                                <section class="ng-scope">
+                                    <img src="v2/svg/iconTravelHotel.svg" class="ng-scope">
+                                    <div class="name ng-binding">Imperial Riding School Renaissance Vienna Hotel</div>
+                                    <a class="address colored ng-binding ng-scope" href="https://www.google.com/maps?daddr=Imperial+Riding+School+Renaissance+Hotel,+Wien,+Austria" target="_blank"
+                                        style="white-space: pre-line;" title="Get directions to Imperial Riding School Renaissance Vienna Hotel"
+                                        role="button" tabindex="0">Ungargasse 60, 1030 Wien</a>
+                                    <div class="ng-binding ng-scope">
+                                        <p>Kontaktperson: Doris Kustanci
+                                            <br>Telefonnummer: +43 (0)1 711 75 8236
+                                            <br>E-Mail:
+                                            <a target="_blank" href="mailto:Doris.Kustanci@renaissancehotels.com">Doris.Kustanci@renaissancehotels.com</a>
+                                        </p>
+                                    </div>
+                                    <a class="button colored ng-scope" title="Go to http://www.marriott.com/hotels/travel/viese-imperial-riding-school-renaissance-vienna-hotel/?scid=bb1a189a-fec3-4d19-a255-54ba596febe2"
+                                        ng-click="logExternalRedirect(item.url)" ng-href="http://www.marriott.com/hotels/travel/viese-imperial-riding-school-renaissance-vienna-hotel/?scid=bb1a189a-fec3-4d19-a255-54ba596febe2"
+                                        target="_blank" href="http://www.marriott.com/hotels/travel/viese-imperial-riding-school-renaissance-vienna-hotel/?scid=bb1a189a-fec3-4d19-a255-54ba596febe2">Visit Online</a>
+                                </section>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ng-scope">
+                        <!--FAQs-->
+                        <div data-scrolltarget="wedding-text" id="faq" class="joy-content-card joy-content-info faq-card ng-scope" >
+                            <h2 class="title ng-binding">FAQ</h2>
+                            <div class="card-note ng-binding">Häufig gestellte Fragen</div>
+                            <div class="faqs-list">
+                                <div class="faq-item  ng-scope" style="">
+                                    <div class="a ng-binding" ></div>
+                                </div>
+                                <div class="faq-item  ng-scope" >
+                                    <div class="a ng-binding" ></div>
+                                </div>
+                                <div class="faq-item  ng-scope" >
+                                    <div class="a ng-binding" ></div>
+                                </div>
+                                <div class="faq-item  ng-scope" >
+                                    <div class="a ng-binding" ></div>
+                                </div>
+                                <div class="faq-item  ng-scope" >
+                                    <div class="a ng-binding" ></div>
+                                </div>
+                                <div class="faq-item  ng-scope" >
+                                    <div class="a ng-binding" ></div>
+                                </div>
+                                <div class="faq-item  ng-scope" >
+                                    <div class="a ng-binding" ></div>
+                                </div>
+                                <div class="faq-item  ng-scope" >
+                                    <div class="a ng-binding" ></div>
+                                </div>
+                                <div class="faq-item  ng-scope" >
+                                    <div class="a ng-binding" ></div>
+                                </div>
+                                <div class="faq-item  ng-scope" >
+                                    <div class="q ng-binding ng-scope">
+                                        <b>Q.</b>Bis wann muss ich spätestens zusagen?</div>
+                                    <div class="a ng-binding" >
+                                        <p>Bitte möglichst bis 1. April. Wir benötigen die Gästezahl möglichst bald für die
+                                            weitere Planung :-)</p>
+                                    </div>
+                                </div>
+                                <div class="faq-item  ng-scope" >
+                                    <div class="q ng-binding ng-scope">
+                                        <b>Q.</b>Bis wann müssen die Zimmer reserviert werden?</div>
+                                    <div class="a ng-binding" >
+                                        <p>Bitte möglichst bald! Im Mai ist Messezeit und die Nachfrage dadurch sehr hoch! Bis
+                                            Anfang März sind für euch noch Zimmer zu einem speziellen Hochzeitstarif vorreserviert.</p>
+                                    </div>
+                                </div>
+                                <div class="faq-item  ng-scope" >
+                                    <div class="q ng-binding ng-scope">
+                                        <b>Q.</b>Wie funktioniert das mit der Zimmerreservierung?</div>
+                                    <div class="a ng-binding" >
+                                        <p>Bitte wendet euch da direkt an unsere offizielle Hochzeitsbeauftragte im Renaissance
+                                            Hotel "Imperial Riding School":</p>
+                                        <p>Doris Kustanci
+                                            <br>Telefonnummer: +43 (0)1 711 75 8236
+                                            <br>E-Mail:
+                                            <a target="_blank" href="mailto:Doris.Kustanci@renaissancehotels.com">Doris.Kustanci@renaissancehotels.com</a>
+                                        </p>
+                                        <p>Spezialpreis bis Anfang März: 139€ pro Zimmer (Einzel- oder Doppelbelegung) mit Frühstück.</p>
+                                    </div>
+                                </div>
+                                <div class="faq-item  ng-scope" >
+                                    <div class="q ng-binding ng-scope">
+                                        <b>Q.</b>Darf ich jemanden mitbringen?</div>
+                                    <div class="a ng-binding" >
+                                        <p>Eure Partner &amp; Kinder sind uns herzlich willkommen. Gebt uns nur bitte Bescheid,
+                                            mit wievielen Leuten wir rechnen dürfen!</p>
+                                    </div>
+                                </div>
+                                <div class="faq-item  ng-scope" >
+                                    <div class="q ng-binding ng-scope">
+                                        <b>Q.</b>Darf ich meinen Hund mitbringen?</div>
+                                    <div class="a ng-binding" >
+                                        <p>Leider sind weder in der Kirche noch im Festsaal Haustiere erlaubt :(</p>
+                                    </div>
+                                </div>
+                                <div class="faq-item  ng-scope" >
+                                    <div class="q ng-binding ng-scope">
+                                        <b>Q.</b>Gibt es einen Dresscode?</div>
+                                    <div class="a ng-binding" >
+                                        <p>Es soll ein schickes Feste sein, drum kleidet euch entsprechend ein ;-)
+                                            <br>Der Dresscode ist festlich-elegant. Bitte beachtet, dass nur die Braut weiß tragen
+                                            darf!</p>
+                                    </div>
+                                </div>
+                                <div class="faq-item  ng-scope" >
+                                    <div class="q ng-binding ng-scope">
+                                        <b>Q.</b>Wann soll ich bei der Kirche eintreffen?</div>
+                                    <div class="a ng-binding" >
+                                        <p>Ca. 15-30min vor Beginn der Trauung, also um 12:30-12:45.</p>
+                                    </div>
+                                </div>
+                                <div class="faq-item  ng-scope" >
+                                    <div class="q ng-binding ng-scope">
+                                        <b>Q.</b>Sind Fotos während der Trauung erwünscht?</div>
+                                    <div class="a ng-binding" >
+                                        <p>Wir wären euch dankbar, wenn ihr das Fotografieren &amp; Filmen während der Trauung
+                                            unserem Kamerateam überlassen würdet.</p>
+                                    </div>
+                                </div>
+                                <div class="faq-item  ng-scope" >
+                                    <div class="q ng-binding ng-scope">
+                                        <b>Q.</b>Gibt's was zu essen?</div>
+                                    <div class="a ng-binding" >
+                                        <p>Nach der Trauung gibt es ab ca. 14:30 Snacks &amp; Getränke bei der Agape.
+                                            <br>Bei der Hochzeitsfeier wird um ca. 18:30 das luxuriöse Abendbuffet eröffnet.</p>
+                                    </div>
+                                </div>
+                                <div class="faq-item  ng-scope" >
+                                    <div class="q ng-binding ng-scope">
+                                        <b>Q.</b>Ist die Feier drinnen oder draußen?</div>
+                                    <div class="a ng-binding" >
+                                        <p>Die Feier beginnt - sofern das Wetter mitspielt - im Garten.
+                                            <br>Ab Einbruch der Dunkelheit wird dann im Festsaal weitergefeiert.</p>
+                                    </div>
+                                </div>
+                                <div class="faq-item  ng-scope" >
+                                    <div class="a ng-binding" ></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--div class="joy-wedding-menu-icon" tabindex="0">
+                    <img height="18px" class="menu-icon ng-scope" src="v2/svg/iconMenu.svg">
+                    <div class="menu-label">menü</div>
+                </div-->
+            </div>
+        </ui-view>
+    </div>
+    <div id="mapPlaceholder"></div>
+    
+</body>
 </html>
