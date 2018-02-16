@@ -12633,91 +12633,12 @@ body.md-dialog-is-showing {
   border-color: #3A3C3E !important;
 }
 
-
-/* --- cssOverride --- */
-
-#intercom-container {
-  display: none;
+.invisible {
+	opacity: 0 !important;
+	transition: opacity .3s;
+   -moz-transition: opacity .3s;
+   -webkit-transition: opacity .3s;
+	 transition-delay: .3s;
+    -moz-transition-delay: .3s;
+    -webkit-transition-delay: .3s;
 }
-
-.countdown-timer .time-unit h1[ng-if] {
-  font-size: 0 !important;
-}
-
-.joy-wedding-home .joy-primary-pane .joy-wedding-intro .countdown-timer.vertical .time-unit h1[ng-if] {
-  font-size: 0 !important;
-}
-
-.countdown-timer.horizontal .counter .time-unit [ng-if]::after {
-  font-size: 17px;
-}
-
-.countdown-timer.vertical .counter .time-unit [ng-if]::after {
-  font-size: 66px;
-}
-
-.counter .time-unit [ng-if="daysRemaining!==1"]::after {
-  content: "Tage";
-}
-
-.counter .time-unit [ng-if="daysRemaining===1"]::after {
-  content: "Tag";
-}
-
-.counter .time-unit [ng-if*=seconds]::after {
-  content: "Sek";
-}
-
-.counter .time-unit [ng-if*=minutes]::after {
-  content: "Min";
-}
-
-.counter .time-unit [ng-if*=hours]::after {
-  content: "Std";
-}
-
-.schedule-card #schedule-timeline .slot .information .time-container {
-  padding-right: 0;
-}
-
-.slot .start-time {
-  display: none !important;
-}
-
-#schedule .schedule-day .label.ng-binding {
-  font-size: 0;
-}
-
-#schedule .schedule-day:first-child .label.ng-binding::after {
-  content: "Samstag, 26. Mai 2018";
-  font-size: 15px;
-}
-
-#schedule .schedule-day:nth-child(2) .label.ng-binding::after {
-  content: "Sonntag, 27. Mai 2018";
-  font-size: 15px;
-}
-
-.calendar-button {
-  display: none !important;
-}
-
-.ng-binding[ng-show*="welcomeDetails.date"] {
-  font-size: 0 !important;
-}
-
-.ng-binding[ng-show*="welcomeDetails.date"]::after {
-  content: "Samstag, 26. Mai 2018";
-  font-size: 17px;
-}
-
-.link.link-name.admin-link.ng-scope[ng-click*=signup] {
-  font-size: 0;
-}
-
-.link.link-name.admin-link.ng-scope[ng-click*=signup]::after {
-  content: "Anmelden";
-  font-size: 15px;
-}
-
-/* --- /cssOverride --- */

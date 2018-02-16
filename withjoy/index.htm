@@ -1,22 +1,18 @@
 <!DOCTYPE html>
 <html>
-
 <head>
     <title>Niko &amp; Carina - 26. Mai 2018</title>
-    
     <meta http-equiv="content-type" content="text/html; charset=UTF-8">
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    
     <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Parisienne:400">
     <link rel="stylesheet" href="joy.css">
     <link type="text/css" rel="stylesheet" href="css_002.css">
     <link type="text/css" rel="stylesheet" href="md-styles.css">
-    
     <link rel="stylesheet" type="text/css" class="ng-scope" href="base.css">
     <link rel="stylesheet" type="text/css" class="ng-scope" href="color.css">
-
+    
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png?v=lkdKBov8vl">
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png?v=lkdKBov8vl">
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png?v=lkdKBov8vl">
@@ -27,124 +23,76 @@
     <meta name="application-name" content="Niko &amp; Carina - 26. Mai 2018">
     <meta name="msapplication-TileColor" content="#dec0fe">
     <meta name="theme-color" content="#dec0fe">
+    
+    <script type="text/javascript" src="jQuery-3.3.1.min.js"></script>
+    <script type="text/javascript" src="main.js"></script>
 </head>
-
-<body>
+<body onload="mainInit()">
     <div class="joy-stage ng-scope" ui-view="" style="">
         <ui-view class="ng-scope">
-
             <div id="joy-wedding-page" class="joy-wedding-page joy-wedding-home scrollingOnOff ng-scope">
                 <div class="joy-primary-pane joy-primary-pane-welcome" style="background-color: rgb(222, 192, 254);">
-                  
-                    <!-- ngIf: !isMobile -->
-                    <div class="primary-photo ng-scope background-image" ng-if="!isMobile" ng-controller="eventAsset" event-id="ef503b6545ac03b374b375ede47b484d04f4f50893d5dc4d2"
+                    <div class="primary-photo ng-scope background-image" event-id="ef503b6545ac03b374b375ede47b484d04f4f50893d5dc4d2"
                         ng-attr-asset="{{(coverPhotos[activeItem])}}" background-image="../images/light_s.jpg"
                         asset="{&quot;assetId&quot;:&quot;wtdlXZNxStaYgOZJxRRb_light_s.jpg&quot;,&quot;height&quot;:1440,&quot;key&quot;:&quot;-L5J-2wHk0Ui7ZiqcbQs&quot;,&quot;mimetype&quot;:&quot;image/jpeg&quot;,&quot;size&quot;:210464,&quot;width&quot;:2304}">
                         <div id="primary-photo-b" class="buffer"></div>
                         <div id="primary-photo-a" class="buffer" style="opacity: 1; background-image: url(&quot;../images/light_s.jpg&quot;);"></div>
-
-                        <!-- need to find a way to go back to cover photo if no section photo -->
-
                         <!-- background-image="{{ (coverPhotos && coverPhotos[activeItem] && coverPhotos[activeItem].primaryPhotoHorizontal && coverPhotos[activeItem].primaryPhotoHorizontal.getOriginalUrlSync('f')) ||
                                                (weddingInfo && weddingInfo.primaryPhotoHorizontal && weddingInfo.primaryPhotoHorizontal.getOriginalUrlSync('m')) ||
                                                (weddingInfo && weddingInfo.primaryPhoto && weddingInfo.primaryPhoto.getOriginalUrlSync('m')) ||
                                                (assets.sampleWeddingPlaceholder4) || 'http://www.billboard.com/files/media/Ariana-Grande-Jimmy-Fallon-03-a-2016-billboard-1548.jpg' }}" -->
-
                         <div class="primary-photo-alpha-overlay"></div>
                     </div>
-                    <!-- end ngIf: !isMobile -->
-
                     <div class="joy-wedding-intro">
                         <div class="intro-contents">
-                            <!-- ng-if="!$state.includes('wedding.home.moments')" -->
-                            <div ng-show="(activeItem !== 'schedule' || userSettings.hideCountdownTimer) &amp;&amp; activeItem !== 'travel'" aria-hidden="false"
-                                class="">
-                                <!-- ngIf: ownerName.split(' ')[0].length < fianceeName.split(' ')[0].length -->
-                                <h1 id="wedding-names" class="left ng-binding ng-scope" ng-if="ownerName.split(' ')[0].length < fianceeName.split(' ')[0].length"
-                                    style="">
+                            <!-- -->
+                            <div id="wedding-text" class="">
+                                <h1 class="left ng-binding ng-scope" style="">
                                     Niko &amp;
                                     <br> Carina
                                 </h1>
-                                <!-- end ngIf: ownerName.split(' ')[0].length < fianceeName.split(' ')[0].length -->
                                 <!-- ngIf: ownerName.split(' ')[0].length >= fianceeName.split(' ')[0].length -->
-                                <h3 ng-show="(activeItem !== 'schedule' || userSettings.hideCountdownTimer) &amp;&amp; activeItem !== 'travel'" id="wedding-message"
-                                    class="right ng-isolate-scope" ng-click="$event.stopPropagation()" marked="eventMessage.substring(0,140)"
-                                    compile="true" role="button" tabindex="0" aria-hidden="false">
+                                <h3 class="right ng-isolate-scope" tabindex="0">
                                     <p class="ng-scope">Wir freuen uns schon, diesen besonderen Tag mit euch zu verbringen! :-)</p>
                                 </h3>
                             </div>
-                            <h2 ng-show="activeItem === 'travel'" id="wedding-place" ng-controller="eventLocation" class="ng-scope ng-binding ng-hide"
-                                aria-hidden="true">
+                            
+                            <h2 id="wedding-place" class="ng-scope ng-binding invisible">
                                 Stiftskirche Klosterneuburg
-                                <br> Saturday, May 26, 2018
+                                <br> Samstag, 26. Mai 2018
                             </h2>
-                            <countdown-timer class="countdown-timer-wrapper ng-isolate-scope ng-hide" ng-show="activeItem === 'schedule' &amp;&amp; !userSettings.hideCountdownTimer"
-                                target-time="1527332400000" aria-hidden="true">
-                                <div aria-label="Countdown Timer to Wedding Date" class="countdown-timer vertical" ng-class="{vertical: !horizontal, horizontal: horizontal}">
-                                    <!-- ngIf: message -->
-                                    <!-- ngIf: !message -->
-                                    <div aria-label="99 days, 17 hours, 31 minutes, 41 seconds" class="counter ng-scope"
-                                        ng-if="!message">
-                                        <div aria-hidden="true" class="time-unit">
-                                            <h1 class="time-left ng-binding">99</h1>
-                                            <!-- ngIf: daysRemaining!==1 -->
-                                            <h1 class="unit ng-scope" ng-if="daysRemaining!==1">days</h1>
-                                            <!-- end ngIf: daysRemaining!==1 -->
-                                            <!-- ngIf: daysRemaining===1 -->
-                                        </div>
-                                        <div aria-hidden="true" class="time-unit">
-                                            <h1 class="time-left ng-binding">17</h1>
-                                            <!-- ngIf: hoursRemaining!==1 -->
-                                            <h1 class="unit ng-scope" ng-if="hoursRemaining!==1">hrs</h1>
-                                            <!-- end ngIf: hoursRemaining!==1 -->
-                                            <!-- ngIf: hoursRemaining===1 -->
-                                        </div>
-                                        <div aria-hidden="true" class="time-unit">
-                                            <h1 class="time-left ng-binding">31</h1>
-                                            <!-- ngIf: minutesRemaining!==1 -->
-                                            <h1 class="unit ng-scope" ng-if="minutesRemaining!==1">mins</h1>
-                                            <!-- end ngIf: minutesRemaining!==1 -->
-                                            <!-- ngIf: minutesRemaining===1 -->
-                                        </div>
-                                        <div aria-hidden="true" class="time-unit">
-                                            <h1 class="time-left ng-binding">41</h1>
-                                            <!-- ngIf: secondsRemaining!==1 -->
-                                            <h1 class="unit ng-scope" ng-if="secondsRemaining!==1" style="">secs</h1>
-                                            <!-- end ngIf: secondsRemaining!==1 -->
-                                            <!-- ngIf: secondsRemaining===1 -->
+                            
+                            <countdown-timer class="countdown-timer-wrapper ng-isolate-scope invisible" target-time="1527332400000" id="wedding-countdown">
+                                <div class="countdown-timer vertical" ng-class="{vertical: !horizontal, horizontal: horizontal}">
+                                    <div class="counter ng-scope">
+                                        <div class="time-unit">
+                                            <h1 class="time-left ng-binding">--</h1><h1 class="unit ng-scope">tage</h1>
                                         </div>
                                         <div class="time-unit">
-                                            <!-- ngIf: showAgo -->
+                                            <h1 class="time-left ng-binding">--</h1><h1 class="unit ng-scope">std</h1>
+                                        </div>
+                                        <div class="time-unit">
+                                          <h1 class="time-left ng-binding">--</h1><h1 class="unit ng-scope">min</h1>
+                                        </div>
+                                        <div class="time-unit">
+                                          <h1 class="time-left ng-binding">--</h1><h1 class="unit ng-scope" style="">secs</h1>
                                         </div>
                                     </div>
-                                    <!-- end ngIf: !message -->
                                 </div>
                             </countdown-timer>
-
-                            <!-- ngIf: $state.includes('event.home.moments') -->
-
                         </div>
                     </div>
-
                     <!--div class="joy-wedding-camera-icon" tabindex="0">
                         <img src="svg/iconRetroCamera.svg">
                     </div-->
                 </div>
-
-
-                <!-- ngIf: !$state.includes('event.home.moments') -->
-                <div id="wedding-details-panels" class="joy-secondary-pane joy-wedding-info scrollingOnOff ng-scope" ng-if="!$state.includes('event.home.moments')"
-                    ng-style="{'width': widthRightPane}">
-                    <!--Primary photo panel for mobile-->
+                <div id="wedding-details-panels" class="joy-secondary-pane joy-wedding-info scrollingOnOff ng-scope" ng-style="{'width': widthRightPane}">
                     <div class="joy-primary-pane-mobile joy-primary-pane joy-content-card joy-content-intro joy-primary-pane-preview" ng-class="{'joy-primary-pane-preview': !$state.includes('event.home.moments'), 'joy-primary-pane-full': $state.includes('event.home.moments')}"
                         ng-style="eventTheme.accent">
-                        <!-- uiView: -->
                         <ui-view class="ng-scope">
                             <h1 class="ng-scope"></h1>
                         </ui-view>
-                        <!-- ngIf: !$state.includes('wedding.home.moments') -->
-                        <div id="primary-photo-mobile" class="primary-photo ng-scope background-image" ng-if="!$state.includes('wedding.home.moments')"
-                            ng-controller="eventAsset" event-id="ef503b6545ac03b374b375ede47b484d04f4f50893d5dc4d2" ng-attr-asset="{{(coverPhotos.primaryPhoto)}}"
+                        <div id="primary-photo-mobile" class="primary-photo ng-scope background-image" event-id="ef503b6545ac03b374b375ede47b484d04f4f50893d5dc4d2" ng-attr-asset="{{(coverPhotos.primaryPhoto)}}"
                             background-image="/images/dark_s.jpg"
                             asset="{&quot;assetId&quot;:&quot;mTFPJ4gHSQeMEAC73zJc_dark_s.jpg&quot;,&quot;height&quot;:1067,&quot;key&quot;:&quot;-L5J-2w8N3gWkyx0EHlw&quot;,&quot;mimetype&quot;:&quot;image/jpeg&quot;,&quot;size&quot;:86930,&quot;width&quot;:1600}">
                             <div id="primary-photo-b" class="buffer"></div>
@@ -152,1068 +100,317 @@
                             <div class="primary-photo-alpha-overlay"></div>
                             <!-- ng-style="{'background-image': weddingInfo && weddingInfo.primaryPhoto ? 'url(' + weddingInfo.primaryPhoto.getRenditionUrlSync('m') + ')' : 'url(' + assets.sampleWeddingPlaceholder4 + ')'}"> -->
                         </div>
-                        <!-- end ngIf: !$state.includes('wedding.home.moments') -->
-                        <!-- ngIf: !$state.includes('event.home.moments') -->
-                        <div class="joy-wedding-intro ng-scope" ng-if="!$state.includes('event.home.moments')">
-                            <!-- ngIf: ownerName.split(' ')[0].length < fianceeName.split(' ')[0].length -->
-                            <h2 ng-show="activeItem !== 'schedule'" id="wedding-names" class="left ng-binding ng-scope" ng-if="ownerName.split(' ')[0].length < fianceeName.split(' ')[0].length"
-                                aria-hidden="false" style="">
+                        <div class="joy-wedding-intro ng-scope" >
+                            <h2 ng-show="activeItem !== 'schedule'" id="wedding-names" class="left ng-binding ng-scope" aria-hidden="false" style="">
                                 Niko &amp;
                                 <br> Carina
                             </h2>
-                            <!-- end ngIf: ownerName.split(' ')[0].length < fianceeName.split(' ')[0].length -->
                             <!-- ngIf: ownerName.split(' ')[0].length >= fianceeName.split(' ')[0].length -->
                             <h3 id="wedding-message" class="right ng-isolate-scope" ng-click="$event.stopPropagation()" marked="eventMessage.substring(0,140)"
                                 compile="true" role="button" tabindex="0">
                                 <p class="ng-scope">Wir freuen uns schon, diesen besonderen Tag mit euch zu verbringen! :-)</p>
                             </h3>
                         </div>
-                        <!-- end ngIf: !$state.includes('event.home.moments') -->
                     </div>
-                    <!--Welcome A-->
-                    <div du-scrollspy="welcome" id="welcome" class="joy-content-card joy-content-intro active" ng-style="eventTheme.primary"
+                    <div id="welcome" data-scrolltarget="wedding-text" class="joy-content-card joy-content-intro active" ng-style="eventTheme.primary"
                         style="background-color: rgb(222, 192, 254); border-color: rgb(58, 60, 62); color: rgb(58, 60, 62);">
-
-                        <!-- do not show date or location -->
-                        <!-- was info setting to evaluate true to set to false -->
                         <div class="welcomeDetails">
                             <!-- monogram -->
                             <h1 ng-show="welcomeDetails.initials" style="text-align:center; font-size: 320%; letter-spacing: 5px; margin: 0;" class="ng-binding ng-hide"
                                 aria-hidden="true">
                                 <span style="opacity:0.5;">&amp;</span>
                             </h1>
-
-
                             <!-- location -->
                             <h2 class="ng-binding">
                                 Stiftskirche Klosterneuburg
                             </h2>
-
-
                             <!-- date -->
                             <h2 ng-show="welcomeDetails.date &amp;&amp; !welcomeDetails.primaryLocation" class="ng-binding ng-hide" aria-hidden="true">
-                                Saturday, May 26, 2018
+                                Samstag, 26. Mai 2018
                             </h2>
                             <h4 ng-show="welcomeDetails.date &amp;&amp; welcomeDetails.primaryLocation" class="ng-binding" aria-hidden="false">
-                                Saturday, May 26, 2018
+                                Samstag, 26. Mai 2018
                             </h4>
-                            <!-- ngIf: !userSettings.hideCountdownTimer -->
-                            <countdown-timer ng-show="welcomeDetails.date" horizontal="true" ng-if="!userSettings.hideCountdownTimer"
-                                target-time="1527332400000" class="ng-scope ng-isolate-scope" aria-hidden="false" style="">
-                                <div aria-label="Countdown Timer to Wedding Date" class="countdown-timer horizontal" ng-class="{vertical: !horizontal, horizontal: horizontal}">
-                                    <!-- ngIf: message -->
-                                    <!-- ngIf: !message -->
-                                    <div aria-label="99 days, 17 hours, 31 minutes, 41 seconds" class="counter ng-scope"
-                                        ng-if="!message">
-                                        <div aria-hidden="true" class="time-unit">
-                                            <h1 class="time-left ng-binding">99</h1>
-                                            <!-- ngIf: daysRemaining!==1 -->
-                                            <h1 class="unit ng-scope" ng-if="daysRemaining!==1">days</h1>
-                                            <!-- end ngIf: daysRemaining!==1 -->
-                                            <!-- ngIf: daysRemaining===1 -->
-                                        </div>
-                                        <div aria-hidden="true" class="time-unit">
-                                            <h1 class="time-left ng-binding">17</h1>
-                                            <!-- ngIf: hoursRemaining!==1 -->
-                                            <h1 class="unit ng-scope" ng-if="hoursRemaining!==1">hrs</h1>
-                                            <!-- end ngIf: hoursRemaining!==1 -->
-                                            <!-- ngIf: hoursRemaining===1 -->
-                                        </div>
-                                        <div aria-hidden="true" class="time-unit">
-                                            <h1 class="time-left ng-binding">31</h1>
-                                            <!-- ngIf: minutesRemaining!==1 -->
-                                            <h1 class="unit ng-scope" ng-if="minutesRemaining!==1">mins</h1>
-                                            <!-- end ngIf: minutesRemaining!==1 -->
-                                            <!-- ngIf: minutesRemaining===1 -->
-                                        </div>
-                                        <div aria-hidden="true" class="time-unit">
-                                            <h1 class="time-left ng-binding">41</h1>
-                                            <!-- ngIf: secondsRemaining!==1 -->
-                                            <h1 class="unit ng-scope" ng-if="secondsRemaining!==1">secs</h1>
-                                            <!-- end ngIf: secondsRemaining!==1 -->
-                                            <!-- ngIf: secondsRemaining===1 -->
+                            <countdown-timer class="countdown-timer-wrapper ng-isolate-scope" target-time="1527332400000" horizontal="true">
+                                <div class="countdown-timer horizontal">
+                                    <div class="counter ng-scope">
+                                        <div class="time-unit">
+                                            <h1 class="time-left ng-binding">--</h1><h1 class="unit ng-scope">tage</h1>
                                         </div>
                                         <div class="time-unit">
-                                            <!-- ngIf: showAgo -->
+                                            <h1 class="time-left ng-binding">--</h1><h1 class="unit ng-scope">std</h1>
+                                        </div>
+                                        <div class="time-unit">
+                                          <h1 class="time-left ng-binding">--</h1><h1 class="unit ng-scope">min</h1>
+                                        </div>
+                                        <div class="time-unit">
+                                          <h1 class="time-left ng-binding">--</h1><h1 class="unit ng-scope" style="">sek</h1>
                                         </div>
                                     </div>
-                                    <!-- end ngIf: !message -->
                                 </div>
                             </countdown-timer>
-                            <!-- end ngIf: !userSettings.hideCountdownTimer -->
-
                         </div>
-
                         <rsvp-button>
                             <div id="cta-update" class="button-container">
                                 <cta-prompt eventid="eventid" class="ng-isolate-scope">
                                     <div class="cta-prompt-independent joykit-minilabel rsvp-button color-thief ng-binding"><!--Hallo Niko!--></div>
                                 </cta-prompt>
-                                <div class="rsvp-button btn btn-animate" ng-click="goToRSVP()" tabindex="0" style="background-color: rgb(222, 192, 254); border-color: rgb(58, 60, 62); color: rgb(58, 60, 62);">
+                                <div class="rsvp-button btn btn-animate" onclick="location.href='https://niko-carina.wedding/rsvp.html'" tabindex="0" style="background-color: rgb(222, 192, 254); border-color: rgb(58, 60, 62); color: rgb(58, 60, 62); cursor: pointer;">
                                     <span class="ng-binding">Antworten</span>
                                 </div>
                                 <div ng-show="joinError" class="joykit-minilabel ng-hide" aria-hidden="true">Hmm, something's not right. Try refreshing and please contact the Joy team if the problem persists.</div>
                             </div>
-
-                            <!--No RSVP && site is unlocked -->
-                            <!-- ngIf: ctaState === 2 -->
                         </rsvp-button>
                     </div>
-
-                    <!--sections-->
-                    <!--<div ng-repeat="section in sections | orderBy:'sortKey' track by section.key" ng-include="'/pages/event/eventHome/sections/' + section.key + '.html'"></div>-->
-                    <!-- ngRepeat: section in sections | orderBy:'sortKey' track by section.key -->
-                    <!-- ngInclude: sectionTemplateUrl(section.key) -->
-                    <!-- end ngRepeat: section in sections | orderBy:'sortKey' track by section.key -->
-                    <!-- ngInclude: sectionTemplateUrl(section.key) -->
-                    <div ng-repeat="section in sections | orderBy:'sortKey' track by section.key" ng-include="sectionTemplateUrl(section.key)"
-                        class="ng-scope" style="">
+                    <!--<div ></div>-->
+                    <div class="ng-scope" style="">
                         <!--Schedule-->
-                        <!-- ngIf: pageSettings.schedule && pageSettings.schedule.unlocked -->
-                        <div ng-controller="eventSchedule" du-scrollspy="schedule" id="schedule" class="joy-content-card joy-content-info schedule-card ng-scope"
-                            ng-if="pageSettings.schedule &amp;&amp; pageSettings.schedule.unlocked">
+                        <div data-scrolltarget="wedding-countdown" id="schedule" class="joy-content-card joy-content-info schedule-card ng-scope">
                             <h2 class="title ng-binding">Zeitplan</h2>
                             <div id="schedule-timeline" ng-style="{'border-color': eventTheme.primary['background-color']}" style="border-color: rgb(222, 192, 254);">
-                                <!-- ngRepeat: day in eventsByDay | orderBy: 'day' -->
-                                <div class="schedule-day ng-scope" ng-repeat="day in eventsByDay | orderBy: 'day'" style="">
-                                    <!-- ngIf: day.events[0].dtstart -->
-                                    <div class="schedule-day-title ng-scope" ng-if="day.events[0].dtstart">
-                                        <div class="label ng-binding">SATURDAY, MAY 26, 2018
-                                        </div>
+                                <div class="schedule-day ng-scope" style="">
+                                    <div class="schedule-day-title ng-scope" >
+                                        <div class="label ng-binding">Samstag, 26. Mai 2018</div>
                                         <span class="line"></span>
                                     </div>
-                                    <!-- end ngIf: day.events[0].dtstart -->
-                                    <!-- ngIf: !day.events[0].dtstart -->
-                                    <!-- ngRepeat: vevent in day.events | orderBy: 'dtstart' -->
-                                    <div class="slot ng-scope" ng-repeat="vevent in day.events | orderBy: 'dtstart'">
+                                    <div class="slot ng-scope" >
                                         <div class="information">
                                             <div class="time-container">
-                                                <!-- ngIf: vevent.dtstart -->
-                                                <div class="time ng-scope" ng-if="vevent.dtstart">
-                                                    <div class="start-time ng-binding"> 12:30 am</div>
+                                                <div class="time ng-scope" >
+                                                    <div class="start-time ng-binding"> 12:30</div>
                                                     <div class="dash ng-hide" ng-show="vevent.dtend" aria-hidden="true">-</div>
                                                     <div class="end-time ng-binding"> </div>
                                                 </div>
-                                                <!-- end ngIf: vevent.dtstart -->
-                                                <!-- ngIf: !vevent.dtstart -->
                                             </div>
                                             <div class="event">
-                                                <!-- ngIf: vevent.name -->
-                                                <div class="name ng-binding ng-scope" ng-if="vevent.name">12:30 Eintreffen</div>
-                                                <!-- end ngIf: vevent.name -->
-                                                <!-- ngIf: vevent.location -->
-                                                <div class="location ng-scope" ng-if="vevent.location">
-                                                    <a aria-label="Stiftskirche Klosterneuburg, Stiftsplatz, Klosterneuburg, Austria, Click to view on Google Maps" href="" ng-click="getDirections(vevent.location, 'scheduleEvent')"
-                                                        class="ng-binding">Stiftskirche Klosterneuburg, Stiftsplatz, Klosterneuburg, Austria</a>
+                                                <div class="name ng-binding ng-scope" >Eintreffen</div>
+                                                <div class="location ng-scope" >
+                                                    <a href="" ng-click="getDirections(vevent.location, 'scheduleEvent')"
+                                                        class="ng-binding">Stiftskirche Klosterneuburg, 3400 Klosterneuburg</a>
                                                 </div>
-                                                <!-- end ngIf: vevent.location -->
-                                                <!-- ngIf: vevent.details -->
-                                                <!-- ngIf: vevent.dressCode -->
-                                                <div class="dress-code ng-binding ng-scope" ng-if="vevent.dressCode">
-                                                    <span>Dress Code:</span>
-                                                    Elegant
+                                                <div class="dress-code ng-binding ng-scope" >
+                                                    <span>Dress Code:</span> Elegant
                                                 </div>
-                                                <!-- end ngIf: vevent.dressCode -->
-                                                <!-- ngIf: day.events[0].dtstart -->
-                                                <p class="calendar-button ng-scope" ng-if="day.events[0].dtstart">
-                                                    <a ng-click="displayCalendar(vevent)">Add To Calendar</a>
-                                                </p>
-                                                <!-- end ngIf: day.events[0].dtstart -->
                                             </div>
                                         </div>
-                                        <!-- ngIf: vevent.showMap && vevent.location -->
-                                        <event-location-map aria-label="Map of Stiftskirche Klosterneuburg, Stiftsplatz, Klosterneuburg, Austria"
-                                            class="map ng-scope ng-isolate-scope" ng-if="vevent.showMap &amp;&amp; vevent.location"
-                                            vevent="vevent">
-                                            <div class="event-map" style="position: relative; overflow: hidden;">
-                                                <div style="height: 100%; width: 100%; position: absolute; top: 0px; left: 0px; background-color: rgb(229, 227, 223);">
-                                                    <div style="position: absolute; z-index: 0; left: 0px; top: 0px; height: 100%; width: 100%; padding: 0px; border-width: 0px; margin: 0px;"
-                                                        class="gm-style">
-                                                        <div style="position: absolute; z-index: 0; left: 0px; top: 0px; height: 100%; width: 100%; padding: 0px; border-width: 0px; margin: 0px; cursor: url(&quot;https://maps.gstatic.com/mapfiles/openhand_8_8.cur&quot;), default;"
-                                                            tabindex="0">
-                                                            <div style="z-index: 1; position: absolute; left: 50%; top: 50%; transform: translate(0px, 0px);">
-                                                                <div style="position: absolute; left: 0px; top: 0px; z-index: 100; width: 100%;">
-                                                                    <div style="position: absolute; left: 0px; top: 0px; z-index: 0;">
-                                                                        <div style="position: absolute; z-index: 1; transform: matrix(1, 0, 0, 1, -17, -98);">
-                                                                            <div style="width: 256px; height: 256px; position: absolute; left: 0px; top: 0px;"></div>
-                                                                            <div style="width: 256px; height: 256px; position: absolute; left: -256px; top: 0px;"></div>
-                                                                            <div style="width: 256px; height: 256px; position: absolute; left: -256px; top: -256px;"></div>
-                                                                            <div style="width: 256px; height: 256px; position: absolute; left: 0px; top: -256px;"></div>
-                                                                            <div style="width: 256px; height: 256px; position: absolute; left: 256px; top: -256px;"></div>
-                                                                            <div style="width: 256px; height: 256px; position: absolute; left: 256px; top: 0px;"></div>
-                                                                            <div style="width: 256px; height: 256px; position: absolute; left: -512px; top: 0px;"></div>
-                                                                            <div style="width: 256px; height: 256px; position: absolute; left: -512px; top: -256px;"></div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                                <div style="position: absolute; left: 0px; top: 0px; z-index: 101; width: 100%;"></div>
-                                                                <div style="position: absolute; left: 0px; top: 0px; z-index: 102; width: 100%;"></div>
-                                                                <div style="position: absolute; left: 0px; top: 0px; z-index: 103; width: 100%;">
-                                                                    <div style="position: absolute; left: 0px; top: 0px; z-index: -1;">
-                                                                        <div style="position: absolute; z-index: 1; transform: matrix(1, 0, 0, 1, -17, -98);">
-                                                                            <div style="width: 256px; height: 256px; overflow: hidden; position: absolute; left: 0px; top: 0px;"></div>
-                                                                            <div style="width: 256px; height: 256px; overflow: hidden; position: absolute; left: -256px; top: 0px;"></div>
-                                                                            <div style="width: 256px; height: 256px; overflow: hidden; position: absolute; left: -256px; top: -256px;"></div>
-                                                                            <div style="width: 256px; height: 256px; overflow: hidden; position: absolute; left: 0px; top: -256px;"></div>
-                                                                            <div style="width: 256px; height: 256px; overflow: hidden; position: absolute; left: 256px; top: -256px;"></div>
-                                                                            <div style="width: 256px; height: 256px; overflow: hidden; position: absolute; left: 256px; top: 0px;"></div>
-                                                                            <div style="width: 256px; height: 256px; overflow: hidden; position: absolute; left: -512px; top: 0px;"></div>
-                                                                            <div style="width: 256px; height: 256px; overflow: hidden; position: absolute; left: -512px; top: -256px;"></div>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div style="width: 27px; height: 43px; overflow: hidden; position: absolute; left: -14px; top: -43px; z-index: 0;">
-                                                                        <img style="position: absolute; left: 0px; top: 0px; width: 27px; height: 43px; -moz-user-select: none; border: 0px none; padding: 0px; margin: 0px; max-width: none;"
-                                                                            alt="" src="https://maps.gstatic.com/mapfiles/api-3/images/spotlight-poi2.png"
-                                                                            draggable="false">
-                                                                    </div>
-                                                                </div>
-                                                                <div style="position: absolute; left: 0px; top: 0px; z-index: 0;">
-                                                                    <div style="position: absolute; z-index: 1; transform: matrix(1, 0, 0, 1, -17, -98);">
-                                                                        <div style="position: absolute; left: 0px; top: 0px; width: 256px; height: 256px;">
-                                                                            <img style="width: 256px; height: 256px; -moz-user-select: none; border: 0px none; padding: 0px; margin: 0px; max-width: none;"
-                                                                                draggable="false" alt="" src="https://maps.googleapis.com/maps/vt?pb=!1m5!1m4!1i14!2i8935!3i5674!4i256!2m3!1e0!2sm!3i410109718!3m9!2sen-US!3sUS!5e18!12m1!1e68!12m3!1e37!2m1!1ssmartmaps!4e0!23i1301875&amp;token=68922">
-                                                                        </div>
-                                                                        <div style="position: absolute; left: -256px; top: 0px; width: 256px; height: 256px;">
-                                                                            <img style="width: 256px; height: 256px; -moz-user-select: none; border: 0px none; padding: 0px; margin: 0px; max-width: none;"
-                                                                                draggable="false" alt="" src="https://maps.googleapis.com/maps/vt?pb=!1m5!1m4!1i14!2i8934!3i5674!4i256!2m3!1e0!2sm!3i410109718!3m9!2sen-US!3sUS!5e18!12m1!1e68!12m3!1e37!2m1!1ssmartmaps!4e0!23i1301875&amp;token=91087">
-                                                                        </div>
-                                                                        <div style="position: absolute; left: -256px; top: -256px; width: 256px; height: 256px;">
-                                                                            <img style="width: 256px; height: 256px; -moz-user-select: none; border: 0px none; padding: 0px; margin: 0px; max-width: none;"
-                                                                                draggable="false" alt="" src="https://maps.googleapis.com/maps/vt?pb=!1m5!1m4!1i14!2i8934!3i5673!4i256!2m3!1e0!2sm!3i410109718!3m9!2sen-US!3sUS!5e18!12m1!1e68!12m3!1e37!2m1!1ssmartmaps!4e0!23i1301875&amp;token=86266">
-                                                                        </div>
-                                                                        <div style="position: absolute; left: 0px; top: -256px; width: 256px; height: 256px;">
-                                                                            <img style="width: 256px; height: 256px; -moz-user-select: none; border: 0px none; padding: 0px; margin: 0px; max-width: none;"
-                                                                                draggable="false" alt="" src="https://maps.googleapis.com/maps/vt?pb=!1m5!1m4!1i14!2i8935!3i5673!4i256!2m3!1e0!2sm!3i410109718!3m9!2sen-US!3sUS!5e18!12m1!1e68!12m3!1e37!2m1!1ssmartmaps!4e0!23i1301875&amp;token=64101">
-                                                                        </div>
-                                                                        <div style="position: absolute; left: 256px; top: -256px; width: 256px; height: 256px;">
-                                                                            <img style="width: 256px; height: 256px; -moz-user-select: none; border: 0px none; padding: 0px; margin: 0px; max-width: none;"
-                                                                                draggable="false" alt="" src="https://maps.googleapis.com/maps/vt?pb=!1m5!1m4!1i14!2i8936!3i5673!4i256!2m3!1e0!2sm!3i410109839!3m9!2sen-US!3sUS!5e18!12m1!1e68!12m3!1e37!2m1!1ssmartmaps!4e0!23i1301875&amp;token=62294">
-                                                                        </div>
-                                                                        <div style="position: absolute; left: 256px; top: 0px; width: 256px; height: 256px;">
-                                                                            <img style="width: 256px; height: 256px; -moz-user-select: none; border: 0px none; padding: 0px; margin: 0px; max-width: none;"
-                                                                                draggable="false" alt="" src="https://maps.googleapis.com/maps/vt?pb=!1m5!1m4!1i14!2i8936!3i5674!4i256!2m3!1e0!2sm!3i410109839!3m9!2sen-US!3sUS!5e18!12m1!1e68!12m3!1e37!2m1!1ssmartmaps!4e0!23i1301875&amp;token=67115">
-                                                                        </div>
-                                                                        <div style="position: absolute; left: -512px; top: 0px; width: 256px; height: 256px;">
-                                                                            <img style="width: 256px; height: 256px; -moz-user-select: none; border: 0px none; padding: 0px; margin: 0px; max-width: none;"
-                                                                                draggable="false" alt="" src="https://maps.googleapis.com/maps/vt?pb=!1m5!1m4!1i14!2i8933!3i5674!4i256!2m3!1e0!2sm!3i410109718!3m9!2sen-US!3sUS!5e18!12m1!1e68!12m3!1e37!2m1!1ssmartmaps!4e0!23i1301875&amp;token=113252">
-                                                                        </div>
-                                                                        <div style="position: absolute; left: -512px; top: -256px; width: 256px; height: 256px;">
-                                                                            <img style="width: 256px; height: 256px; -moz-user-select: none; border: 0px none; padding: 0px; margin: 0px; max-width: none;"
-                                                                                draggable="false" alt="" src="https://maps.googleapis.com/maps/vt?pb=!1m5!1m4!1i14!2i8933!3i5673!4i256!2m3!1e0!2sm!3i410109718!3m9!2sen-US!3sUS!5e18!12m1!1e68!12m3!1e37!2m1!1ssmartmaps!4e0!23i1301875&amp;token=108431">
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div style="z-index: 2; position: absolute; height: 100%; width: 100%; padding: 0px; border-width: 0px; margin: 0px; left: 0px; top: 0px; opacity: 0;"
-                                                                class="gm-style-pbc">
-                                                                <p class="gm-style-pbt"></p>
-                                                            </div>
-                                                            <div style="z-index: 3; position: absolute; height: 100%; width: 100%; padding: 0px; border-width: 0px; margin: 0px; left: 0px; top: 0px;">
-                                                                <div style="z-index: 1; position: absolute; height: 100%; width: 100%; padding: 0px; border-width: 0px; margin: 0px; left: 0px; top: 0px;"></div>
-                                                                <div style="z-index: 4; position: absolute; left: 50%; top: 50%; transform: translate(0px, 0px);">
-                                                                    <div style="position: absolute; left: 0px; top: 0px; z-index: 104; width: 100%;"></div>
-                                                                    <div style="position: absolute; left: 0px; top: 0px; z-index: 105; width: 100%;"></div>
-                                                                    <div style="position: absolute; left: 0px; top: 0px; z-index: 106; width: 100%;">
-                                                                        <div style="width: 27px; height: 43px; overflow: hidden; position: absolute; opacity: 0.01; left: -14px; top: -43px; z-index: 0;"
-                                                                            class="gmnoprint">
-                                                                            <img style="position: absolute; left: 0px; top: 0px; width: 27px; height: 43px; -moz-user-select: none; border: 0px none; padding: 0px; margin: 0px; max-width: none;"
-                                                                                alt="" src="https://maps.gstatic.com/mapfiles/api-3/images/spotlight-poi2.png"
-                                                                                draggable="false" usemap="#gmimap1">
-                                                                            <map name="gmimap1" id="gmimap1">
-                                                                                <area log="miw" coords="13.5,0,4,3.75,0,13.5,13.5,43,27,13.5,23,3.75"
-                                                                                    shape="poly" title="" style="cursor: pointer;">
-                                                                            </map>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div style="position: absolute; left: 0px; top: 0px; z-index: 107; width: 100%;"></div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <iframe style="z-index: -1; position: absolute; width: 100%; height: 100%; top: 0px; left: 0px; border: medium none;"
-                                                            src="about:blank" frameborder="0"></iframe>
-                                                        <div style="margin-left: 5px; margin-right: 5px; z-index: 1000000; position: absolute; left: 0px; bottom: 0px;">
-                                                            <a style="position: static; overflow: visible; float: none; display: inline;"
-                                                                target="_blank" href="https://maps.google.com/maps?ll=48.306856,16.327162&amp;z=14&amp;t=m&amp;hl=en-US&amp;gl=US&amp;mapclient=apiv3"
-                                                                title="Click to see this area on Google Maps">
-                                                                <div style="width: 66px; height: 26px; cursor: pointer;">
-                                                                    <img style="position: absolute; left: 0px; top: 0px; width: 66px; height: 26px; -moz-user-select: none; border: 0px none; padding: 0px; margin: 0px;"
-                                                                        alt="" src="https://maps.gstatic.com/mapfiles/api-3/images/google4.png"
-                                                                        draggable="false">
-                                                                </div>
-                                                            </a>
-                                                        </div>
-                                                        <div style="background-color: white; padding: 15px 21px; border: 1px solid rgb(171, 171, 171); font-family: Roboto, Arial, sans-serif; color: rgb(34, 34, 34); box-shadow: rgba(0, 0, 0, 0.2) 0px 4px 16px; z-index: 10000002; display: none; width: 256px; height: 148px; position: absolute; left: 161px; top: 54px;">
-                                                            <div style="padding: 0px 0px 10px; font-size: 16px;">Map Data</div>
-                                                            <div style="font-size: 13px;">Map data ©2018 Google</div>
-                                                            <div style="width: 13px; height: 13px; overflow: hidden; position: absolute; opacity: 0.7; right: 12px; top: 12px; z-index: 10000; cursor: pointer;">
-                                                                <img style="position: absolute; left: -2px; top: -336px; width: 59px; height: 492px; -moz-user-select: none; border: 0px none; padding: 0px; margin: 0px; max-width: none;"
-                                                                    alt="" src="https://maps.gstatic.com/mapfiles/api-3/images/mapcnt6.png"
-                                                                    draggable="false">
-                                                            </div>
-                                                        </div>
-                                                        <div class="gmnoprint" style="z-index: 1000001; position: absolute; right: 166px; bottom: 0px; width: 121px;">
-                                                            <div draggable="false" style="-moz-user-select: none; height: 14px; line-height: 14px;"
-                                                                class="gm-style-cc">
-                                                                <div style="opacity: 0.7; width: 100%; height: 100%; position: absolute;">
-                                                                    <div style="width: 1px;"></div>
-                                                                    <div style="background-color: rgb(245, 245, 245); width: auto; height: 100%; margin-left: 1px;"></div>
-                                                                </div>
-                                                                <div style="position: relative; padding-right: 6px; padding-left: 6px; font-family: Roboto, Arial, sans-serif; font-size: 10px; color: rgb(68, 68, 68); white-space: nowrap; direction: ltr; text-align: right; vertical-align: middle; display: inline-block;">
-                                                                    <a style="text-decoration: none; cursor: pointer; display: none;">Map Data</a>
-                                                                    <span>Map data ©2018 Google</span>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="gmnoscreen" style="position: absolute; right: 0px; bottom: 0px;">
-                                                            <div style="font-family: Roboto, Arial, sans-serif; font-size: 11px; color: rgb(68, 68, 68); direction: ltr; text-align: right; background-color: rgb(245, 245, 245);">Map data ©2018 Google</div>
-                                                        </div>
-                                                        <div class="gmnoprint gm-style-cc" style="z-index: 1000001; -moz-user-select: none; height: 14px; line-height: 14px; position: absolute; right: 95px; bottom: 0px;"
-                                                            draggable="false">
-                                                            <div style="opacity: 0.7; width: 100%; height: 100%; position: absolute;">
-                                                                <div style="width: 1px;"></div>
-                                                                <div style="background-color: rgb(245, 245, 245); width: auto; height: 100%; margin-left: 1px;"></div>
-                                                            </div>
-                                                            <div style="position: relative; padding-right: 6px; padding-left: 6px; font-family: Roboto, Arial, sans-serif; font-size: 10px; color: rgb(68, 68, 68); white-space: nowrap; direction: ltr; text-align: right; vertical-align: middle; display: inline-block;">
-                                                                <a style="text-decoration: none; cursor: pointer; color: rgb(68, 68, 68);"
-                                                                    href="https://www.google.com/intl/en-US_US/help/terms_maps.html"
-                                                                    target="_blank">Terms of Use</a>
-                                                            </div>
-                                                        </div>
-                                                        <button style="background: rgba(0, 0, 0, 0) none repeat scroll 0% 0%; border: 0px none; margin: 10px 14px; padding: 0px; position: absolute; cursor: pointer; -moz-user-select: none; width: 25px; height: 25px; overflow: hidden; top: 0px; right: 0px;"
-                                                            draggable="false" title="Toggle fullscreen view" aria-label="Toggle fullscreen view"
-                                                            type="button">
-                                                            <img style="position: absolute; left: -52px; top: -86px; width: 164px; height: 175px; -moz-user-select: none; border: 0px none; padding: 0px; margin: 0px;"
-                                                                alt="" src="https://maps.gstatic.com/mapfiles/api-3/images/sv9.png"
-                                                                draggable="false" class="gm-fullscreen-control">
-                                                        </button>
-                                                        <div draggable="false" style="-moz-user-select: none; height: 14px; line-height: 14px; position: absolute; right: 0px; bottom: 0px;"
-                                                            class="gm-style-cc">
-                                                            <div style="opacity: 0.7; width: 100%; height: 100%; position: absolute;">
-                                                                <div style="width: 1px;"></div>
-                                                                <div style="background-color: rgb(245, 245, 245); width: auto; height: 100%; margin-left: 1px;"></div>
-                                                            </div>
-                                                            <div style="position: relative; padding-right: 6px; padding-left: 6px; font-family: Roboto, Arial, sans-serif; font-size: 10px; color: rgb(68, 68, 68); white-space: nowrap; direction: ltr; text-align: right; vertical-align: middle; display: inline-block;">
-                                                                <a target="_blank" rel="noopener" title="Report errors in the road map or imagery to Google"
-                                                                    style="font-family: Roboto, Arial, sans-serif; font-size: 10px; color: rgb(68, 68, 68); text-decoration: none; position: relative;"
-                                                                    href="https://www.google.com/maps/@48.3068563,16.3271617,14z/data=!10m1!1e1!12b1?source=apiv3&amp;rapsrc=apiv3">Report a map error</a>
-                                                            </div>
-                                                        </div>
-                                                        <div class="gmnoprint gm-bundled-control gm-bundled-control-on-bottom"
-                                                            style="margin: 10px; -moz-user-select: none; position: absolute; bottom: 107px; right: 28px;"
-                                                            draggable="false" controlwidth="28" controlheight="93">
-                                                            <div class="gmnoprint" style="position: absolute; left: 0px; top: 38px;"
-                                                                controlwidth="28" controlheight="55">
-                                                                <div draggable="false" style="-moz-user-select: none; box-shadow: rgba(0, 0, 0, 0.3) 0px 1px 4px -1px; border-radius: 2px; cursor: pointer; background-color: rgb(255, 255, 255); width: 28px; height: 55px;">
-                                                                    <button style="background: rgba(0, 0, 0, 0) none repeat scroll 0% 0%; display: block; border: 0px none; margin: 0px; padding: 0px; position: relative; cursor: pointer; -moz-user-select: none; width: 28px; height: 27px; top: 0px; left: 0px;"
-                                                                        draggable="false" title="Zoom in" aria-label="Zoom in"
-                                                                        type="button">
-                                                                        <div style="overflow: hidden; position: absolute; width: 15px; height: 15px; left: 7px; top: 6px;">
-                                                                            <img style="position: absolute; left: 0px; top: 0px; -moz-user-select: none; border: 0px none; padding: 0px; margin: 0px; max-width: none; width: 120px; height: 54px;"
-                                                                                alt="" src="https://maps.gstatic.com/mapfiles/api-3/images/tmapctrl.png"
-                                                                                draggable="false">
-                                                                        </div>
-                                                                    </button>
-                                                                    <div style="position: relative; overflow: hidden; width: 67%; height: 1px; left: 16%; background-color: rgb(230, 230, 230); top: 0px;"></div>
-                                                                    <button style="background: rgba(0, 0, 0, 0) none repeat scroll 0% 0%; display: block; border: 0px none; margin: 0px; padding: 0px; position: relative; cursor: pointer; -moz-user-select: none; width: 28px; height: 27px; top: 0px; left: 0px;"
-                                                                        draggable="false" title="Zoom out" aria-label="Zoom out"
-                                                                        type="button">
-                                                                        <div style="overflow: hidden; position: absolute; width: 15px; height: 15px; left: 7px; top: 6px;">
-                                                                            <img style="position: absolute; left: 0px; top: -15px; -moz-user-select: none; border: 0px none; padding: 0px; margin: 0px; max-width: none; width: 120px; height: 54px;"
-                                                                                alt="" src="https://maps.gstatic.com/mapfiles/api-3/images/tmapctrl.png"
-                                                                                draggable="false">
-                                                                        </div>
-                                                                    </button>
-                                                                </div>
-                                                            </div>
-                                                            <div class="gm-svpc" style="background-color: rgb(255, 255, 255); box-shadow: rgba(0, 0, 0, 0.3) 0px 1px 4px -1px; border-radius: 2px; width: 28px; height: 28px; cursor: url(&quot;https://maps.gstatic.com/mapfiles/openhand_8_8.cur&quot;), default; position: absolute; left: 0px; top: 0px;"
-                                                                controlwidth="28" controlheight="28">
-                                                                <div style="position: absolute; left: 1px; top: 1px;"></div>
-                                                                <div style="position: absolute; left: 1px; top: 1px;">
-                                                                    <div style="width: 26px; height: 26px; overflow: hidden; position: absolute; left: 0px; top: 0px;"
-                                                                        aria-label="Street View Pegman Control">
-                                                                        <img style="position: absolute; left: -147px; top: -26px; width: 215px; height: 835px; -moz-user-select: none; border: 0px none; padding: 0px; margin: 0px; max-width: none;"
-                                                                            alt="" src="https://maps.gstatic.com/mapfiles/api-3/images/cb_scout5.png"
-                                                                            draggable="false">
-                                                                    </div>
-                                                                    <div style="width: 26px; height: 26px; overflow: hidden; position: absolute; left: 0px; top: 0px; visibility: hidden;"
-                                                                        aria-label="Pegman is on top of the Map">
-                                                                        <img style="position: absolute; left: -147px; top: -52px; width: 215px; height: 835px; -moz-user-select: none; border: 0px none; padding: 0px; margin: 0px; max-width: none;"
-                                                                            alt="" src="https://maps.gstatic.com/mapfiles/api-3/images/cb_scout5.png"
-                                                                            draggable="false">
-                                                                    </div>
-                                                                    <div style="width: 26px; height: 26px; overflow: hidden; position: absolute; left: 0px; top: 0px; visibility: hidden;"
-                                                                        aria-label="Street View Pegman Control">
-                                                                        <img style="position: absolute; left: -147px; top: -78px; width: 215px; height: 835px; -moz-user-select: none; border: 0px none; padding: 0px; margin: 0px; max-width: none;"
-                                                                            alt="" src="https://maps.gstatic.com/mapfiles/api-3/images/cb_scout5.png"
-                                                                            draggable="false">
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="gmnoprint" controlwidth="28" controlheight="0" style="display: none; position: absolute;">
-                                                                <div style="width: 28px; height: 28px; overflow: hidden; position: absolute; background-color: rgb(255, 255, 255); box-shadow: rgba(0, 0, 0, 0.3) 0px 1px 4px -1px; border-radius: 2px; cursor: pointer; display: none;"
-                                                                    title="Rotate map 90 degrees">
-                                                                    <img style="position: absolute; left: -141px; top: 6px; width: 170px; height: 54px; -moz-user-select: none; border: 0px none; padding: 0px; margin: 0px; max-width: none;"
-                                                                        alt="" src="https://maps.gstatic.com/mapfiles/api-3/images/tmapctrl4.png"
-                                                                        draggable="false">
-                                                                </div>
-                                                                <div style="width: 28px; height: 28px; overflow: hidden; position: absolute; background-color: rgb(255, 255, 255); box-shadow: rgba(0, 0, 0, 0.3) 0px 1px 4px -1px; border-radius: 2px; top: 0px; cursor: pointer;"
-                                                                    class="gm-tilt">
-                                                                    <img style="position: absolute; left: -141px; top: -13px; width: 170px; height: 54px; -moz-user-select: none; border: 0px none; padding: 0px; margin: 0px; max-width: none;"
-                                                                        alt="" src="https://maps.gstatic.com/mapfiles/api-3/images/tmapctrl4.png"
-                                                                        draggable="false">
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </event-location-map>
-                                        <!-- end ngIf: vevent.showMap && vevent.location -->
+                                        <iframe width="620" height="280" frameborder="0" style="border:0" 
+                                        src="https://www.google.com/maps/embed/v1/place?q=Stift%20Klosterneuburg&key=AIzaSyDZz1G-HBdRfAeCMgtTE_TytLWuFVozlcM" allowfullscreen></iframe>
                                     </div>
-                                    <!-- end ngRepeat: vevent in day.events | orderBy: 'dtstart' -->
-                                    <div class="slot ng-scope" ng-repeat="vevent in day.events | orderBy: 'dtstart'">
+                                    <div class="slot ng-scope" >
                                         <div class="information">
                                             <div class="time-container">
-                                                <!-- ngIf: vevent.dtstart -->
-                                                <div class="time ng-scope" ng-if="vevent.dtstart">
-                                                    <div class="start-time ng-binding"> 1:00 pm</div>
+                                                <div class="time ng-scope" >
+                                                    <div class="start-time ng-binding"> 13:00</div>
                                                     <div class="dash ng-hide" ng-show="vevent.dtend" aria-hidden="true">-</div>
                                                     <div class="end-time ng-binding"> </div>
                                                 </div>
-                                                <!-- end ngIf: vevent.dtstart -->
-                                                <!-- ngIf: !vevent.dtstart -->
                                             </div>
                                             <div class="event">
-                                                <!-- ngIf: vevent.name -->
-                                                <div class="name ng-binding ng-scope" ng-if="vevent.name">13:00 Trauung</div>
-                                                <!-- end ngIf: vevent.name -->
-                                                <!-- ngIf: vevent.location -->
-                                                <div class="location ng-scope" ng-if="vevent.location">
-                                                    <a aria-label="Stiftskirche Klosterneuburg, Stiftsplatz, Klosterneuburg, Austria, Click to view on Google Maps" href="" ng-click="getDirections(vevent.location, 'scheduleEvent')"
-                                                        class="ng-binding">Stiftskirche Klosterneuburg, Stiftsplatz, Klosterneuburg, Austria</a>
+                                                <div class="name ng-binding ng-scope" >Trauung</div>
+                                                <div class="location ng-scope" >
+                                                    <a href="" ng-click="getDirections(vevent.location, 'scheduleEvent')"
+                                                        class="ng-binding">Stiftskirche Klosterneuburg, 3400 Klosterneuburg</a>
                                                 </div>
-                                                <!-- end ngIf: vevent.location -->
-                                                <!-- ngIf: vevent.details -->
-                                                <!-- ngIf: vevent.dressCode -->
-                                                <!-- ngIf: day.events[0].dtstart -->
-                                                <p class="calendar-button ng-scope" ng-if="day.events[0].dtstart">
-                                                    <a ng-click="displayCalendar(vevent)">Add To Calendar</a>
-                                                </p>
-                                                <!-- end ngIf: day.events[0].dtstart -->
                                             </div>
                                         </div>
-                                        <!-- ngIf: vevent.showMap && vevent.location -->
                                     </div>
-                                    <!-- end ngRepeat: vevent in day.events | orderBy: 'dtstart' -->
-                                    <div class="slot ng-scope" ng-repeat="vevent in day.events | orderBy: 'dtstart'">
+                                    <div class="slot ng-scope" >
                                         <div class="information">
                                             <div class="time-container">
-                                                <!-- ngIf: vevent.dtstart -->
-                                                <div class="time ng-scope" ng-if="vevent.dtstart">
-                                                    <div class="start-time ng-binding"> 1:45 pm</div>
+                                                <div class="time ng-scope" >
+                                                    <div class="start-time ng-binding"> 13:45</div>
                                                     <div class="dash ng-hide" ng-show="vevent.dtend" aria-hidden="true">-</div>
                                                     <div class="end-time ng-binding"> </div>
                                                 </div>
-                                                <!-- end ngIf: vevent.dtstart -->
-                                                <!-- ngIf: !vevent.dtstart -->
                                             </div>
                                             <div class="event">
-                                                <!-- ngIf: vevent.name -->
-                                                <div class="name ng-binding ng-scope" ng-if="vevent.name">13:45 Auszug &amp; Gruppenfoto</div>
-                                                <!-- end ngIf: vevent.name -->
-                                                <!-- ngIf: vevent.location -->
-                                                <div class="location ng-scope" ng-if="vevent.location">
-                                                    <a aria-label="Stiftskirche Klosterneuburg, Stiftsplatz, Klosterneuburg, Austria, Click to view on Google Maps" href="" ng-click="getDirections(vevent.location, 'scheduleEvent')"
-                                                        class="ng-binding">Stiftskirche Klosterneuburg, Stiftsplatz, Klosterneuburg, Austria</a>
+                                                <div class="name ng-binding ng-scope" >Auszug &amp; Gruppenfoto</div>
+                                                <div class="location ng-scope" >
+                                                    <a href="" ng-click="getDirections(vevent.location, 'scheduleEvent')"
+                                                        class="ng-binding">Stiftskirche Klosterneuburg</a>
                                                 </div>
-                                                <!-- end ngIf: vevent.location -->
-                                                <!-- ngIf: vevent.details -->
-                                                <div ng-if="vevent.details" class="details ng-binding ng-scope" ng-bind-html="(vevent.details | paragraphsFilter)">
+                                                <div class="details ng-binding ng-scope" >
                                                     <p>Direkt nach der Trauung und unserem festlichen Auszug würden wir gerne
                                                         mit allen gemeinsam ein paar Gruppenfotos auf den Stiegen vor der
                                                         Kirche schießen - also bitte nicht davonlaufen :P</p>
                                                 </div>
-                                                <!-- end ngIf: vevent.details -->
-                                                <!-- ngIf: vevent.dressCode -->
-                                                <!-- ngIf: day.events[0].dtstart -->
-                                                <p class="calendar-button ng-scope" ng-if="day.events[0].dtstart">
-                                                    <a ng-click="displayCalendar(vevent)">Add To Calendar</a>
-                                                </p>
-                                                <!-- end ngIf: day.events[0].dtstart -->
                                             </div>
                                         </div>
-                                        <!-- ngIf: vevent.showMap && vevent.location -->
                                     </div>
-                                    <!-- end ngRepeat: vevent in day.events | orderBy: 'dtstart' -->
-                                    <div class="slot ng-scope" ng-repeat="vevent in day.events | orderBy: 'dtstart'">
+                                    <div class="slot ng-scope" >
                                         <div class="information">
                                             <div class="time-container">
-                                                <!-- ngIf: vevent.dtstart -->
-                                                <div class="time ng-scope" ng-if="vevent.dtstart">
-                                                    <div class="start-time ng-binding"> 2:30 pm</div>
+                                                <div class="time ng-scope" >
+                                                    <div class="start-time ng-binding"> 14:30</div>
                                                     <div class="dash ng-hide" ng-show="vevent.dtend" aria-hidden="true">-</div>
                                                     <div class="end-time ng-binding"> </div>
                                                 </div>
-                                                <!-- end ngIf: vevent.dtstart -->
-                                                <!-- ngIf: !vevent.dtstart -->
                                             </div>
                                             <div class="event">
-                                                <!-- ngIf: vevent.name -->
-                                                <div class="name ng-binding ng-scope" ng-if="vevent.name">14:30 Agape</div>
-                                                <!-- end ngIf: vevent.name -->
-                                                <!-- ngIf: vevent.location -->
-                                                <div class="location ng-scope" ng-if="vevent.location">
-                                                    <a aria-label="Café Escorial, Stiftsplatz, Klosterneuburg, Österreich, Click to view on Google Maps" href="" ng-click="getDirections(vevent.location, 'scheduleEvent')"
+                                                <div class="name ng-binding ng-scope" >Agape</div>
+                                                <div class="location ng-scope" >
+                                                    <a href="" ng-click="getDirections(vevent.location, 'scheduleEvent')"
                                                         class="ng-binding">Café Escorial, Stiftsplatz, Klosterneuburg, Österreich</a>
                                                 </div>
-                                                <!-- end ngIf: vevent.location -->
-                                                <!-- ngIf: vevent.details -->
-                                                <!-- ngIf: vevent.dressCode -->
-                                                <!-- ngIf: day.events[0].dtstart -->
-                                                <p class="calendar-button ng-scope" ng-if="day.events[0].dtstart">
-                                                    <a ng-click="displayCalendar(vevent)">Add To Calendar</a>
-                                                </p>
-                                                <!-- end ngIf: day.events[0].dtstart -->
                                             </div>
                                         </div>
-                                        <!-- ngIf: vevent.showMap && vevent.location -->
                                     </div>
-                                    <!-- end ngRepeat: vevent in day.events | orderBy: 'dtstart' -->
-                                    <div class="slot ng-scope" ng-repeat="vevent in day.events | orderBy: 'dtstart'">
+                                    <div class="slot ng-scope" >
                                         <div class="information">
                                             <div class="time-container">
-                                                <!-- ngIf: vevent.dtstart -->
-                                                <div class="time ng-scope" ng-if="vevent.dtstart">
-                                                    <div class="start-time ng-binding"> 5:30 pm</div>
+                                                <div class="time ng-scope" >
+                                                    <div class="start-time ng-binding"> 17:30</div>
                                                     <div class="dash ng-hide" ng-show="vevent.dtend" aria-hidden="true">-</div>
                                                     <div class="end-time ng-binding"> </div>
                                                 </div>
-                                                <!-- end ngIf: vevent.dtstart -->
-                                                <!-- ngIf: !vevent.dtstart -->
                                             </div>
                                             <div class="event">
-                                                <!-- ngIf: vevent.name -->
-                                                <div class="name ng-binding ng-scope" ng-if="vevent.name">17:30 Sektempfang</div>
-                                                <!-- end ngIf: vevent.name -->
-                                                <!-- ngIf: vevent.location -->
-                                                <div class="location ng-scope" ng-if="vevent.location">
-                                                    <a aria-label="Imperial Riding School Renaissance Vienna Hotel, Ungargasse, Vienna, Austria, Click to view on Google Maps"
-                                                        href="" ng-click="getDirections(vevent.location, 'scheduleEvent')" class="ng-binding">Imperial Riding School Renaissance Vienna Hotel, Ungargasse, Vienna,
+                                                <div class="name ng-binding ng-scope" >Sektempfang</div>
+                                                <div class="location ng-scope" >
+                                                    <a href="" ng-click="getDirections(vevent.location, 'scheduleEvent')" class="ng-binding">Imperial Riding School Renaissance Vienna Hotel, Ungargasse, Vienna,
                                                         Austria</a>
                                                 </div>
-                                                <!-- end ngIf: vevent.location -->
-                                                <!-- ngIf: vevent.details -->
-                                                <!-- ngIf: vevent.dressCode -->
-                                                <!-- ngIf: day.events[0].dtstart -->
-                                                <p class="calendar-button ng-scope" ng-if="day.events[0].dtstart">
-                                                    <a ng-click="displayCalendar(vevent)">Add To Calendar</a>
-                                                </p>
-                                                <!-- end ngIf: day.events[0].dtstart -->
                                             </div>
                                         </div>
-                                        <!-- ngIf: vevent.showMap && vevent.location -->
-                                        <event-location-map aria-label="Map of Imperial Riding School Renaissance Vienna Hotel, Ungargasse, Vienna, Austria"
-                                            class="map ng-scope ng-isolate-scope" ng-if="vevent.showMap &amp;&amp; vevent.location"
-                                            vevent="vevent">
-                                            <div class="event-map" style="position: relative; overflow: hidden;">
-                                                <div style="height: 100%; width: 100%; position: absolute; top: 0px; left: 0px; background-color: rgb(229, 227, 223);">
-                                                    <div style="position: absolute; z-index: 0; left: 0px; top: 0px; height: 100%; width: 100%; padding: 0px; border-width: 0px; margin: 0px;"
-                                                        class="gm-style">
-                                                        <div style="position: absolute; z-index: 0; left: 0px; top: 0px; height: 100%; width: 100%; padding: 0px; border-width: 0px; margin: 0px; cursor: url(&quot;https://maps.gstatic.com/mapfiles/openhand_8_8.cur&quot;), default;"
-                                                            tabindex="0">
-                                                            <div style="z-index: 1; position: absolute; left: 50%; top: 50%; transform: translate(0px, 0px);">
-                                                                <div style="position: absolute; left: 0px; top: 0px; z-index: 100; width: 100%;">
-                                                                    <div style="position: absolute; left: 0px; top: 0px; z-index: 0;">
-                                                                        <div style="position: absolute; z-index: 1; transform: matrix(1, 0, 0, 1, -195, -234);">
-                                                                            <div style="width: 256px; height: 256px; position: absolute; left: 0px; top: 256px;"></div>
-                                                                            <div style="width: 256px; height: 256px; position: absolute; left: -256px; top: 256px;"></div>
-                                                                            <div style="width: 256px; height: 256px; position: absolute; left: -256px; top: 0px;"></div>
-                                                                            <div style="width: 256px; height: 256px; position: absolute; left: 0px; top: 0px;"></div>
-                                                                            <div style="width: 256px; height: 256px; position: absolute; left: 256px; top: 0px;"></div>
-                                                                            <div style="width: 256px; height: 256px; position: absolute; left: 256px; top: 256px;"></div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                                <div style="position: absolute; left: 0px; top: 0px; z-index: 101; width: 100%;"></div>
-                                                                <div style="position: absolute; left: 0px; top: 0px; z-index: 102; width: 100%;"></div>
-                                                                <div style="position: absolute; left: 0px; top: 0px; z-index: 103; width: 100%;">
-                                                                    <div style="position: absolute; left: 0px; top: 0px; z-index: -1;">
-                                                                        <div style="position: absolute; z-index: 1; transform: matrix(1, 0, 0, 1, -195, -234);">
-                                                                            <div style="width: 256px; height: 256px; overflow: hidden; position: absolute; left: 0px; top: 256px;"></div>
-                                                                            <div style="width: 256px; height: 256px; overflow: hidden; position: absolute; left: -256px; top: 256px;"></div>
-                                                                            <div style="width: 256px; height: 256px; overflow: hidden; position: absolute; left: -256px; top: 0px;"></div>
-                                                                            <div style="width: 256px; height: 256px; overflow: hidden; position: absolute; left: 0px; top: 0px;"></div>
-                                                                            <div style="width: 256px; height: 256px; overflow: hidden; position: absolute; left: 256px; top: 0px;"></div>
-                                                                            <div style="width: 256px; height: 256px; overflow: hidden; position: absolute; left: 256px; top: 256px;"></div>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div style="width: 27px; height: 43px; overflow: hidden; position: absolute; left: -14px; top: -43px; z-index: 0;">
-                                                                        <img style="position: absolute; left: 0px; top: 0px; width: 27px; height: 43px; -moz-user-select: none; border: 0px none; padding: 0px; margin: 0px; max-width: none;"
-                                                                            alt="" src="https://maps.gstatic.com/mapfiles/api-3/images/spotlight-poi2.png"
-                                                                            draggable="false">
-                                                                    </div>
-                                                                </div>
-                                                                <div style="position: absolute; left: 0px; top: 0px; z-index: 0;">
-                                                                    <div style="position: absolute; z-index: 1; transform: matrix(1, 0, 0, 1, -195, -234);">
-                                                                        <div style="position: absolute; left: 0px; top: 256px; width: 256px; height: 256px;">
-                                                                            <img style="width: 256px; height: 256px; -moz-user-select: none; border: 0px none; padding: 0px; margin: 0px; max-width: none;"
-                                                                                draggable="false" alt="" src="https://maps.googleapis.com/maps/vt?pb=!1m5!1m4!1i14!2i8937!3i5682!4i256!2m3!1e0!2sm!3i410109827!3m9!2sen-US!3sUS!5e18!12m1!1e68!12m3!1e37!2m1!1ssmartmaps!4e0!23i1301875&amp;token=111950">
-                                                                        </div>
-                                                                        <div style="position: absolute; left: -256px; top: 256px; width: 256px; height: 256px;">
-                                                                            <img style="width: 256px; height: 256px; -moz-user-select: none; border: 0px none; padding: 0px; margin: 0px; max-width: none;"
-                                                                                draggable="false" alt="" src="https://maps.googleapis.com/maps/vt?pb=!1m5!1m4!1i14!2i8936!3i5682!4i256!2m3!1e0!2sm!3i410109827!3m9!2sen-US!3sUS!5e18!12m1!1e68!12m3!1e37!2m1!1ssmartmaps!4e0!23i1301875&amp;token=3044">
-                                                                        </div>
-                                                                        <div style="position: absolute; left: -256px; top: 0px; width: 256px; height: 256px;">
-                                                                            <img style="width: 256px; height: 256px; -moz-user-select: none; border: 0px none; padding: 0px; margin: 0px; max-width: none;"
-                                                                                draggable="false" alt="" src="https://maps.googleapis.com/maps/vt?pb=!1m5!1m4!1i14!2i8936!3i5681!4i256!2m3!1e0!2sm!3i410109839!3m9!2sen-US!3sUS!5e18!12m1!1e68!12m3!1e37!2m1!1ssmartmaps!4e0!23i1301875&amp;token=130688">
-                                                                        </div>
-                                                                        <div style="position: absolute; left: 0px; top: 0px; width: 256px; height: 256px;">
-                                                                            <img style="width: 256px; height: 256px; -moz-user-select: none; border: 0px none; padding: 0px; margin: 0px; max-width: none;"
-                                                                                draggable="false" alt="" src="https://maps.googleapis.com/maps/vt?pb=!1m5!1m4!1i14!2i8937!3i5681!4i256!2m3!1e0!2sm!3i410109839!3m9!2sen-US!3sUS!5e18!12m1!1e68!12m3!1e37!2m1!1ssmartmaps!4e0!23i1301875&amp;token=108523">
-                                                                        </div>
-                                                                        <div style="position: absolute; left: 256px; top: 0px; width: 256px; height: 256px;">
-                                                                            <img style="width: 256px; height: 256px; -moz-user-select: none; border: 0px none; padding: 0px; margin: 0px; max-width: none;"
-                                                                                draggable="false" alt="" src="https://maps.googleapis.com/maps/vt?pb=!1m5!1m4!1i14!2i8938!3i5681!4i256!2m3!1e0!2sm!3i410109839!3m9!2sen-US!3sUS!5e18!12m1!1e68!12m3!1e37!2m1!1ssmartmaps!4e0!23i1301875&amp;token=86358">
-                                                                        </div>
-                                                                        <div style="position: absolute; left: 256px; top: 256px; width: 256px; height: 256px;">
-                                                                            <img style="width: 256px; height: 256px; -moz-user-select: none; border: 0px none; padding: 0px; margin: 0px; max-width: none;"
-                                                                                draggable="false" alt="" src="https://maps.googleapis.com/maps/vt?pb=!1m5!1m4!1i14!2i8938!3i5682!4i256!2m3!1e0!2sm!3i410109827!3m9!2sen-US!3sUS!5e18!12m1!1e68!12m3!1e37!2m1!1ssmartmaps!4e0!23i1301875&amp;token=89785">
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div style="z-index: 2; position: absolute; height: 100%; width: 100%; padding: 0px; border-width: 0px; margin: 0px; left: 0px; top: 0px; opacity: 0;"
-                                                                class="gm-style-pbc">
-                                                                <p class="gm-style-pbt"></p>
-                                                            </div>
-                                                            <div style="z-index: 3; position: absolute; height: 100%; width: 100%; padding: 0px; border-width: 0px; margin: 0px; left: 0px; top: 0px;">
-                                                                <div style="z-index: 1; position: absolute; height: 100%; width: 100%; padding: 0px; border-width: 0px; margin: 0px; left: 0px; top: 0px;"></div>
-                                                                <div style="z-index: 4; position: absolute; left: 50%; top: 50%; transform: translate(0px, 0px);">
-                                                                    <div style="position: absolute; left: 0px; top: 0px; z-index: 104; width: 100%;"></div>
-                                                                    <div style="position: absolute; left: 0px; top: 0px; z-index: 105; width: 100%;"></div>
-                                                                    <div style="position: absolute; left: 0px; top: 0px; z-index: 106; width: 100%;">
-                                                                        <div style="width: 27px; height: 43px; overflow: hidden; position: absolute; opacity: 0.01; left: -14px; top: -43px; z-index: 0;"
-                                                                            class="gmnoprint">
-                                                                            <img style="position: absolute; left: 0px; top: 0px; width: 27px; height: 43px; -moz-user-select: none; border: 0px none; padding: 0px; margin: 0px; max-width: none;"
-                                                                                alt="" src="https://maps.gstatic.com/mapfiles/api-3/images/spotlight-poi2.png"
-                                                                                draggable="false" usemap="#gmimap0">
-                                                                            <map name="gmimap0" id="gmimap0">
-                                                                                <area log="miw" coords="13.5,0,4,3.75,0,13.5,13.5,43,27,13.5,23,3.75"
-                                                                                    shape="poly" title="" style="cursor: pointer;">
-                                                                            </map>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div style="position: absolute; left: 0px; top: 0px; z-index: 107; width: 100%;"></div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <iframe style="z-index: -1; position: absolute; width: 100%; height: 100%; top: 0px; left: 0px; border: medium none;"
-                                                            src="about:blank" frameborder="0"></iframe>
-                                                        <div style="margin-left: 5px; margin-right: 5px; z-index: 1000000; position: absolute; left: 0px; bottom: 0px;">
-                                                            <a style="position: static; overflow: visible; float: none; display: inline;"
-                                                                target="_blank" href="https://maps.google.com/maps?ll=48.19664,16.386382&amp;z=14&amp;t=m&amp;hl=en-US&amp;gl=US&amp;mapclient=apiv3"
-                                                                title="Click to see this area on Google Maps">
-                                                                <div style="width: 66px; height: 26px; cursor: pointer;">
-                                                                    <img style="position: absolute; left: 0px; top: 0px; width: 66px; height: 26px; -moz-user-select: none; border: 0px none; padding: 0px; margin: 0px;"
-                                                                        alt="" src="https://maps.gstatic.com/mapfiles/api-3/images/google4.png"
-                                                                        draggable="false">
-                                                                </div>
-                                                            </a>
-                                                        </div>
-                                                        <div style="background-color: white; padding: 15px 21px; border: 1px solid rgb(171, 171, 171); font-family: Roboto, Arial, sans-serif; color: rgb(34, 34, 34); box-shadow: rgba(0, 0, 0, 0.2) 0px 4px 16px; z-index: 10000002; display: none; width: 256px; height: 148px; position: absolute; left: 161px; top: 54px;">
-                                                            <div style="padding: 0px 0px 10px; font-size: 16px;">Map Data</div>
-                                                            <div style="font-size: 13px;">Map data ©2018 GeoBasis-DE/BKG (©2009), Google</div>
-                                                            <div style="width: 13px; height: 13px; overflow: hidden; position: absolute; opacity: 0.7; right: 12px; top: 12px; z-index: 10000; cursor: pointer;">
-                                                                <img style="position: absolute; left: -2px; top: -336px; width: 59px; height: 492px; -moz-user-select: none; border: 0px none; padding: 0px; margin: 0px; max-width: none;"
-                                                                    alt="" src="https://maps.gstatic.com/mapfiles/api-3/images/mapcnt6.png"
-                                                                    draggable="false">
-                                                            </div>
-                                                        </div>
-                                                        <div class="gmnoprint" style="z-index: 1000001; position: absolute; right: 166px; bottom: 0px; width: 246px;">
-                                                            <div draggable="false" style="-moz-user-select: none; height: 14px; line-height: 14px;"
-                                                                class="gm-style-cc">
-                                                                <div style="opacity: 0.7; width: 100%; height: 100%; position: absolute;">
-                                                                    <div style="width: 1px;"></div>
-                                                                    <div style="background-color: rgb(245, 245, 245); width: auto; height: 100%; margin-left: 1px;"></div>
-                                                                </div>
-                                                                <div style="position: relative; padding-right: 6px; padding-left: 6px; font-family: Roboto, Arial, sans-serif; font-size: 10px; color: rgb(68, 68, 68); white-space: nowrap; direction: ltr; text-align: right; vertical-align: middle; display: inline-block;">
-                                                                    <a style="text-decoration: none; cursor: pointer; display: none;">Map Data</a>
-                                                                    <span>Map data ©2018 GeoBasis-DE/BKG (©2009), Google</span>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="gmnoscreen" style="position: absolute; right: 0px; bottom: 0px;">
-                                                            <div style="font-family: Roboto, Arial, sans-serif; font-size: 11px; color: rgb(68, 68, 68); direction: ltr; text-align: right; background-color: rgb(245, 245, 245);">Map data ©2018 GeoBasis-DE/BKG (©2009), Google</div>
-                                                        </div>
-                                                        <div class="gmnoprint gm-style-cc" style="z-index: 1000001; -moz-user-select: none; height: 14px; line-height: 14px; position: absolute; right: 95px; bottom: 0px;"
-                                                            draggable="false">
-                                                            <div style="opacity: 0.7; width: 100%; height: 100%; position: absolute;">
-                                                                <div style="width: 1px;"></div>
-                                                                <div style="background-color: rgb(245, 245, 245); width: auto; height: 100%; margin-left: 1px;"></div>
-                                                            </div>
-                                                            <div style="position: relative; padding-right: 6px; padding-left: 6px; font-family: Roboto, Arial, sans-serif; font-size: 10px; color: rgb(68, 68, 68); white-space: nowrap; direction: ltr; text-align: right; vertical-align: middle; display: inline-block;">
-                                                                <a style="text-decoration: none; cursor: pointer; color: rgb(68, 68, 68);"
-                                                                    href="https://www.google.com/intl/en-US_US/help/terms_maps.html"
-                                                                    target="_blank">Terms of Use</a>
-                                                            </div>
-                                                        </div>
-                                                        <button style="background: rgba(0, 0, 0, 0) none repeat scroll 0% 0%; border: 0px none; margin: 10px 14px; padding: 0px; position: absolute; cursor: pointer; -moz-user-select: none; width: 25px; height: 25px; overflow: hidden; top: 0px; right: 0px;"
-                                                            draggable="false" title="Toggle fullscreen view" aria-label="Toggle fullscreen view"
-                                                            type="button">
-                                                            <img style="position: absolute; left: -52px; top: -86px; width: 164px; height: 175px; -moz-user-select: none; border: 0px none; padding: 0px; margin: 0px;"
-                                                                alt="" src="https://maps.gstatic.com/mapfiles/api-3/images/sv9.png"
-                                                                draggable="false" class="gm-fullscreen-control">
-                                                        </button>
-                                                        <div draggable="false" style="-moz-user-select: none; height: 14px; line-height: 14px; position: absolute; right: 0px; bottom: 0px;"
-                                                            class="gm-style-cc">
-                                                            <div style="opacity: 0.7; width: 100%; height: 100%; position: absolute;">
-                                                                <div style="width: 1px;"></div>
-                                                                <div style="background-color: rgb(245, 245, 245); width: auto; height: 100%; margin-left: 1px;"></div>
-                                                            </div>
-                                                            <div style="position: relative; padding-right: 6px; padding-left: 6px; font-family: Roboto, Arial, sans-serif; font-size: 10px; color: rgb(68, 68, 68); white-space: nowrap; direction: ltr; text-align: right; vertical-align: middle; display: inline-block;">
-                                                                <a target="_blank" rel="noopener" title="Report errors in the road map or imagery to Google"
-                                                                    style="font-family: Roboto, Arial, sans-serif; font-size: 10px; color: rgb(68, 68, 68); text-decoration: none; position: relative;"
-                                                                    href="https://www.google.com/maps/@48.1966396,16.3863822,14z/data=!10m1!1e1!12b1?source=apiv3&amp;rapsrc=apiv3">Report a map error</a>
-                                                            </div>
-                                                        </div>
-                                                        <div class="gmnoprint gm-bundled-control gm-bundled-control-on-bottom"
-                                                            style="margin: 10px; -moz-user-select: none; position: absolute; bottom: 107px; right: 28px;"
-                                                            draggable="false" controlwidth="28" controlheight="93">
-                                                            <div class="gmnoprint" style="position: absolute; left: 0px; top: 38px;"
-                                                                controlwidth="28" controlheight="55">
-                                                                <div draggable="false" style="-moz-user-select: none; box-shadow: rgba(0, 0, 0, 0.3) 0px 1px 4px -1px; border-radius: 2px; cursor: pointer; background-color: rgb(255, 255, 255); width: 28px; height: 55px;">
-                                                                    <button style="background: rgba(0, 0, 0, 0) none repeat scroll 0% 0%; display: block; border: 0px none; margin: 0px; padding: 0px; position: relative; cursor: pointer; -moz-user-select: none; width: 28px; height: 27px; top: 0px; left: 0px;"
-                                                                        draggable="false" title="Zoom in" aria-label="Zoom in"
-                                                                        type="button">
-                                                                        <div style="overflow: hidden; position: absolute; width: 15px; height: 15px; left: 7px; top: 6px;">
-                                                                            <img style="position: absolute; left: 0px; top: 0px; -moz-user-select: none; border: 0px none; padding: 0px; margin: 0px; max-width: none; width: 120px; height: 54px;"
-                                                                                alt="" src="https://maps.gstatic.com/mapfiles/api-3/images/tmapctrl.png"
-                                                                                draggable="false">
-                                                                        </div>
-                                                                    </button>
-                                                                    <div style="position: relative; overflow: hidden; width: 67%; height: 1px; left: 16%; background-color: rgb(230, 230, 230); top: 0px;"></div>
-                                                                    <button style="background: rgba(0, 0, 0, 0) none repeat scroll 0% 0%; display: block; border: 0px none; margin: 0px; padding: 0px; position: relative; cursor: pointer; -moz-user-select: none; width: 28px; height: 27px; top: 0px; left: 0px;"
-                                                                        draggable="false" title="Zoom out" aria-label="Zoom out"
-                                                                        type="button">
-                                                                        <div style="overflow: hidden; position: absolute; width: 15px; height: 15px; left: 7px; top: 6px;">
-                                                                            <img style="position: absolute; left: 0px; top: -15px; -moz-user-select: none; border: 0px none; padding: 0px; margin: 0px; max-width: none; width: 120px; height: 54px;"
-                                                                                alt="" src="https://maps.gstatic.com/mapfiles/api-3/images/tmapctrl.png"
-                                                                                draggable="false">
-                                                                        </div>
-                                                                    </button>
-                                                                </div>
-                                                            </div>
-                                                            <div class="gm-svpc" style="background-color: rgb(255, 255, 255); box-shadow: rgba(0, 0, 0, 0.3) 0px 1px 4px -1px; border-radius: 2px; width: 28px; height: 28px; cursor: url(&quot;https://maps.gstatic.com/mapfiles/openhand_8_8.cur&quot;), default; position: absolute; left: 0px; top: 0px;"
-                                                                controlwidth="28" controlheight="28">
-                                                                <div style="position: absolute; left: 1px; top: 1px;"></div>
-                                                                <div style="position: absolute; left: 1px; top: 1px;">
-                                                                    <div style="width: 26px; height: 26px; overflow: hidden; position: absolute; left: 0px; top: 0px;"
-                                                                        aria-label="Street View Pegman Control">
-                                                                        <img style="position: absolute; left: -147px; top: -26px; width: 215px; height: 835px; -moz-user-select: none; border: 0px none; padding: 0px; margin: 0px; max-width: none;"
-                                                                            alt="" src="https://maps.gstatic.com/mapfiles/api-3/images/cb_scout5.png"
-                                                                            draggable="false">
-                                                                    </div>
-                                                                    <div style="width: 26px; height: 26px; overflow: hidden; position: absolute; left: 0px; top: 0px; visibility: hidden;"
-                                                                        aria-label="Pegman is on top of the Map">
-                                                                        <img style="position: absolute; left: -147px; top: -52px; width: 215px; height: 835px; -moz-user-select: none; border: 0px none; padding: 0px; margin: 0px; max-width: none;"
-                                                                            alt="" src="https://maps.gstatic.com/mapfiles/api-3/images/cb_scout5.png"
-                                                                            draggable="false">
-                                                                    </div>
-                                                                    <div style="width: 26px; height: 26px; overflow: hidden; position: absolute; left: 0px; top: 0px; visibility: hidden;"
-                                                                        aria-label="Street View Pegman Control">
-                                                                        <img style="position: absolute; left: -147px; top: -78px; width: 215px; height: 835px; -moz-user-select: none; border: 0px none; padding: 0px; margin: 0px; max-width: none;"
-                                                                            alt="" src="https://maps.gstatic.com/mapfiles/api-3/images/cb_scout5.png"
-                                                                            draggable="false">
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="gmnoprint" controlwidth="28" controlheight="0" style="display: none; position: absolute;">
-                                                                <div style="width: 28px; height: 28px; overflow: hidden; position: absolute; background-color: rgb(255, 255, 255); box-shadow: rgba(0, 0, 0, 0.3) 0px 1px 4px -1px; border-radius: 2px; cursor: pointer; display: none;"
-                                                                    title="Rotate map 90 degrees">
-                                                                    <img style="position: absolute; left: -141px; top: 6px; width: 170px; height: 54px; -moz-user-select: none; border: 0px none; padding: 0px; margin: 0px; max-width: none;"
-                                                                        alt="" src="https://maps.gstatic.com/mapfiles/api-3/images/tmapctrl4.png"
-                                                                        draggable="false">
-                                                                </div>
-                                                                <div style="width: 28px; height: 28px; overflow: hidden; position: absolute; background-color: rgb(255, 255, 255); box-shadow: rgba(0, 0, 0, 0.3) 0px 1px 4px -1px; border-radius: 2px; top: 0px; cursor: pointer;"
-                                                                    class="gm-tilt">
-                                                                    <img style="position: absolute; left: -141px; top: -13px; width: 170px; height: 54px; -moz-user-select: none; border: 0px none; padding: 0px; margin: 0px; max-width: none;"
-                                                                        alt="" src="https://maps.gstatic.com/mapfiles/api-3/images/tmapctrl4.png"
-                                                                        draggable="false">
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </event-location-map>
-                                        <!-- end ngIf: vevent.showMap && vevent.location -->
+                                        <iframe width="620" height="280" frameborder="0" style="border:0" 
+                                        src="https://www.google.com/maps/embed/v1/place?q=Imperial%20Riding%20School&key=AIzaSyDZz1G-HBdRfAeCMgtTE_TytLWuFVozlcM" allowfullscreen></iframe>
                                     </div>
-                                    <!-- end ngRepeat: vevent in day.events | orderBy: 'dtstart' -->
-                                    <div class="slot ng-scope" ng-repeat="vevent in day.events | orderBy: 'dtstart'">
+                                    <div class="slot ng-scope" >
                                         <div class="information">
                                             <div class="time-container">
-                                                <!-- ngIf: vevent.dtstart -->
-                                                <div class="time ng-scope" ng-if="vevent.dtstart">
-                                                    <div class="start-time ng-binding"> 6:30 pm</div>
+                                                <div class="time ng-scope" >
+                                                    <div class="start-time ng-binding"> 18:30</div>
                                                     <div class="dash ng-hide" ng-show="vevent.dtend" aria-hidden="true">-</div>
                                                     <div class="end-time ng-binding"> </div>
                                                 </div>
-                                                <!-- end ngIf: vevent.dtstart -->
-                                                <!-- ngIf: !vevent.dtstart -->
                                             </div>
                                             <div class="event">
-                                                <!-- ngIf: vevent.name -->
-                                                <div class="name ng-binding ng-scope" ng-if="vevent.name">18:30 Abendessen</div>
-                                                <!-- end ngIf: vevent.name -->
-                                                <!-- ngIf: vevent.location -->
-                                                <div class="location ng-scope" ng-if="vevent.location">
-                                                    <a aria-label="Imperial Riding School Renaissance Vienna Hotel, Ungargasse, Vienna, Austria, Click to view on Google Maps"
-                                                        href="" ng-click="getDirections(vevent.location, 'scheduleEvent')" class="ng-binding">Imperial Riding School Renaissance Vienna Hotel, Ungargasse, Vienna,
+                                                <div class="name ng-binding ng-scope" >Abendessen</div>
+                                                <div class="location ng-scope" >
+                                                    <a href="" ng-click="getDirections(vevent.location, 'scheduleEvent')" class="ng-binding">Imperial Riding School Renaissance Vienna Hotel, Ungargasse, Vienna,
                                                         Austria</a>
                                                 </div>
-                                                <!-- end ngIf: vevent.location -->
-                                                <!-- ngIf: vevent.details -->
-                                                <!-- ngIf: vevent.dressCode -->
-                                                <!-- ngIf: day.events[0].dtstart -->
-                                                <p class="calendar-button ng-scope" ng-if="day.events[0].dtstart">
-                                                    <a ng-click="displayCalendar(vevent)">Add To Calendar</a>
-                                                </p>
-                                                <!-- end ngIf: day.events[0].dtstart -->
                                             </div>
                                         </div>
-                                        <!-- ngIf: vevent.showMap && vevent.location -->
                                     </div>
-                                    <!-- end ngRepeat: vevent in day.events | orderBy: 'dtstart' -->
                                 </div>
-                                <!-- end ngRepeat: day in eventsByDay | orderBy: 'day' -->
-                                <div class="schedule-day ng-scope" ng-repeat="day in eventsByDay | orderBy: 'day'">
-                                    <!-- ngIf: day.events[0].dtstart -->
-                                    <div class="schedule-day-title ng-scope" ng-if="day.events[0].dtstart">
-                                        <div class="label ng-binding">SUNDAY, MAY 27, 2018
+                                <div class="schedule-day ng-scope" >
+                                    <div class="schedule-day-title ng-scope" >
+                                        <div class="label ng-binding">Sonntag, 27. Mai 2018
                                         </div>
                                         <span class="line"></span>
                                     </div>
-                                    <!-- end ngIf: day.events[0].dtstart -->
-                                    <!-- ngIf: !day.events[0].dtstart -->
-                                    <!-- ngRepeat: vevent in day.events | orderBy: 'dtstart' -->
-                                    <div class="slot ng-scope" ng-repeat="vevent in day.events | orderBy: 'dtstart'">
+                                    <div class="slot ng-scope" >
                                         <div class="information">
                                             <div class="time-container">
-                                                <!-- ngIf: vevent.dtstart -->
-                                                <div class="time ng-scope" ng-if="vevent.dtstart">
-                                                    <div class="start-time ng-binding"> 9:00 am</div>
+                                                <div class="time ng-scope" >
+                                                    <div class="start-time ng-binding"> ca. ab 9:00</div>
                                                     <div class="dash ng-hide" ng-show="vevent.dtend" aria-hidden="true">-</div>
                                                     <div class="end-time ng-binding"> </div>
                                                 </div>
-                                                <!-- end ngIf: vevent.dtstart -->
-                                                <!-- ngIf: !vevent.dtstart -->
                                             </div>
                                             <div class="event">
-                                                <!-- ngIf: vevent.name -->
-                                                <div class="name ng-binding ng-scope" ng-if="vevent.name">Hochzeitsfrühstück</div>
-                                                <!-- end ngIf: vevent.name -->
-                                                <!-- ngIf: vevent.location -->
-                                                <div class="location ng-scope" ng-if="vevent.location">
-                                                    <a aria-label="Imperial Riding School Renaissance Vienna Hotel, Ungargasse, Vienna, Austria, Click to view on Google Maps"
-                                                        href="" ng-click="getDirections(vevent.location, 'scheduleEvent')" class="ng-binding">Imperial Riding School Renaissance Vienna Hotel, Ungargasse, Vienna,
+                                                <div class="name ng-binding ng-scope" >Hochzeitsfrühstück</div>
+                                                <div class="location ng-scope" >
+                                                    <a href="" ng-click="getDirections(vevent.location, 'scheduleEvent')" class="ng-binding">Imperial Riding School Renaissance Vienna Hotel, Ungargasse, Vienna,
                                                         Austria</a>
                                                 </div>
-                                                <!-- end ngIf: vevent.location -->
-                                                <!-- ngIf: vevent.details -->
-                                                <!-- ngIf: vevent.dressCode -->
-                                                <!-- ngIf: day.events[0].dtstart -->
-                                                <p class="calendar-button ng-scope" ng-if="day.events[0].dtstart">
-                                                    <a ng-click="displayCalendar(vevent)">Add To Calendar</a>
-                                                </p>
-                                                <!-- end ngIf: day.events[0].dtstart -->
                                             </div>
                                         </div>
-                                        <!-- ngIf: vevent.showMap && vevent.location -->
                                     </div>
-                                    <!-- end ngRepeat: vevent in day.events | orderBy: 'dtstart' -->
                                 </div>
-                                <!-- end ngRepeat: day in eventsByDay | orderBy: 'day' -->
                                 <div id="map"></div>
-                                <!--used for PlaceSearch-->
                             </div>
                         </div>
-                        <!-- end ngIf: pageSettings.schedule && pageSettings.schedule.unlocked -->
                     </div>
-                    <!-- end ngRepeat: section in sections | orderBy:'sortKey' track by section.key -->
-                    <!-- ngInclude: sectionTemplateUrl(section.key) -->
-                    <div ng-repeat="section in sections | orderBy:'sortKey' track by section.key" ng-include="sectionTemplateUrl(section.key)"
-                        class="ng-scope">
+                    <div class="ng-scope">
                         <!-- Travel -->
-                        <!-- ngIf: pageSettings.travel && pageSettings.travel.unlocked -->
-                        <div ng-controller="eventTravel" du-scrollspy="travel" id="travel" class="joy-content-card joy-content-info travel-card ng-scope"
-                            ng-if="pageSettings.travel &amp;&amp; pageSettings.travel.unlocked">
+                        <div data-scrolltarget="wedding-place" id="travel" class="joy-content-card joy-content-info travel-card ng-scope" >
                             <h2 class="title ng-binding">Anreise</h2>
-
                             <div class="travel-items">
-                                <!-- ngRepeat: item in travelData | orderBy:['sortKey', '$key'] track by $index -->
-                                <section ng-repeat="item in travelData | orderBy:['sortKey', '$key'] track by $index" class="ng-scope"
+                                <section class="ng-scope"
                                     style="">
-                                    <!-- ngIf: item.type == 'list' -->
-                                    <!-- ngIf: item.type == 'note' -->
-                                    <img ng-if="item.type == 'note'" src="svg/iconTravelNote.svg" class="ng-scope">
-                                    <!-- end ngIf: item.type == 'note' -->
-                                    <!-- ngIf: item.type == 'hotel' -->
-                                    <!-- ngIf: item.type == 'house' -->
-                                    <!-- ngIf: item.type == 'flight' -->
-                                    <!-- ngIf: item.type == 'car' -->
-                                    <!-- ngIf: item.type == 'shuttle' -->
-
+                                    <img src="svg/iconTravelNote.svg" class="ng-scope">
                                     <div class="name ng-binding">Parkmöglichkeiten</div>
-
-                                    <!-- ngIf: ::item.address -->
-                                    <!-- ngIf: ::item.tel -->
-                                    <!-- ngIf: ::item.notes -->
-                                    <div ng-if="::item.notes" ng-bind-html="::(item.notes | paragraphsFilter)" class="ng-binding ng-scope">
+                                    <div class="ng-binding ng-scope">
                                         <p>Beim Stift Klosterneuburg: Direkt vor dem Stift oder am Rathausplatz</p>
                                         <p>Beim Hotel: Entweder auf der Straße (keine Kurzparkzone) oder in der (kostenpflichtigen)
                                             Hotel-Garage</p>
                                     </div>
-                                    <!-- end ngIf: ::item.notes -->
-                                    <!-- ngIf: ::item.code -->
-
-                                    <!-- ngRepeat: i in item.items track by $index -->
-
-                                    <!-- ngRepeat: i in item.items track by $index -->
-
-                                    <!-- ngIf: ::item.url -->
                                 </section>
-                                <!-- end ngRepeat: item in travelData | orderBy:['sortKey', '$key'] track by $index -->
-                                <section ng-repeat="item in travelData | orderBy:['sortKey', '$key'] track by $index" class="ng-scope">
-                                    <!-- ngIf: item.type == 'list' -->
-                                    <!-- ngIf: item.type == 'note' -->
-                                    <!-- ngIf: item.type == 'hotel' -->
-                                    <img ng-if="item.type == 'hotel'" src="svg/iconTravelHotel.svg" class="ng-scope">
-                                    <!-- end ngIf: item.type == 'hotel' -->
-                                    <!-- ngIf: item.type == 'house' -->
-                                    <!-- ngIf: item.type == 'flight' -->
-                                    <!-- ngIf: item.type == 'car' -->
-                                    <!-- ngIf: item.type == 'shuttle' -->
-
+                                <section class="ng-scope">
+                                    <img src="svg/iconTravelHotel.svg" class="ng-scope">
                                     <div class="name ng-binding">Imperial Riding School Renaissance Vienna Hotel</div>
-
-                                    <!-- ngIf: ::item.address -->
-                                    <div ng-if="::item.address" class="address colored ng-binding ng-scope" ng-click="getDirections(item.address, item.type)"
+                                    <div class="address colored ng-binding ng-scope" ng-click="getDirections(item.address, item.type)"
                                         style="white-space: pre-line;" title="Get directions to Imperial Riding School Renaissance Vienna Hotel"
-                                        role="button" tabindex="0">Ungargasse 60, 1030 Wien, Austria</div>
-                                    <!-- end ngIf: ::item.address -->
-                                    <!-- ngIf: ::item.tel -->
-                                    <!-- ngIf: ::item.notes -->
-                                    <div ng-if="::item.notes" ng-bind-html="::(item.notes | paragraphsFilter)" class="ng-binding ng-scope">
+                                        role="button" tabindex="0">Ungargasse 60, 1030 Wien</div>
+                                    <div class="ng-binding ng-scope">
                                         <p>Kontaktperson: Doris Kustanci
                                             <br>Telefonnummer: +43 (0)1 711 75 8236
                                             <br>E-Mail:
                                             <a target="_blank" href="mailto:Doris.Kustanci@renaissancehotels.com">Doris.Kustanci@renaissancehotels.com</a>
                                         </p>
                                     </div>
-                                    <!-- end ngIf: ::item.notes -->
-                                    <!-- ngIf: ::item.code -->
-
-                                    <!-- ngRepeat: i in item.items track by $index -->
-
-                                    <!-- ngRepeat: i in item.items track by $index -->
-
-                                    <!-- ngIf: ::item.url -->
-                                    <a ng-if="::item.url" class="button colored ng-scope" title="Go to http://www.marriott.com/hotels/travel/viese-imperial-riding-school-renaissance-vienna-hotel/?scid=bb1a189a-fec3-4d19-a255-54ba596febe2"
+                                    <a class="button colored ng-scope" title="Go to http://www.marriott.com/hotels/travel/viese-imperial-riding-school-renaissance-vienna-hotel/?scid=bb1a189a-fec3-4d19-a255-54ba596febe2"
                                         ng-click="logExternalRedirect(item.url)" ng-href="http://www.marriott.com/hotels/travel/viese-imperial-riding-school-renaissance-vienna-hotel/?scid=bb1a189a-fec3-4d19-a255-54ba596febe2"
                                         target="_blank" href="http://www.marriott.com/hotels/travel/viese-imperial-riding-school-renaissance-vienna-hotel/?scid=bb1a189a-fec3-4d19-a255-54ba596febe2">Visit Online</a>
-                                    <!-- end ngIf: ::item.url -->
                                 </section>
-                                <!-- end ngRepeat: item in travelData | orderBy:['sortKey', '$key'] track by $index -->
                             </div>
                         </div>
-                        <!-- end ngIf: pageSettings.travel && pageSettings.travel.unlocked -->
                     </div>
-                    <!-- end ngRepeat: section in sections | orderBy:'sortKey' track by section.key -->
-                    <!-- ngInclude: sectionTemplateUrl(section.key) -->
-                    <div ng-repeat="section in sections | orderBy:'sortKey' track by section.key" ng-include="sectionTemplateUrl(section.key)"
-                        class="ng-scope">
+                    <div class="ng-scope">
                         <!--FAQs-->
-                        <!-- ngIf: pageSettings.faq && pageSettings.faq.unlocked -->
-                        <div ng-controller="eventFaq" du-scrollspy="faq" id="faq" class="joy-content-card joy-content-info faq-card ng-scope"
-                            ng-if="pageSettings.faq &amp;&amp; pageSettings.faq.unlocked">
+                        <div data-scrolltarget="wedding-text" id="faq" class="joy-content-card joy-content-info faq-card ng-scope" >
                             <h2 class="title ng-binding">FAQ</h2>
                             <div class="card-note ng-binding">Häufig gestellte Fragen</div>
                             <div class="faqs-list">
-                                <!-- ngRepeat: faq in faqs | orderBy: 'sortKey' track by (faq.$key || $index) -->
-                                <div class="faq-item  ng-scope" ng-repeat="faq in faqs | orderBy: 'sortKey' track by (faq.$key || $index)"
-                                    style="">
-                                    <!-- ngIf: faq.answer -->
-                                    <div class="a ng-binding" ng-bind-html="(faq.answer | paragraphsFilter)"></div>
+                                <div class="faq-item  ng-scope" style="">
+                                    <div class="a ng-binding" ></div>
                                 </div>
-                                <!-- end ngRepeat: faq in faqs | orderBy: 'sortKey' track by (faq.$key || $index) -->
-                                <div class="faq-item  ng-scope" ng-repeat="faq in faqs | orderBy: 'sortKey' track by (faq.$key || $index)">
-                                    <!-- ngIf: faq.answer -->
-                                    <div class="a ng-binding" ng-bind-html="(faq.answer | paragraphsFilter)"></div>
+                                <div class="faq-item  ng-scope" >
+                                    <div class="a ng-binding" ></div>
                                 </div>
-                                <!-- end ngRepeat: faq in faqs | orderBy: 'sortKey' track by (faq.$key || $index) -->
-                                <div class="faq-item  ng-scope" ng-repeat="faq in faqs | orderBy: 'sortKey' track by (faq.$key || $index)">
-                                    <!-- ngIf: faq.answer -->
-                                    <div class="a ng-binding" ng-bind-html="(faq.answer | paragraphsFilter)"></div>
+                                <div class="faq-item  ng-scope" >
+                                    <div class="a ng-binding" ></div>
                                 </div>
-                                <!-- end ngRepeat: faq in faqs | orderBy: 'sortKey' track by (faq.$key || $index) -->
-                                <div class="faq-item  ng-scope" ng-repeat="faq in faqs | orderBy: 'sortKey' track by (faq.$key || $index)">
-                                    <!-- ngIf: faq.answer -->
-                                    <div class="a ng-binding" ng-bind-html="(faq.answer | paragraphsFilter)"></div>
+                                <div class="faq-item  ng-scope" >
+                                    <div class="a ng-binding" ></div>
                                 </div>
-                                <!-- end ngRepeat: faq in faqs | orderBy: 'sortKey' track by (faq.$key || $index) -->
-                                <div class="faq-item  ng-scope" ng-repeat="faq in faqs | orderBy: 'sortKey' track by (faq.$key || $index)">
-                                    <!-- ngIf: faq.answer -->
-                                    <div class="a ng-binding" ng-bind-html="(faq.answer | paragraphsFilter)"></div>
+                                <div class="faq-item  ng-scope" >
+                                    <div class="a ng-binding" ></div>
                                 </div>
-                                <!-- end ngRepeat: faq in faqs | orderBy: 'sortKey' track by (faq.$key || $index) -->
-                                <div class="faq-item  ng-scope" ng-repeat="faq in faqs | orderBy: 'sortKey' track by (faq.$key || $index)">
-                                    <!-- ngIf: faq.answer -->
-                                    <div class="a ng-binding" ng-bind-html="(faq.answer | paragraphsFilter)"></div>
+                                <div class="faq-item  ng-scope" >
+                                    <div class="a ng-binding" ></div>
                                 </div>
-                                <!-- end ngRepeat: faq in faqs | orderBy: 'sortKey' track by (faq.$key || $index) -->
-                                <div class="faq-item  ng-scope" ng-repeat="faq in faqs | orderBy: 'sortKey' track by (faq.$key || $index)">
-                                    <!-- ngIf: faq.answer -->
-                                    <div class="a ng-binding" ng-bind-html="(faq.answer | paragraphsFilter)"></div>
+                                <div class="faq-item  ng-scope" >
+                                    <div class="a ng-binding" ></div>
                                 </div>
-                                <!-- end ngRepeat: faq in faqs | orderBy: 'sortKey' track by (faq.$key || $index) -->
-                                <div class="faq-item  ng-scope" ng-repeat="faq in faqs | orderBy: 'sortKey' track by (faq.$key || $index)">
-                                    <!-- ngIf: faq.answer -->
-                                    <div class="a ng-binding" ng-bind-html="(faq.answer | paragraphsFilter)"></div>
+                                <div class="faq-item  ng-scope" >
+                                    <div class="a ng-binding" ></div>
                                 </div>
-                                <!-- end ngRepeat: faq in faqs | orderBy: 'sortKey' track by (faq.$key || $index) -->
-                                <div class="faq-item  ng-scope" ng-repeat="faq in faqs | orderBy: 'sortKey' track by (faq.$key || $index)">
-                                    <!-- ngIf: faq.answer -->
-                                    <div class="a ng-binding" ng-bind-html="(faq.answer | paragraphsFilter)"></div>
+                                <div class="faq-item  ng-scope" >
+                                    <div class="a ng-binding" ></div>
                                 </div>
-                                <!-- end ngRepeat: faq in faqs | orderBy: 'sortKey' track by (faq.$key || $index) -->
-                                <div class="faq-item  ng-scope" ng-repeat="faq in faqs | orderBy: 'sortKey' track by (faq.$key || $index)">
-                                    <!-- ngIf: faq.answer -->
-                                    <div ng-if="faq.answer" class="q ng-binding ng-scope">
+                                <div class="faq-item  ng-scope" >
+                                    <div class="q ng-binding ng-scope">
                                         <b>Q.</b>Bis wann muss ich spätestens zusagen?</div>
-                                    <!-- end ngIf: faq.answer -->
-                                    <div class="a ng-binding" ng-bind-html="(faq.answer | paragraphsFilter)">
+                                    <div class="a ng-binding" >
                                         <p>Bitte möglichst bis 1. April. Wir benötigen die Gästezahl möglichst bald für die
                                             weitere Planung :-)</p>
                                     </div>
                                 </div>
-                                <!-- end ngRepeat: faq in faqs | orderBy: 'sortKey' track by (faq.$key || $index) -->
-                                <div class="faq-item  ng-scope" ng-repeat="faq in faqs | orderBy: 'sortKey' track by (faq.$key || $index)">
-                                    <!-- ngIf: faq.answer -->
-                                    <div ng-if="faq.answer" class="q ng-binding ng-scope">
+                                <div class="faq-item  ng-scope" >
+                                    <div class="q ng-binding ng-scope">
                                         <b>Q.</b>Bis wann müssen die Zimmer reserviert werden?</div>
-                                    <!-- end ngIf: faq.answer -->
-                                    <div class="a ng-binding" ng-bind-html="(faq.answer | paragraphsFilter)">
+                                    <div class="a ng-binding" >
                                         <p>Bitte möglichst bald! Im Mai ist Messezeit und die Nachfrage dadurch sehr hoch! Bis
                                             Anfang März sind für euch noch Zimmer zu einem speziellen Hochzeitstarif vorreserviert.</p>
                                     </div>
                                 </div>
-                                <!-- end ngRepeat: faq in faqs | orderBy: 'sortKey' track by (faq.$key || $index) -->
-                                <div class="faq-item  ng-scope" ng-repeat="faq in faqs | orderBy: 'sortKey' track by (faq.$key || $index)">
-                                    <!-- ngIf: faq.answer -->
-                                    <div ng-if="faq.answer" class="q ng-binding ng-scope">
+                                <div class="faq-item  ng-scope" >
+                                    <div class="q ng-binding ng-scope">
                                         <b>Q.</b>Wie funktioniert das mit der Zimmerreservierung?</div>
-                                    <!-- end ngIf: faq.answer -->
-                                    <div class="a ng-binding" ng-bind-html="(faq.answer | paragraphsFilter)">
+                                    <div class="a ng-binding" >
                                         <p>Bitte wendet euch da direkt an unsere offizielle Hochzeitsbeauftragte im Renaissance
                                             Hotel "Imperial Riding School":</p>
                                         <p>Doris Kustanci
@@ -1224,118 +421,76 @@
                                         <p>Spezialpreis bis Anfang März: 139€ pro Zimmer (Einzel- oder Doppelbelegung) mit Frühstück.</p>
                                     </div>
                                 </div>
-                                <!-- end ngRepeat: faq in faqs | orderBy: 'sortKey' track by (faq.$key || $index) -->
-                                <div class="faq-item  ng-scope" ng-repeat="faq in faqs | orderBy: 'sortKey' track by (faq.$key || $index)">
-                                    <!-- ngIf: faq.answer -->
-                                    <div ng-if="faq.answer" class="q ng-binding ng-scope">
+                                <div class="faq-item  ng-scope" >
+                                    <div class="q ng-binding ng-scope">
                                         <b>Q.</b>Darf ich jemanden mitbringen?</div>
-                                    <!-- end ngIf: faq.answer -->
-                                    <div class="a ng-binding" ng-bind-html="(faq.answer | paragraphsFilter)">
+                                    <div class="a ng-binding" >
                                         <p>Eure Partner &amp; Kinder sind uns herzlich willkommen. Gebt uns nur bitte Bescheid,
                                             mit wievielen Leuten wir rechnen dürfen!</p>
                                     </div>
                                 </div>
-                                <!-- end ngRepeat: faq in faqs | orderBy: 'sortKey' track by (faq.$key || $index) -->
-                                <div class="faq-item  ng-scope" ng-repeat="faq in faqs | orderBy: 'sortKey' track by (faq.$key || $index)">
-                                    <!-- ngIf: faq.answer -->
-                                    <div ng-if="faq.answer" class="q ng-binding ng-scope">
+                                <div class="faq-item  ng-scope" >
+                                    <div class="q ng-binding ng-scope">
                                         <b>Q.</b>Darf ich meinen Hund mitbringen?</div>
-                                    <!-- end ngIf: faq.answer -->
-                                    <div class="a ng-binding" ng-bind-html="(faq.answer | paragraphsFilter)">
+                                    <div class="a ng-binding" >
                                         <p>Leider sind weder in der Kirche noch im Festsaal Haustiere erlaubt :(</p>
                                     </div>
                                 </div>
-                                <!-- end ngRepeat: faq in faqs | orderBy: 'sortKey' track by (faq.$key || $index) -->
-                                <div class="faq-item  ng-scope" ng-repeat="faq in faqs | orderBy: 'sortKey' track by (faq.$key || $index)">
-                                    <!-- ngIf: faq.answer -->
-                                    <div ng-if="faq.answer" class="q ng-binding ng-scope">
+                                <div class="faq-item  ng-scope" >
+                                    <div class="q ng-binding ng-scope">
                                         <b>Q.</b>Gibt es einen Dresscode?</div>
-                                    <!-- end ngIf: faq.answer -->
-                                    <div class="a ng-binding" ng-bind-html="(faq.answer | paragraphsFilter)">
+                                    <div class="a ng-binding" >
                                         <p>Es soll ein schickes Feste sein, drum kleidet euch entsprechend ein ;-)
                                             <br>Der Dresscode ist festlich-elegant. Bitte beachtet, dass nur die Braut weiß tragen
                                             darf!</p>
                                     </div>
                                 </div>
-                                <!-- end ngRepeat: faq in faqs | orderBy: 'sortKey' track by (faq.$key || $index) -->
-                                <div class="faq-item  ng-scope" ng-repeat="faq in faqs | orderBy: 'sortKey' track by (faq.$key || $index)">
-                                    <!-- ngIf: faq.answer -->
-                                    <div ng-if="faq.answer" class="q ng-binding ng-scope">
+                                <div class="faq-item  ng-scope" >
+                                    <div class="q ng-binding ng-scope">
                                         <b>Q.</b>Wann soll ich bei der Kirche eintreffen?</div>
-                                    <!-- end ngIf: faq.answer -->
-                                    <div class="a ng-binding" ng-bind-html="(faq.answer | paragraphsFilter)">
+                                    <div class="a ng-binding" >
                                         <p>Ca. 15-30min vor Beginn der Trauung, also um 12:30-12:45.</p>
                                     </div>
                                 </div>
-                                <!-- end ngRepeat: faq in faqs | orderBy: 'sortKey' track by (faq.$key || $index) -->
-                                <div class="faq-item  ng-scope" ng-repeat="faq in faqs | orderBy: 'sortKey' track by (faq.$key || $index)">
-                                    <!-- ngIf: faq.answer -->
-                                    <div ng-if="faq.answer" class="q ng-binding ng-scope">
+                                <div class="faq-item  ng-scope" >
+                                    <div class="q ng-binding ng-scope">
                                         <b>Q.</b>Sind Fotos während der Trauung erwünscht?</div>
-                                    <!-- end ngIf: faq.answer -->
-                                    <div class="a ng-binding" ng-bind-html="(faq.answer | paragraphsFilter)">
+                                    <div class="a ng-binding" >
                                         <p>Wir wären euch dankbar, wenn ihr das Fotografieren &amp; Filmen während der Trauung
                                             unserem Kamerateam überlassen würdet.</p>
                                     </div>
                                 </div>
-                                <!-- end ngRepeat: faq in faqs | orderBy: 'sortKey' track by (faq.$key || $index) -->
-                                <div class="faq-item  ng-scope" ng-repeat="faq in faqs | orderBy: 'sortKey' track by (faq.$key || $index)">
-                                    <!-- ngIf: faq.answer -->
-                                    <div ng-if="faq.answer" class="q ng-binding ng-scope">
+                                <div class="faq-item  ng-scope" >
+                                    <div class="q ng-binding ng-scope">
                                         <b>Q.</b>Gibt's was zu essen?</div>
-                                    <!-- end ngIf: faq.answer -->
-                                    <div class="a ng-binding" ng-bind-html="(faq.answer | paragraphsFilter)">
+                                    <div class="a ng-binding" >
                                         <p>Nach der Trauung gibt es ab ca. 14:30 Snacks &amp; Getränke bei der Agape.
                                             <br>Bei der Hochzeitsfeier wird um ca. 18:30 das luxuriöse Abendbuffet eröffnet.</p>
                                     </div>
                                 </div>
-                                <!-- end ngRepeat: faq in faqs | orderBy: 'sortKey' track by (faq.$key || $index) -->
-                                <div class="faq-item  ng-scope" ng-repeat="faq in faqs | orderBy: 'sortKey' track by (faq.$key || $index)">
-                                    <!-- ngIf: faq.answer -->
-                                    <div ng-if="faq.answer" class="q ng-binding ng-scope">
+                                <div class="faq-item  ng-scope" >
+                                    <div class="q ng-binding ng-scope">
                                         <b>Q.</b>Ist die Feier drinnen oder draußen?</div>
-                                    <!-- end ngIf: faq.answer -->
-                                    <div class="a ng-binding" ng-bind-html="(faq.answer | paragraphsFilter)">
+                                    <div class="a ng-binding" >
                                         <p>Die Feier beginnt - sofern das Wetter mitspielt - im Garten.
                                             <br>Ab Einbruch der Dunkelheit wird dann im Festsaal weitergefeiert.</p>
                                     </div>
                                 </div>
-                                <!-- end ngRepeat: faq in faqs | orderBy: 'sortKey' track by (faq.$key || $index) -->
-                                <div class="faq-item  ng-scope" ng-repeat="faq in faqs | orderBy: 'sortKey' track by (faq.$key || $index)">
-                                    <!-- ngIf: faq.answer -->
-                                    <div class="a ng-binding" ng-bind-html="(faq.answer | paragraphsFilter)"></div>
+                                <div class="faq-item  ng-scope" >
+                                    <div class="a ng-binding" ></div>
                                 </div>
-                                <!-- end ngRepeat: faq in faqs | orderBy: 'sortKey' track by (faq.$key || $index) -->
                             </div>
                         </div>
-                        <!-- end ngIf: pageSettings.faq && pageSettings.faq.unlocked -->
                     </div>
-                    <!-- end ngRepeat: section in sections | orderBy:'sortKey' track by section.key -->
-                    <!-- ngInclude: sectionTemplateUrl(section.key) -->
-                    <!-- end ngRepeat: section in sections | orderBy:'sortKey' track by section.key -->
-
-
-                    <!--App-->
-                    <!-- ngIf: !userSettings || (userSettings && !userSettings.hideDownloadAppPage) -->
                 </div>
-                <!-- end ngIf: !$state.includes('event.home.moments') -->
-                <!-- Menu logic -->
                 <!--div class="joy-wedding-menu-icon" tabindex="0">
                     <img height="18px" class="menu-icon ng-scope" src="svg/iconMenu.svg">
                     <div class="menu-label">menü</div>
-                    
                 </div-->
-                
             </div>
-
-
-
-            
         </ui-view>
     </div>
     <div id="mapPlaceholder"></div>
     
-
 </body>
-
 </html>

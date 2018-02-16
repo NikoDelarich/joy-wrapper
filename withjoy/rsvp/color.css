@@ -1,0 +1,43 @@
+.joy-wedding-info #welcome {
+  background-color: #DEE8E3 !important;
+}
+
+.joy-wedding-info .joy-content-card.joy-content-intro:not(.joy-primary-pane-mobile) h1 {
+  color: #232323 !important;
+}
+
+.joy-wedding-info .joy-content-card.joy-content-intro:not(.joy-primary-pane-mobile) h2 {
+  color: #232323 !important;
+}
+
+.joy-wedding-info .joy-content-card.joy-content-intro h4 {
+  color: #232323 !important;
+}
+
+.joy-wedding-info .joy-content-card.joy-content-intro .countdown-timer.horizontal h1 {
+  color: #232323 !important;
+}
+
+.joy-wedding-info #welcome .rsvp-button {
+  color: #232323 !important;
+  border-color: #232323 !important;
+  background-color: transparent !important;
+}
+
+.joy-theme {}
+
+.joy-theme.bg-color {
+  background-color: rgba(222, 232, 227, 1);
+}
+
+.joy-theme.ft-color {
+  color: #232323;
+}
+
+.joy-theme.border-color {
+  border-color: #232323;
+}
+
+.joy-theme.bg-color-transparent {
+  background-color: rgba(222, 232, 227, 0.6);
+}
