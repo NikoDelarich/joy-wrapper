@@ -100,3 +100,11 @@ function mainInit() {
     });
 
 }
+
+function goToRSVP() {
+  if(RegExp(/iP(ad|hone|od).+Version\/[\d\.]+.*Safari/i).test(navigator.userAgent)) {
+    location.href = "https://withjoy.com/niko-und-carina/rsvp";
+  } else {
+    location.href = "https://niko-carina.wedding/rsvp.html";
+  }
+}
