@@ -1,321 +1,377 @@
 <!DOCTYPE html>
 <html>
-  <head>
+
+<head>
     <meta http-equiv="content-type" content="text/html; charset=UTF-8">
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Niko Delarich  -  Carina Liegler</title>
-    <link rel="shortcut icon" href="https://d2uft7zh7kxc3y.cloudfront.net/favicon.ico">
-    
+    <title>Niko &amp; Carina - 26. Mai 2018</title>
+
     <link rel="stylesheet" href="rsvp/angular-material.css">
     <link rel="stylesheet" href="md-styles.css">
     <link rel="stylesheet" href="rsvp/joy-698716c7e7.css">
-    <script type="text/javascript" charset="UTF-8" src="rsvp/util.js"></script>
-  </head>
-  <body>
-    <div class="joy-stage ng-scope" ui-view="" style="">
-      <ui-view class="ng-scope"><link rel="stylesheet" type="text/css" ng-href="https://fonts.googleapis.com/css?family=Parisienne:400" class="ng-scope" href="rsvp/css.css">
-        <style class="ng-binding ng-scope">
-                    {{override}} .joy-color.bg-color {                    background-color: rgba(222,192,254,1);                }                {{override}} .joy-color.ft-color {                    color: rgba(58,60,62,1);                }                {{override}} .joy-color.border-color {                    border-color: rgba(58,60,62,1);                }                {{override}} .joy-color.bg-color-transparent {                    background-color: rgba(222,192,254,0.6);                }
-                  </style>
 
-      <!-- Theme Colors & Style -->
-      <link rel="stylesheet" type="text/css" ng-href="/assets/public/joyStyles3/lavendar_yard/base.css" class="ng-scope" href="rsvp/base.css">
-      <link rel="stylesheet" type="text/css" ng-href="" class="ng-scope">
-      <link rel="stylesheet" type="text/css" ng-href="/assets/public/joyStyles3/lavendar_yard/color.css" class="ng-scope" href="rsvp/color.css">
-      <link rel="stylesheet" type="text/css" ng-href="" class="ng-scope">
-      <!-- Event Colors when "use event colors" -->
-      <!-- ngIf: !joyStyle.useThemeColor -->
-      <style class="ng-binding ng-scope">
+    <link rel="stylesheet" type="text/css" href="rsvp/base.css">
+    <link rel="stylesheet" type="text/css" href="rsvp/color.css">
+
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Parisienne:400">
+
+    <style class="ng-binding ng-scope">
+        .joy-color.bg-color { background-color: rgba(222, 192, 254, 1); }
+        .joy-color.ft-color { color: rgba(58, 60, 62, 1); }
+        .joy-color.border-color { border-color: rgba(58, 60, 62, 1); }
+        .joy-color.bg-color-transparent { background-color: rgba(222, 192, 254, 0.6); }
+    </style>
+    
+    <style class="ng-binding ng-scope">
         .hero h1 {
-          font-family: Parisienne;
-          font-weight: 400;
-          text-transform: undefined !important;
-          line-height: 1.0 !important;
-          font-size: 74px !important;
-          letter-spacing: -0.5px !important;
-          color: #232323 !important;            }
-      </style>
-      <!-- ngIf: offline -->
-      <div class="rsvp-backdrop ng-scope" style="position:fixed;top:0;bottom:0;left:0;right:0;"></div>
-      <div class="rsvp-header ng-scope">
-          <!-- ngIf: !inAppWebView --><div ng-if="!inAppWebView" class="rsvp-tl rsvp-t ng-scope" ng-click="askToDropoutFlow()" role="button" tabindex="0">
-              Finish Later
-          </div><!-- end ngIf: !inAppWebView -->
-          <!-- ngIf: targetPerson --><div ng-if="targetPerson" class="rsvp-tr rsvp-t ng-binding ng-scope" style="">dfg dfg (1 of 1)</div><!-- end ngIf: targetPerson -->
-      </div>
-      <div class="event-rsvp d-flex flex-column align-items-center col-list ng-scope" style="position:relative">
-          <div class="col-list-item col-list-item-header">
-              <div class="joy-event-welcome-banner d-flex flex-column align-items-center">
-                  <div class="hero center">
-                      <!-- ngIf: ownerName.first.length > 0 && ownerName.first.length < fianceeName.first.length --><h1 id="wedding-names" class="left ng-binding ng-scope" ng-if="ownerName.first.length &gt; 0 &amp;&amp; ownerName.first.length &lt; fianceeName.first.length" style="">
-                          Niko &amp;  <br>
-                          Carina
-                      </h1><!-- end ngIf: ownerName.first.length > 0 && ownerName.first.length < fianceeName.first.length -->
-                      <!-- ngIf: ownerName.first.length > 0 && ownerName.first.length >= fianceeName.first.length -->
-                      <!--<p>We hope you can make it and we appreciate your prompt reply.</p>-->
-                      <p class="ng-binding">Stiftskirche Klosterneuburg<br>Samstag, 26. Mai 2018</p>
-                  </div>
-              </div>
-          </div>
-          <!-- ngIf: probableTargetPerson && !inAppWebView --><!--div ng-if="probableTargetPerson &amp;&amp; !inAppWebView" style="color: rgb(136, 136, 136);" class="ng-binding ng-scope">
-              Not <span style="text-transform: capitalize;" class="ng-binding">dfg dfg</span> (dfg@dfg.fg)?
-              <span ng-click="logout()" title="Sign out of Joy" style="text-decoration: underline;" role="button" tabindex="0">Switch Guest</span>
-          </div--><!-- end ngIf: probableTargetPerson && !inAppWebView -->
+            font-family: Parisienne;
+            font-weight: 400;
+            text-transform: undefined !important;
+            line-height: 1.0 !important;
+            font-size: 74px !important;
+            letter-spacing: -0.5px !important;
+            color: #232323 !important;
+        }
+    </style>
+</head>
 
-          <!--Below is the same div but with different models-->
-          <!--Person searcher box-->
-          <!-- ngIf: (!hideNameAndEmailFields && !targetPerson) -->
-          <!-- ngIf: noMatch -->
-          <!-- ngIf: requestAccessSent -->
-          <!--div ng-if="members" id="member-selector" ng-class="{'active-item': !targetPerson}" class="col-list-item ng-scope" style="">
+<body>
+    <div class="joy-stage ng-scope" ui-view="" >
+        <ui-view class="ng-scope">
+            <div class="rsvp-backdrop ng-scope" style="position:fixed;top:0;bottom:0;left:0;right:0;"></div>
+            <div class="rsvp-header ng-scope">
+                <a class="rsvp-tl rsvp-t ng-scope" href="https://niko-carina.wedding/">Zurück</a>
+                <div class="rsvp-tr rsvp-t ng-binding ng-scope ng-hide  " >dfg dfg (1 of 1)</div>
+            </div>
+
+            <div class="event-rsvp d-flex flex-column align-items-center col-list ng-scope" style="position:relative">
+                <div class="col-list-item col-list-item-header">
+                    <div class="joy-event-welcome-banner d-flex flex-column align-items-center">
+                        <div class="hero center">
+                            <h1 id="wedding-names" class="left ng-binding ng-scope">
+                                Niko &amp;
+                                <br> Carina
+                            </h1>
+                            <!-- end ngIf: ownerName.first.length > 0 && ownerName.first.length < fianceeName.first.length -->
+                            <!-- ngIf: ownerName.first.length > 0 && ownerName.first.length >= fianceeName.first.length -->
+                            <p>We hope you can make it and we appreciate your prompt reply.</p>
+                            <p class="ng-binding">Stiftskirche Klosterneuburg
+                                <br>Samstag, 26. Mai 2018</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- ngIf: probableTargetPerson && !inAppWebView -->
+                    <!--div ng-if="probableTargetPerson &amp;&amp; !inAppWebView" style="color: rgb(136, 136, 136);" class="ng-binding ng-scope">
+                        Not <span style="text-transform: capitalize;" class="ng-binding">dfg dfg</span> (dfg@dfg.fg)?
+                        <span ng-click="logout()" title="Sign out of Joy" style="text-decoration: underline;" role="button" tabindex="0">Switch Guest</span>
+                    </div-->
+                <!-- end ngIf: probableTargetPerson && !inAppWebView -->
+
+                <!-- ngIf: requestAccessSent -->
+                <!--div ng-if="members" id="member-selector" ng-class="{'active-item': !targetPerson}" class="col-list-item ng-scope" >
               <form name="household" class="ng-pristine ng-valid">
                   
                   <div ng-if="members.length === 1" class="col-12 question-title ng-binding ng-scope">Select yourself to begin your RSVP.</div>
                   <div class="names-container">
-                      <div title="Click to start responding" class="d-flex justify-content-between align-items-center ng-scope ng-hide" ng-repeat="member in members track by $index" ng-click="showOverwriteWarningDialog($event, member)" ng-hide="targetPerson" role="button" tabindex="0" aria-hidden="true" style="">
+                      <div title="Click to start responding" class="d-flex justify-content-between align-items-center ng-scope ng-hide" ng-repeat="member in members track by $index" ng-click="showOverwriteWarningDialog($event, member)" ng-hide="targetPerson" role="button" tabindex="0"  >
                           <span ng-class="{'inactive-item': !member.name}" class="ng-binding">dfg dfg</span>
-                          <span ng-show="member.completedRsvp" class="joy-label success ng-hide" aria-hidden="true">Answered</span>
-                          <span ng-show="!member.completedRsvp &amp;&amp; !member.untouchedRsvp" class="joy-label warn ng-hide" aria-hidden="true">In Progress</span>
-                          <span ng-show="member.untouchedRsvp" class="joy-label muted" aria-hidden="false">Unanswered</span>
+                          <span ng-show="member.completedRsvp" class="joy-label success ng-hide" >Answered</span>
+                          <span ng-show="!member.completedRsvp &amp;&amp; !member.untouchedRsvp" class="joy-label warn ng-hide" >In Progress</span>
+                          <span ng-show="member.untouchedRsvp" class="joy-label muted" >Unanswered</span>
                       </div>
-                      <div class="d-flex justify-content-between align-items-center" ng-click="cancelRsvpForHouseholdPersonId(targetPerson.personKey);" ng-show="targetPerson" role="button" tabindex="0" aria-hidden="false" style="">
+                      <div class="d-flex justify-content-between align-items-center" ng-click="cancelRsvpForHouseholdPersonId(targetPerson.personKey);" ng-show="targetPerson" role="button" tabindex="0"  >
                           <span class="ng-binding">dfg dfg</span>
                           <span class="joy-label">Cancel</span>
                       </div>
                   </div>
               </form>
-          </div--><!-- end ngIf: members -->
+          </div-->
+                <!-- end ngIf: members -->
 
-          <!--Person detail editing box-->
-          <!--Above is the same div but with different models-->
-          <div class="col-list-item active-item" id="nameAndEmail" ng-class="{'active-item': true}" ng-hide="hideNameAndEmailFields || !targetPerson" aria-hidden="false" style="">
-              <form class="ng-pristine ng-valid-email ng-valid ng-valid-required ng-submitted" name="nameAndEmail" ng-submit="updateNameAndEmail(nameAndEmail)" style="">
-                  <div class="col-12 question-title">Confirm or update name and email address.</div>
-                  <div class="col-12 d-flex text-container flex-column">
-                      <div class="input-container">
-                          <label for="firstName">
-                              <input id="firstName" placeholder="First Name" name="first_name" required="" ng-model="targetPerson.editableFirstName" class="ng-pristine ng-untouched ng-not-empty ng-valid ng-valid-required" aria-required="false" aria-invalid="false" style="background-image: url(&quot;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAABHklEQVQ4EaVTO26DQBD1ohQWaS2lg9JybZ+AK7hNwx2oIoVf4UPQ0Lj1FdKktevIpel8AKNUkDcWMxpgSaIEaTVv3sx7uztiTdu2s/98DywOw3Dued4Who/M2aIx5lZV1aEsy0+qiwHELyi+Ytl0PQ69SxAxkWIA4RMRTdNsKE59juMcuZd6xIAFeZ6fGCdJ8kY4y7KAuTRNGd7jyEBXsdOPE3a0QGPsniOnnYMO67LgSQN9T41F2QGrQRRFCwyzoIF2qyBuKKbcOgPXdVeY9rMWgNsjf9ccYesJhk3f5dYT1HX9gR0LLQR30TnjkUEcx2uIuS4RnI+aj6sJR0AM8AaumPaM/rRehyWhXqbFAA9kh3/8/NvHxAYGAsZ/il8IalkCLBfNVAAAAABJRU5ErkJggg==&quot;); background-repeat: no-repeat; background-attachment: scroll; background-size: 16px 18px; background-position: 98% 50%;" value="dfg" type="firstname">
-                          </label>
-                          <div class="col-12 ng-hide ng-inactive" ng-messages="nameAndEmail.first_name.$error" ng-messages-multiple="" ng-show="nameAndEmail.first_name.$touched" aria-live="assertive" aria-hidden="true" style="">
-                              <!-- ngMessage: required -->
-                          </div>
-                      </div>
-                      <div class="input-container">
-                          <label for="lastName">
-                              <input id="lastName" placeholder="Last Name" name="last_name" ng-model="targetPerson.editableLastName" class="ng-pristine ng-untouched ng-valid ng-not-empty" aria-invalid="false" style="" value="dfg" type="lastname">
-                          </label>
-                          <div class="col-12 ng-inactive ng-hide" ng-messages="nameAndEmail.last_name.$error" ng-messages-multiple="" ng-show="nameAndEmail.last_name.$touched" aria-live="assertive" aria-hidden="true">
-                              <!--<div ng-message="required">This is required.</div>-->
-                          </div>
-                      </div>
-                      <div class="input-container">
-                          <label for="email">
-                              <input id="email" placeholder="Email" name="email" ng-model="targetPerson.editableEmail" class="ng-pristine ng-untouched ng-valid ng-valid-email ng-not-empty" aria-invalid="false" style="" value="dfg@dfg.fg" type="email">
-                          </label>
-                          <div class="col-12 ng-inactive ng-hide" ng-messages="nameAndEmail.email.$error" ng-messages-multiple="" ng-show="nameAndEmail.email.$touched" aria-live="assertive" aria-hidden="true">
-                          </div>
-                      </div>
-                      <!--TODO: ng-show?-->
-                      <div class="saving ng-hide" ng-show="savingQuestions['nameAndEmail']" aria-hidden="true" style="">
-                          <div class="loader"></div>
-                      </div>
-                  </div>
-                  <div class="submission-control d-flex justify-content-center">
-                      <input class="joy-event-button" ng-disabled="savingQuestions['nameAndEmail']" value="save" aria-disabled="false" type="submit">
-                  </div>
-              </form>
-          </div>
-          <!-- ngRepeat: question in rsvpQuestions track by question.id --><!-- ngIf: revealedQuestions[question.id] --><div class="col-list-item ng-scope saving-item" ng-repeat="question in rsvpQuestions track by question.id" id="rsvp" ng-if="revealedQuestions[question.id]" ng-class="{'active-item': activeQuestion === question.id,
-                          'saving-item': true}" ng-click="setActiveQuestion(question.id)" role="button" tabindex="0" style="">
+                <!--Person detail editing box-->
+                <!--Above is the same div but with different models-->
+                <div class="col-list-item active-item" id="nameAndEmail">
+                    <form class="ng-pristine ng-valid-email ng-valid ng-valid-required ng-submitted" name="nameAndEmail" ng-submit="updateNameAndEmail(nameAndEmail)" >
+                        <div class="col-12 question-title">Bitte verrat uns deinen Namen und deine E-Mail Adresse.</div>
+                        <div class="col-12 d-flex text-container flex-column">
+                            <div class="input-container">
+                                <label for="firstName">
+                                    <input id="firstName" placeholder="Vorname" name="first_name" required="" class="ng-pristine ng-untouched ng-not-empty ng-valid ng-valid-required" value="" type="firstname">
+                                </label>
+                                <div class="col-12 ng-hide ng-inactive">
+                                    <!-- ngMessage: required -->
+                                </div>
+                            </div>
+                            <div class="input-container">
+                                <label for="lastName">
+                                    <input id="lastName" placeholder="Nachname" name="last_name" class="ng-pristine ng-untouched ng-valid ng-not-empty" value="" type="lastname">
+                                </label>
+                                <div class="col-12 ng-inactive ng-hide">
+                                    <!--<div ng-message="required">This is required.</div>-->
+                                </div>
+                            </div>
+                            <div class="input-container">
+                                <label for="email">
+                                    <input id="email" placeholder="Email" name="email" class="ng-pristine ng-untouched ng-valid ng-valid-email ng-not-empty" value="" type="email">
+                                </label>
+                                <div class="col-12 ng-inactive ng-hide" ng-messages="nameAndEmail.email.$error" ng-messages-multiple="" ng-show="nameAndEmail.email.$touched"
+                                    aria-live="assertive" >
+                                </div>
+                            </div>
+                            <!--TODO: ng-show?-->
+                            <div class="saving ng-hide" ng-show="savingQuestions['nameAndEmail']"  >
+                                <div class="loader"></div>
+                            </div>
+                        </div>
+                        <div class="submission-control d-flex justify-content-center">
+                            <input class="joy-event-button" ng-disabled="savingQuestions['nameAndEmail']" value="save" aria-disabled="false" type="submit">
+                        </div>
+                    </form>
+                </div>
 
-              <!-- ngIf: question.type.isMultipleChoice() --><form class="ng-scope ng-dirty ng-valid-parse ng-valid ng-valid-required" name="singleChoiceForm" ng-if="question.type.isMultipleChoice()" ng-submit="submitForm(singleChoiceForm, question, $event)" style="">
-                  <div class="col-12 question-title ng-binding">Wirst du zu unserer Hochzeit kommen?</div>
-                  <div class="choices-container" ng-init="::choices = choices[question.id]">
-                      <!-- TODO: we should we using radio group or select, for accessibility -->
-                      <!-- ngRepeat: choice in choices track by choice.id --><label joy-radio-button="" class="joy-radio-button ng-scope ng-binding" ng-repeat="choice in choices track by choice.id" ng-show="choice.displayValue" aria-hidden="false">
-                          <input id="field-rsvp" ng-model="answers[question.id]" ng-click="choose($event)" ng-value="choice.id" ng-required="!answers[question.id]" class="ng-pristine ng-untouched ng-not-empty ng-valid ng-valid-required" name="114" value="attending" aria-checked="false" aria-required="false" aria-invalid="false" style="" type="radio">
-                          Ja :D
-                          <div class="check"></div>
-                      </label><!-- end ngRepeat: choice in choices track by choice.id --><label joy-radio-button="" class="joy-radio-button ng-scope ng-binding" ng-repeat="choice in choices track by choice.id" ng-show="choice.displayValue" aria-hidden="false">
-                          <input id="field-rsvp" ng-model="answers[question.id]" ng-click="choose($event)" ng-value="choice.id" ng-required="!answers[question.id]" class="ng-untouched ng-not-empty ng-dirty ng-valid-parse ng-valid ng-valid-required" name="118" value="notAttending" aria-checked="true" aria-required="false" aria-invalid="false" style="" checked="checked" type="radio">
-                          Nein, leider nicht :-(
-                          <div class="check"></div>
-                      </label><!-- end ngRepeat: choice in choices track by choice.id -->
-                   </div>
-                  <!-- TODO figure out if radios really need error messages -->
-                  <!--<div class="col-12"-->
-                  <!--ng-messages="singleChoiceForm[option.answer].$error"-->
-                  <!--ng-show="singleChoiceForm[option.answer].$touched">-->
-                  <!--<div ng-message="required">This is required.</div>-->
-                  <!--</div>-->
-              </form><!-- end ngIf: question.type.isMultipleChoice() -->
+                <!-- Multiple Choice -->
+                <div class="col-list-item ng-scope saving-item" id="rsvp" role="button" tabindex="0" >
+                    <form class="ng-scope ng-dirty ng-valid-parse ng-valid ng-valid-required" name="singleChoiceForm">
+                        <div class="col-12 question-title ng-binding">Wirst du zu unserer Hochzeit kommen?</div>
+                        <div class="choices-container">
+                            <label joy-radio-button="" class="joy-radio-button ng-scope ng-binding">
+                                <input id="field-rsvp" class="ng-pristine ng-untouched ng-not-empty ng-valid ng-valid-required" name="114" value="attending" type="radio"> Ja :D
+                                <div class="check"></div>
+                            </label>
+                            <label joy-radio-button="" class="joy-radio-button ng-scope ng-binding">
+                                <input id="field-rsvp" class="ng-untouched ng-not-empty ng-dirty ng-valid-parse ng-valid ng-valid-required" name="118" value="notAttending" type="radio"> Nein, leider nicht :-(
+                                <div class="check"></div>
+                            </label>
+                        </div>
+                    </form>
+                </div>
 
-              <!-- ngIf: question.type.isPlaintext() -->
-          </div><!-- end ngIf: revealedQuestions[question.id] --><!-- end ngRepeat: question in rsvpQuestions track by question.id --><!-- ngIf: revealedQuestions[question.id] --><div class="col-list-item ng-scope saving-item" ng-repeat="question in rsvpQuestions track by question.id" id="weddingTeam" ng-if="revealedQuestions[question.id]" ng-class="{'active-item': activeQuestion === question.id,
-                          'saving-item': true}" ng-click="setActiveQuestion(question.id)" role="button" tabindex="0" style="">
+                <div class="col-list-item ng-scope saving-item" id="weddingTeam" role="button" tabindex="0" >
+                    <form class="ng-scope ng-dirty ng-valid-parse ng-valid ng-valid-required" name="singleChoiceForm">
+                        <div class="col-12 question-title ng-binding">Bist du verwandt/befreundet mit ...?</div>
+                        <div class="choices-container" ng-init="::choices = choices[question.id]">
+                            <label joy-radio-button="" class="joy-radio-button ng-scope ng-binding">
+                                <input id="field-weddingTeam" class="ng-pristine ng-untouched ng-not-empty ng-valid ng-valid-required" name="129" value="owner" type="radio"> Niko
+                                <div class="check"></div>
+                            </label>
+                            <label joy-radio-button="" class="joy-radio-button ng-scope ng-binding">
+                                <input id="field-weddingTeam" class="ng-pristine ng-untouched ng-not-empty ng-valid ng-valid-required" name="133" value="fiancee" type="radio"> Carina
+                                <div class="check"></div>
+                            </label>
+                            <label joy-radio-button="" class="joy-radio-button ng-scope ng-binding">
+                                <input id="field-weddingTeam" class="ng-untouched ng-not-empty ng-dirty ng-valid-parse ng-valid ng-valid-required" name="137" value="both" checked="checked" type="radio"> Niko &amp Carina
+                                <div class="check"></div>
+                            </label>
+                        </div>
+                    </form>
+                </div>
 
-              <!-- ngIf: question.type.isMultipleChoice() --><form class="ng-scope ng-dirty ng-valid-parse ng-valid ng-valid-required" name="singleChoiceForm" ng-if="question.type.isMultipleChoice()" ng-submit="submitForm(singleChoiceForm, question, $event)" style="">
-                  <div class="col-12 question-title ng-binding">Bist du verwandt bzw. befreundet mit ...?</div>
-                  <div class="choices-container" ng-init="::choices = choices[question.id]">
-                      <!-- TODO: we should we using radio group or select, for accessibility -->
-                      <!-- ngRepeat: choice in choices track by choice.id --><label joy-radio-button="" class="joy-radio-button ng-scope ng-binding" ng-repeat="choice in choices track by choice.id" ng-show="choice.displayValue" aria-hidden="false">
-                          <input id="field-weddingTeam" ng-model="answers[question.id]" ng-click="choose($event)" ng-value="choice.id" ng-required="!answers[question.id]" class="ng-pristine ng-untouched ng-not-empty ng-valid ng-valid-required" name="129" value="owner" aria-checked="false" aria-required="false" aria-invalid="false" style="" type="radio">
-                          Niko
-                          <div class="check"></div>
-                      </label><!-- end ngRepeat: choice in choices track by choice.id --><label joy-radio-button="" class="joy-radio-button ng-scope ng-binding" ng-repeat="choice in choices track by choice.id" ng-show="choice.displayValue" aria-hidden="false">
-                          <input id="field-weddingTeam" ng-model="answers[question.id]" ng-click="choose($event)" ng-value="choice.id" ng-required="!answers[question.id]" class="ng-pristine ng-untouched ng-not-empty ng-valid ng-valid-required" name="133" value="fiancee" aria-checked="false" aria-required="false" aria-invalid="false" style="" type="radio">
-                          Carina
-                          <div class="check"></div>
-                      </label><!-- end ngRepeat: choice in choices track by choice.id --><label joy-radio-button="" class="joy-radio-button ng-scope ng-binding" ng-repeat="choice in choices track by choice.id" ng-show="choice.displayValue" aria-hidden="false">
-                          <input id="field-weddingTeam" ng-model="answers[question.id]" ng-click="choose($event)" ng-value="choice.id" ng-required="!answers[question.id]" class="ng-untouched ng-not-empty ng-dirty ng-valid-parse ng-valid ng-valid-required" name="137" value="both" aria-checked="true" aria-required="false" aria-invalid="false" style="" checked="checked" type="radio">
-                          Beiden
-                          <div class="check"></div>
-                      </label><!-- end ngRepeat: choice in choices track by choice.id -->
-                   </div>
-                  <!-- TODO figure out if radios really need error messages -->
-                  <!--<div class="col-12"-->
-                  <!--ng-messages="singleChoiceForm[option.answer].$error"-->
-                  <!--ng-show="singleChoiceForm[option.answer].$touched">-->
-                  <!--<div ng-message="required">This is required.</div>-->
-                  <!--</div>-->
-              </form><!-- end ngIf: question.type.isMultipleChoice() -->
+                <div class="col-list-item ng-scope saving-item" ng-repeat="question in rsvpQuestions track by question.id" id="-L3KVrWObTDoe4CMyIQ7" role="button" tabindex="0" >
+                    <form class="ng-pristine ng-valid ng-scope ng-submitted" name="textForm">
+                        <div class="col-12 question-title ng-binding">Welches Lied bringt dich zum Tanzen?</div>
+                        <div class="col-12 d-flex text-container">
+                            <textarea id="field--L3KVrWObTDoe4CMyIQ7" class="f-1 ng-pristine ng-valid ng-empty ng-touched" name="textForm.text" placeholder="Gib deine Antwort hier ein" rows="5"></textarea>
+                        </div>
+                    </form>
+                </div>
 
-              <!-- ngIf: question.type.isPlaintext() -->
-          </div><!-- end ngIf: revealedQuestions[question.id] --><!-- end ngRepeat: question in rsvpQuestions track by question.id --><!-- ngIf: revealedQuestions[question.id] --><div class="col-list-item ng-scope saving-item" ng-repeat="question in rsvpQuestions track by question.id" id="-L3KVrWObTDoe4CMyIQ7" ng-if="revealedQuestions[question.id]" ng-class="{'active-item': activeQuestion === question.id,
-                          'saving-item': true}" ng-click="setActiveQuestion(question.id)" role="button" tabindex="0" style="">
+                <div class="col-list-item ng-scope saving-item" ng-repeat="question in rsvpQuestions track by question.id" id="-L3KW6wRFtDgYtEe7IzH" role="button" tabindex="0" >
+                    <form class="ng-pristine ng-valid ng-scope ng-submitted" name="textForm">
+                        <div class="col-12 question-title ng-binding">Wo sollten wir deiner Meinung nach die Flitterwochen verbringen?</div>
+                        <div class="col-12 d-flex text-container">
+                            <textarea id="field--L3KW6wRFtDgYtEe7IzH" class="f-1 ng-pristine ng-valid ng-empty ng-touched" name="textForm.text" placeholder="Gib deine Antwort hier ein" rows="5"></textarea>
+                        </div>
+                    </form>
+                </div>
+                
+                <div class="col-list-item ng-scope saving-item" ng-repeat="question in rsvpQuestions track by question.id"
+                    id="-L3KWE_Pa55YqQr1z9QI" ng-if="revealedQuestions[question.id]" ng-class="{'active-item': activeQuestion === question.id,
+                          'saving-item': true}" ng-click="setActiveQuestion(question.id)" role="button" tabindex="0" >
 
-              <!-- ngIf: question.type.isMultipleChoice() -->
+                    <!-- ngIf: question.type.isMultipleChoice() -->
 
-              <!-- ngIf: question.type.isPlaintext() --><form class="ng-pristine ng-valid ng-scope ng-submitted" name="textForm" ng-if="question.type.isPlaintext()" ng-submit="submitForm(textForm, question, $event)" style="">
-                  <div class="col-12 question-title ng-binding">Welches Lied bringt dich zum Tanzen?</div>
-                  <div class="col-12 d-flex text-container">
-                          <textarea id="field--L3KVrWObTDoe4CMyIQ7" class="f-1 ng-pristine ng-valid ng-empty ng-touched" name="textForm.text" ng-model="answers[question.id]" ng-keydown="onKeyDown(textForm, question, $event)" placeholder="Enter response here" rows="5" aria-multiline="true" aria-invalid="false" style=""></textarea>
-                  </div>
-                  <!-- ngIf: activeQuestion === question.id -->
-              </form><!-- end ngIf: question.type.isPlaintext() -->
-          </div><!-- end ngIf: revealedQuestions[question.id] --><!-- end ngRepeat: question in rsvpQuestions track by question.id --><!-- ngIf: revealedQuestions[question.id] --><div class="col-list-item ng-scope saving-item" ng-repeat="question in rsvpQuestions track by question.id" id="-L3KW6wRFtDgYtEe7IzH" ng-if="revealedQuestions[question.id]" ng-class="{'active-item': activeQuestion === question.id,
-                          'saving-item': true}" ng-click="setActiveQuestion(question.id)" role="button" tabindex="0" style="">
+                    <!-- ngIf: question.type.isPlaintext() -->
+                    <form class="ng-pristine ng-valid ng-scope ng-submitted" name="textForm" ng-if="question.type.isPlaintext()"
+                        ng-submit="submitForm(textForm, question, $event)" >
+                        <div class="col-12 question-title ng-binding">Nur spaßhalber: Was wäre dein Ratschlag für eine glückliche Ehe?</div>
+                        <div class="col-12 d-flex text-container">
+                            <textarea id="field--L3KWE_Pa55YqQr1z9QI" class="f-1 ng-pristine ng-valid ng-empty ng-touched" name="textForm.text" ng-model="answers[question.id]"
+                                ng-keydown="onKeyDown(textForm, question, $event)" placeholder="Gib deine Antwort hier ein" rows="5"
+                                aria-multiline="true" aria-invalid="false" ></textarea>
+                        </div>
+                        <!-- ngIf: activeQuestion === question.id -->
+                    </form>
+                    <!-- end ngIf: question.type.isPlaintext() -->
+                </div>
+                <!-- end ngIf: revealedQuestions[question.id] -->
+                <!-- end ngRepeat: question in rsvpQuestions track by question.id -->
+                <!-- ngIf: revealedQuestions[question.id] -->
+                <div class="col-list-item ng-scope saving-item" ng-repeat="question in rsvpQuestions track by question.id"
+                    id="-L3KWneEJi06PtKtQNVV" ng-if="revealedQuestions[question.id]" ng-class="{'active-item': activeQuestion === question.id,
+                          'saving-item': true}" ng-click="setActiveQuestion(question.id)" role="button" tabindex="0" >
 
-              <!-- ngIf: question.type.isMultipleChoice() -->
+                    <!-- ngIf: question.type.isMultipleChoice() -->
+                    <form class="ng-scope ng-dirty ng-valid-parse ng-valid ng-valid-required" name="singleChoiceForm" ng-if="question.type.isMultipleChoice()"
+                        ng-submit="submitForm(singleChoiceForm, question, $event)" >
+                        <div class="col-12 question-title ng-binding">Wirst du mit uns bis in die frühen Morgenstunden feiern und dich danach ins kuschelige Hotelbett
+                            fallen lassen?</div>
+                        <div class="choices-container" ng-init="::choices = choices[question.id]">
+                            <!-- TODO: we should we using radio group or select, for accessibility -->
+                            <!-- ngRepeat: choice in choices track by choice.id -->
+                            <label joy-radio-button="" class="joy-radio-button ng-scope ng-binding" 
+                                 >
+                                <input id="field--L3KWneEJi06PtKtQNVV" 
+                                    class="ng-pristine ng-untouched ng-not-empty ng-valid ng-valid-required" name="173" value="custom1"
+                                    aria-checked="false" aria-required="false" aria-invalid="false"  type="radio"> Ja
+                                <div class="check"></div>
+                            </label>
+                            <!-- end ngRepeat: choice in choices track by choice.id -->
+                            <label joy-radio-button="" class="joy-radio-button ng-scope ng-binding" 
+                                 >
+                                <input id="field--L3KWneEJi06PtKtQNVV" 
+                                    class="ng-pristine ng-untouched ng-not-empty ng-valid ng-valid-required" name="177" value="custom2"
+                                    aria-checked="false" aria-required="false" aria-invalid="false"  type="radio"> Ja, Ja und nochmals JA!
+                                <div class="check"></div>
+                            </label>
+                            <!-- end ngRepeat: choice in choices track by choice.id -->
+                            <label joy-radio-button="" class="joy-radio-button ng-scope ng-binding" 
+                                 >
+                                <input id="field--L3KWneEJi06PtKtQNVV" 
+                                    class="ng-pristine ng-untouched ng-not-empty ng-valid ng-valid-required" name="181" value="custom4"
+                                    aria-checked="false" aria-required="false" aria-invalid="false"  type="radio"> Ich brauche kein Bett - ich feiere durch, bis das Frühstück serviert wird :D
+                                <div class="check"></div>
+                            </label>
+                            <!-- end ngRepeat: choice in choices track by choice.id -->
+                            <label joy-radio-button="" class="joy-radio-button ng-scope ng-binding" 
+                                 >
+                                <input id="field--L3KWneEJi06PtKtQNVV" 
+                                    class="ng-untouched ng-not-empty ng-dirty ng-valid-parse ng-valid ng-valid-required" name="185"
+                                    value="custom5" aria-checked="true" aria-required="false" aria-invalid="false"  checked="checked"
+                                    type="radio"> Nein, ich schlafe lieber daheim
+                                <div class="check"></div>
+                            </label>
+                            <!-- end ngRepeat: choice in choices track by choice.id -->
+                        </div>
+                        <!-- TODO figure out if radios really need error messages -->
+                        <!--<div class="col-12"-->
+                        <!--ng-messages="singleChoiceForm[option.answer].$error"-->
+                        <!--ng-show="singleChoiceForm[option.answer].$touched">-->
+                        <!--<div ng-message="required">This is required.</div>-->
+                        <!--</div>-->
+                    </form>
+                    <!-- end ngIf: question.type.isMultipleChoice() -->
 
-              <!-- ngIf: question.type.isPlaintext() --><form class="ng-pristine ng-valid ng-scope ng-submitted" name="textForm" ng-if="question.type.isPlaintext()" ng-submit="submitForm(textForm, question, $event)" style="">
-                  <div class="col-12 question-title ng-binding">Wo sollten wir deiner Meinung nach die Flitterwochen verbringen?</div>
-                  <div class="col-12 d-flex text-container">
-                          <textarea id="field--L3KW6wRFtDgYtEe7IzH" class="f-1 ng-pristine ng-valid ng-empty ng-touched" name="textForm.text" ng-model="answers[question.id]" ng-keydown="onKeyDown(textForm, question, $event)" placeholder="Enter response here" rows="5" aria-multiline="true" aria-invalid="false" style=""></textarea>
-                  </div>
-                  <!-- ngIf: activeQuestion === question.id -->
-              </form><!-- end ngIf: question.type.isPlaintext() -->
-          </div><!-- end ngIf: revealedQuestions[question.id] --><!-- end ngRepeat: question in rsvpQuestions track by question.id --><!-- ngIf: revealedQuestions[question.id] --><div class="col-list-item ng-scope saving-item" ng-repeat="question in rsvpQuestions track by question.id" id="-L3KWE_Pa55YqQr1z9QI" ng-if="revealedQuestions[question.id]" ng-class="{'active-item': activeQuestion === question.id,
-                          'saving-item': true}" ng-click="setActiveQuestion(question.id)" role="button" tabindex="0" style="">
+                    <!-- ngIf: question.type.isPlaintext() -->
+                </div>
+                <!-- end ngIf: revealedQuestions[question.id] -->
+                <!-- end ngRepeat: question in rsvpQuestions track by question.id -->
+                <!-- ngIf: revealedQuestions[question.id] -->
+                <div class="col-list-item ng-scope saving-item" ng-repeat="question in rsvpQuestions track by question.id"
+                    id="-L3KeEWw66eAjY4amLHs" ng-if="revealedQuestions[question.id]" ng-class="{'active-item': activeQuestion === question.id,
+                          'saving-item': true}" ng-click="setActiveQuestion(question.id)" role="button" tabindex="0" >
 
-              <!-- ngIf: question.type.isMultipleChoice() -->
+                    <!-- ngIf: question.type.isMultipleChoice() -->
+                    <form class="ng-scope ng-dirty ng-valid-parse ng-valid ng-valid-required" name="singleChoiceForm" ng-if="question.type.isMultipleChoice()"
+                        ng-submit="submitForm(singleChoiceForm, question, $event)" >
+                        <div class="col-12 question-title ng-binding">Wie fährst du von der Kirche zum Hotel?</div>
+                        <div class="choices-container" ng-init="::choices = choices[question.id]">
+                            <!-- TODO: we should we using radio group or select, for accessibility -->
+                            <!-- ngRepeat: choice in choices track by choice.id -->
+                            <label joy-radio-button="" class="joy-radio-button ng-scope ng-binding" 
+                                 >
+                                <input id="field--L3KeEWw66eAjY4amLHs" 
+                                    class="ng-pristine ng-untouched ng-not-empty ng-valid ng-valid-required" name="198" value="custom1"
+                                    aria-checked="false" aria-required="false" aria-invalid="false"  type="radio"> Ich fahre mit dem Auto und könnte jemanden mitnehmen :)
+                                <div class="check"></div>
+                            </label>
+                            <!-- end ngRepeat: choice in choices track by choice.id -->
+                            <label joy-radio-button="" class="joy-radio-button ng-scope ng-binding" 
+                                 >
+                                <input id="field--L3KeEWw66eAjY4amLHs" 
+                                    class="ng-pristine ng-untouched ng-not-empty ng-valid ng-valid-required" name="202" value="custom2"
+                                    aria-checked="false" aria-required="false" aria-invalid="false"  type="radio"> Ich fahre mit dem Auto, habe aber leider keinen Platz mehr frei
+                                <div class="check"></div>
+                            </label>
+                            <!-- end ngRepeat: choice in choices track by choice.id -->
+                            <label joy-radio-button="" class="joy-radio-button ng-scope ng-binding" 
+                                 >
+                                <input id="field--L3KeEWw66eAjY4amLHs" 
+                                    class="ng-pristine ng-untouched ng-not-empty ng-valid ng-valid-required" name="206" value="custom3"
+                                    aria-checked="false" aria-required="false" aria-invalid="false"  type="radio"> Ich habe bereits eine Mitfahrgelegenheit
+                                <div class="check"></div>
+                            </label>
+                            <!-- end ngRepeat: choice in choices track by choice.id -->
+                            <label joy-radio-button="" class="joy-radio-button ng-scope ng-binding" 
+                                 >
+                                <input id="field--L3KeEWw66eAjY4amLHs" 
+                                    class="ng-pristine ng-untouched ng-not-empty ng-valid ng-valid-required" name="210" value="custom4"
+                                    aria-checked="false" aria-required="false" aria-invalid="false"  type="radio"> Ich würde mich über eine Mitfahrgelegenheit freuen :)
+                                <div class="check"></div>
+                            </label>
+                            <!-- end ngRepeat: choice in choices track by choice.id -->
+                            <label joy-radio-button="" class="joy-radio-button ng-scope ng-binding" 
+                                 >
+                                <input id="field--L3KeEWw66eAjY4amLHs" 
+                                    class="ng-untouched ng-not-empty ng-dirty ng-valid-parse ng-valid ng-valid-required" name="214"
+                                    value="custom5" aria-checked="true" aria-required="false" aria-invalid="false"  checked="checked"
+                                    type="radio"> Ich darf nicht mit Fremden mitfahren und fahr daher lieber öffentlich :P
+                                <div class="check"></div>
+                            </label>
+                            <!-- end ngRepeat: choice in choices track by choice.id -->
+                        </div>
+                        <!-- TODO figure out if radios really need error messages -->
+                        <!--<div class="col-12"-->
+                        <!--ng-messages="singleChoiceForm[option.answer].$error"-->
+                        <!--ng-show="singleChoiceForm[option.answer].$touched">-->
+                        <!--<div ng-message="required">This is required.</div>-->
+                        <!--</div>-->
+                    </form>
+                    <!-- end ngIf: question.type.isMultipleChoice() -->
 
-              <!-- ngIf: question.type.isPlaintext() --><form class="ng-pristine ng-valid ng-scope ng-submitted" name="textForm" ng-if="question.type.isPlaintext()" ng-submit="submitForm(textForm, question, $event)" style="">
-                  <div class="col-12 question-title ng-binding">Nur spaßhalber: Was wäre dein Ratschlag für eine glückliche Ehe?</div>
-                  <div class="col-12 d-flex text-container">
-                          <textarea id="field--L3KWE_Pa55YqQr1z9QI" class="f-1 ng-pristine ng-valid ng-empty ng-touched" name="textForm.text" ng-model="answers[question.id]" ng-keydown="onKeyDown(textForm, question, $event)" placeholder="Enter response here" rows="5" aria-multiline="true" aria-invalid="false" style=""></textarea>
-                  </div>
-                  <!-- ngIf: activeQuestion === question.id -->
-              </form><!-- end ngIf: question.type.isPlaintext() -->
-          </div><!-- end ngIf: revealedQuestions[question.id] --><!-- end ngRepeat: question in rsvpQuestions track by question.id --><!-- ngIf: revealedQuestions[question.id] --><div class="col-list-item ng-scope saving-item" ng-repeat="question in rsvpQuestions track by question.id" id="-L3KWneEJi06PtKtQNVV" ng-if="revealedQuestions[question.id]" ng-class="{'active-item': activeQuestion === question.id,
-                          'saving-item': true}" ng-click="setActiveQuestion(question.id)" role="button" tabindex="0" style="">
+                    <!-- ngIf: question.type.isPlaintext() -->
+                </div>
+                <!-- end ngIf: revealedQuestions[question.id] -->
+                <!-- end ngRepeat: question in rsvpQuestions track by question.id -->
+                <!-- ngIf: revealedQuestions[question.id] -->
+                <div class="col-list-item ng-scope saving-item" ng-repeat="question in rsvpQuestions track by question.id"
+                    id="funFact" ng-if="revealedQuestions[question.id]" ng-class="{'active-item': activeQuestion === question.id,
+                          'saving-item': true}" ng-click="setActiveQuestion(question.id)" role="button" tabindex="0" >
 
-              <!-- ngIf: question.type.isMultipleChoice() --><form class="ng-scope ng-dirty ng-valid-parse ng-valid ng-valid-required" name="singleChoiceForm" ng-if="question.type.isMultipleChoice()" ng-submit="submitForm(singleChoiceForm, question, $event)" style="">
-                  <div class="col-12 question-title ng-binding">Wirst du mit uns bis in die frühen Morgenstunden feiern und dich danach ins kuschelige Hotelbett fallen lassen?</div>
-                  <div class="choices-container" ng-init="::choices = choices[question.id]">
-                      <!-- TODO: we should we using radio group or select, for accessibility -->
-                      <!-- ngRepeat: choice in choices track by choice.id --><label joy-radio-button="" class="joy-radio-button ng-scope ng-binding" ng-repeat="choice in choices track by choice.id" ng-show="choice.displayValue" aria-hidden="false">
-                          <input id="field--L3KWneEJi06PtKtQNVV" ng-model="answers[question.id]" ng-click="choose($event)" ng-value="choice.id" ng-required="!answers[question.id]" class="ng-pristine ng-untouched ng-not-empty ng-valid ng-valid-required" name="173" value="custom1" aria-checked="false" aria-required="false" aria-invalid="false" style="" type="radio">
-                          Ja
-                          <div class="check"></div>
-                      </label><!-- end ngRepeat: choice in choices track by choice.id --><label joy-radio-button="" class="joy-radio-button ng-scope ng-binding" ng-repeat="choice in choices track by choice.id" ng-show="choice.displayValue" aria-hidden="false">
-                          <input id="field--L3KWneEJi06PtKtQNVV" ng-model="answers[question.id]" ng-click="choose($event)" ng-value="choice.id" ng-required="!answers[question.id]" class="ng-pristine ng-untouched ng-not-empty ng-valid ng-valid-required" name="177" value="custom2" aria-checked="false" aria-required="false" aria-invalid="false" style="" type="radio">
-                          Ja, Ja und nochmals JA!
-                          <div class="check"></div>
-                      </label><!-- end ngRepeat: choice in choices track by choice.id --><label joy-radio-button="" class="joy-radio-button ng-scope ng-binding" ng-repeat="choice in choices track by choice.id" ng-show="choice.displayValue" aria-hidden="false">
-                          <input id="field--L3KWneEJi06PtKtQNVV" ng-model="answers[question.id]" ng-click="choose($event)" ng-value="choice.id" ng-required="!answers[question.id]" class="ng-pristine ng-untouched ng-not-empty ng-valid ng-valid-required" name="181" value="custom4" aria-checked="false" aria-required="false" aria-invalid="false" style="" type="radio">
-                          Ich brauche kein Bett - ich feiere durch, bis das Frühstück serviert wird :D
-                          <div class="check"></div>
-                      </label><!-- end ngRepeat: choice in choices track by choice.id --><label joy-radio-button="" class="joy-radio-button ng-scope ng-binding" ng-repeat="choice in choices track by choice.id" ng-show="choice.displayValue" aria-hidden="false">
-                          <input id="field--L3KWneEJi06PtKtQNVV" ng-model="answers[question.id]" ng-click="choose($event)" ng-value="choice.id" ng-required="!answers[question.id]" class="ng-untouched ng-not-empty ng-dirty ng-valid-parse ng-valid ng-valid-required" name="185" value="custom5" aria-checked="true" aria-required="false" aria-invalid="false" style="" checked="checked" type="radio">
-                          Nein, ich schlafe lieber daheim
-                          <div class="check"></div>
-                      </label><!-- end ngRepeat: choice in choices track by choice.id -->
-                   </div>
-                  <!-- TODO figure out if radios really need error messages -->
-                  <!--<div class="col-12"-->
-                  <!--ng-messages="singleChoiceForm[option.answer].$error"-->
-                  <!--ng-show="singleChoiceForm[option.answer].$touched">-->
-                  <!--<div ng-message="required">This is required.</div>-->
-                  <!--</div>-->
-              </form><!-- end ngIf: question.type.isMultipleChoice() -->
+                    <!-- ngIf: question.type.isMultipleChoice() -->
 
-              <!-- ngIf: question.type.isPlaintext() -->
-          </div><!-- end ngIf: revealedQuestions[question.id] --><!-- end ngRepeat: question in rsvpQuestions track by question.id --><!-- ngIf: revealedQuestions[question.id] --><div class="col-list-item ng-scope saving-item" ng-repeat="question in rsvpQuestions track by question.id" id="-L3KeEWw66eAjY4amLHs" ng-if="revealedQuestions[question.id]" ng-class="{'active-item': activeQuestion === question.id,
-                          'saving-item': true}" ng-click="setActiveQuestion(question.id)" role="button" tabindex="0" style="">
-
-              <!-- ngIf: question.type.isMultipleChoice() --><form class="ng-scope ng-dirty ng-valid-parse ng-valid ng-valid-required" name="singleChoiceForm" ng-if="question.type.isMultipleChoice()" ng-submit="submitForm(singleChoiceForm, question, $event)" style="">
-                  <div class="col-12 question-title ng-binding">Wie fährst du von der Kirche zum Hotel?</div>
-                  <div class="choices-container" ng-init="::choices = choices[question.id]">
-                      <!-- TODO: we should we using radio group or select, for accessibility -->
-                      <!-- ngRepeat: choice in choices track by choice.id --><label joy-radio-button="" class="joy-radio-button ng-scope ng-binding" ng-repeat="choice in choices track by choice.id" ng-show="choice.displayValue" aria-hidden="false">
-                          <input id="field--L3KeEWw66eAjY4amLHs" ng-model="answers[question.id]" ng-click="choose($event)" ng-value="choice.id" ng-required="!answers[question.id]" class="ng-pristine ng-untouched ng-not-empty ng-valid ng-valid-required" name="198" value="custom1" aria-checked="false" aria-required="false" aria-invalid="false" style="" type="radio">
-                          Ich fahre mit dem Auto und könnte jemanden mitnehmen :)
-                          <div class="check"></div>
-                      </label><!-- end ngRepeat: choice in choices track by choice.id --><label joy-radio-button="" class="joy-radio-button ng-scope ng-binding" ng-repeat="choice in choices track by choice.id" ng-show="choice.displayValue" aria-hidden="false">
-                          <input id="field--L3KeEWw66eAjY4amLHs" ng-model="answers[question.id]" ng-click="choose($event)" ng-value="choice.id" ng-required="!answers[question.id]" class="ng-pristine ng-untouched ng-not-empty ng-valid ng-valid-required" name="202" value="custom2" aria-checked="false" aria-required="false" aria-invalid="false" style="" type="radio">
-                          Ich fahre mit dem Auto, habe aber leider keinen Platz mehr frei
-                          <div class="check"></div>
-                      </label><!-- end ngRepeat: choice in choices track by choice.id --><label joy-radio-button="" class="joy-radio-button ng-scope ng-binding" ng-repeat="choice in choices track by choice.id" ng-show="choice.displayValue" aria-hidden="false">
-                          <input id="field--L3KeEWw66eAjY4amLHs" ng-model="answers[question.id]" ng-click="choose($event)" ng-value="choice.id" ng-required="!answers[question.id]" class="ng-pristine ng-untouched ng-not-empty ng-valid ng-valid-required" name="206" value="custom3" aria-checked="false" aria-required="false" aria-invalid="false" style="" type="radio">
-                          Ich habe bereits eine Mitfahrgelegenheit
-                          <div class="check"></div>
-                      </label><!-- end ngRepeat: choice in choices track by choice.id --><label joy-radio-button="" class="joy-radio-button ng-scope ng-binding" ng-repeat="choice in choices track by choice.id" ng-show="choice.displayValue" aria-hidden="false">
-                          <input id="field--L3KeEWw66eAjY4amLHs" ng-model="answers[question.id]" ng-click="choose($event)" ng-value="choice.id" ng-required="!answers[question.id]" class="ng-pristine ng-untouched ng-not-empty ng-valid ng-valid-required" name="210" value="custom4" aria-checked="false" aria-required="false" aria-invalid="false" style="" type="radio">
-                          Ich würde mich über eine Mitfahrgelegenheit freuen :)
-                          <div class="check"></div>
-                      </label><!-- end ngRepeat: choice in choices track by choice.id --><label joy-radio-button="" class="joy-radio-button ng-scope ng-binding" ng-repeat="choice in choices track by choice.id" ng-show="choice.displayValue" aria-hidden="false">
-                          <input id="field--L3KeEWw66eAjY4amLHs" ng-model="answers[question.id]" ng-click="choose($event)" ng-value="choice.id" ng-required="!answers[question.id]" class="ng-untouched ng-not-empty ng-dirty ng-valid-parse ng-valid ng-valid-required" name="214" value="custom5" aria-checked="true" aria-required="false" aria-invalid="false" style="" checked="checked" type="radio">
-                          Ich darf nicht mit Fremden mitfahren und fahr daher lieber öffentlich :P
-                          <div class="check"></div>
-                      </label><!-- end ngRepeat: choice in choices track by choice.id -->
-                   </div>
-                  <!-- TODO figure out if radios really need error messages -->
-                  <!--<div class="col-12"-->
-                  <!--ng-messages="singleChoiceForm[option.answer].$error"-->
-                  <!--ng-show="singleChoiceForm[option.answer].$touched">-->
-                  <!--<div ng-message="required">This is required.</div>-->
-                  <!--</div>-->
-              </form><!-- end ngIf: question.type.isMultipleChoice() -->
-
-              <!-- ngIf: question.type.isPlaintext() -->
-          </div><!-- end ngIf: revealedQuestions[question.id] --><!-- end ngRepeat: question in rsvpQuestions track by question.id --><!-- ngIf: revealedQuestions[question.id] --><div class="col-list-item ng-scope saving-item" ng-repeat="question in rsvpQuestions track by question.id" id="funFact" ng-if="revealedQuestions[question.id]" ng-class="{'active-item': activeQuestion === question.id,
-                          'saving-item': true}" ng-click="setActiveQuestion(question.id)" role="button" tabindex="0" style="">
-
-              <!-- ngIf: question.type.isMultipleChoice() -->
-
-              <!-- ngIf: question.type.isPlaintext() --><form class="ng-pristine ng-valid ng-scope ng-submitted" name="textForm" ng-if="question.type.isPlaintext()" ng-submit="submitForm(textForm, question, $event)" style="">
-                  <div class="col-12 question-title ng-binding">Willst du dem Hochzeitspaar noch eine Nachricht hinterlassen?</div>
-                  <div class="col-12 d-flex text-container">
-                          <textarea id="field-funFact" class="f-1 ng-pristine ng-valid ng-empty ng-touched" name="textForm.text" ng-model="answers[question.id]" ng-keydown="onKeyDown(textForm, question, $event)" placeholder="Enter response here" rows="5" aria-multiline="true" aria-invalid="false" style=""></textarea>
-                  </div>
-                  <!-- ngIf: activeQuestion === question.id -->
-              </form><!-- end ngIf: question.type.isPlaintext() -->
-          </div><!-- end ngIf: revealedQuestions[question.id] --><!-- end ngRepeat: question in rsvpQuestions track by question.id -->
-          <!-- ngIf: revealedQuestions['saveAndContinue'] --><div id="saveAndContinue" ng-if="revealedQuestions['saveAndContinue']" ng-class="{'active-item': activeQuestion === 'saveAndContinue'}" class="col-list-item active-item ng-scope" style="">
-              <form class="ng-pristine ng-valid" name="actionForm">
-                  <div class="col-12 d-flex flex-column action-container align-items-center">
-                      <div style="padding-bottom: 20px;" class="ng-binding">We have dfg dfg's response saved.</div>
-                      <input class="joy-event-button joy-color bg-color ft-color" value="Continue" ng-click="returnToHouseholdScreen()" type="button">
-                  </div>
-              </form>
-          </div><!-- end ngIf: revealedQuestions['saveAndContinue'] -->
-          <!-- ngIf: members && !targetPerson && members[0].completedRsvp -->
-          <div class="col-list-bottom-spacer"></div>
-        </div>
-      </ui-view>
+                    <!-- ngIf: question.type.isPlaintext() -->
+                    <form class="ng-pristine ng-valid ng-scope ng-submitted" name="textForm" ng-if="question.type.isPlaintext()"
+                        ng-submit="submitForm(textForm, question, $event)" >
+                        <div class="col-12 question-title ng-binding">Willst du dem Hochzeitspaar noch eine Nachricht hinterlassen?</div>
+                        <div class="col-12 d-flex text-container">
+                            <textarea id="field-funFact" class="f-1 ng-pristine ng-valid ng-empty ng-touched" name="textForm.text" ng-model="answers[question.id]"
+                                ng-keydown="onKeyDown(textForm, question, $event)" placeholder="Gib deine Antwort hier ein" rows="5"
+                                aria-multiline="true" aria-invalid="false" ></textarea>
+                        </div>
+                        <!-- ngIf: activeQuestion === question.id -->
+                    </form>
+                    <!-- end ngIf: question.type.isPlaintext() -->
+                </div>
+                <!-- end ngIf: revealedQuestions[question.id] -->
+                <!-- end ngRepeat: question in rsvpQuestions track by question.id -->
+                <!-- ngIf: revealedQuestions['saveAndContinue'] -->
+                <div id="saveAndContinue" ng-if="revealedQuestions['saveAndContinue']" ng-class="{'active-item': activeQuestion === 'saveAndContinue'}"
+                    class="col-list-item active-item ng-scope" >
+                    <form class="ng-pristine ng-valid" name="actionForm">
+                        <div class="col-12 d-flex flex-column action-container align-items-center">
+                            <div style="padding-bottom: 20px;" class="ng-binding">We have dfg dfg's response saved.</div>
+                            <input class="joy-event-button joy-color bg-color ft-color" value="Continue" ng-click="returnToHouseholdScreen()" type="button">
+                        </div>
+                    </form>
+                </div>
+                <!-- end ngIf: revealedQuestions['saveAndContinue'] -->
+                <!-- ngIf: members && !targetPerson && members[0].completedRsvp -->
+                <div class="col-list-bottom-spacer"></div>
+            </div>
+        </ui-view>
     </div>
-  </body>
+</body>
+
 </html>
