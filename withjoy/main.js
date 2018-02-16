@@ -1,3 +1,42 @@
+function domReadyFn() {
+  // Set the date we're counting down to
+  var countDownDate = new Date("May 26, 2018 13:00:00").getTime();
+  var updateCountdown = function() {
+
+    // Get todays date and time
+    var now = new Date().getTime();
+
+    // Find the distance between now an the count down date
+    var distance = countDownDate - now;
+
+    // Time calculations for days, hours, minutes and seconds
+    var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+    var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+    // Display the result in the element with id="demo"
+    $(".counter > .time-unit:nth-child(1) > h1:first-child").text(days);
+    $(".counter > .time-unit:nth-child(1) > h1:nth-child(2)").text(days == 1 ? "Tag" : "Tage");
+    $(".counter > .time-unit:nth-child(2) > h1:first-child").text(hours);
+    $(".counter > .time-unit:nth-child(3) > h1:first-child").text(minutes);
+    $(".counter > .time-unit:nth-child(4) > h1:first-child").text(seconds);
+    
+    // $(".counter").removeClass("invisible");
+
+    // If the count down is finished, write some text
+    // if (distance < 0) {
+    //   clearInterval(x);
+    //   document.getElementById("demo").innerHTML = "EXPIRED";
+    // }
+  };
+  
+  // Update the count down every 1 second
+  updateCountdown();
+  setInterval(updateCountdown, 1000);
+  
+}
+
 function mainInit() {
   var lastId,
     topMenu = $("#wedding-details-panels"),
@@ -39,36 +78,15 @@ function mainInit() {
       }
     });
     
-    
-    // Set the date we're counting down to
-    var countDownDate = new Date("May 26, 2018 13:00:00").getTime();
+    window.requestAnimationFrame(function() {
+      var vidDefer = document.getElementsByTagName('iframe');
+      for(var i = 0; i < vidDefer.length; i++) {
+        if(vidDefer[i].getAttribute('data-src')) {
+          vidDefer[i].setAttribute('src',vidDefer[i].getAttribute('data-src'));
+        }
+      }
+      
+      $(".fadeInOnLoad").removeClass("invisible");
+    });
 
-    // Update the count down every 1 second
-    var x = setInterval(function() {
-
-      // Get todays date and time
-      var now = new Date().getTime();
-
-      // Find the distance between now an the count down date
-      var distance = countDownDate - now;
-
-      // Time calculations for days, hours, minutes and seconds
-      var days = Math.floor(distance / (1000 * 60 * 60 * 24));
-      var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-      var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-      var seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-      // Display the result in the element with id="demo"
-      $(".counter > .time-unit:nth-child(1) > h1:first-child").text(days);
-      $(".counter > .time-unit:nth-child(1) > h1:nth-child(2)").text(days == 1 ? "Tag" : "Tage");
-      $(".counter > .time-unit:nth-child(2) > h1:first-child").text(hours);
-      $(".counter > .time-unit:nth-child(3) > h1:first-child").text(minutes);
-      $(".counter > .time-unit:nth-child(4) > h1:first-child").text(seconds);
-
-      // If the count down is finished, write some text
-      // if (distance < 0) {
-      //   clearInterval(x);
-      //   document.getElementById("demo").innerHTML = "EXPIRED";
-      // }
-    }, 1000); 
 }

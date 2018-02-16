@@ -8,7 +8,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Parisienne:400">
     <link rel="stylesheet" href="joy.css">
-    <link type="text/css" rel="stylesheet" href="css_002.css">
     <link type="text/css" rel="stylesheet" href="md-styles.css">
     <link rel="stylesheet" type="text/css" class="ng-scope" href="base.css">
     <link rel="stylesheet" type="text/css" class="ng-scope" href="color.css">
@@ -26,6 +25,11 @@
     
     <script type="text/javascript" src="jquery-3.3.1.min.js"></script>
     <script type="text/javascript" src="main.js"></script>
+    <script>
+    $(function() {
+      domReadyFn();
+    });
+    </script>
 </head>
 <body onload="mainInit()">
     <div class="joy-stage ng-scope" ui-view="" style="">
@@ -43,16 +47,16 @@
                                                (assets.sampleWeddingPlaceholder4) || 'http://www.billboard.com/files/media/Ariana-Grande-Jimmy-Fallon-03-a-2016-billboard-1548.jpg' }}" -->
                         <div class="primary-photo-alpha-overlay"></div>
                     </div>
-                    <div class="joy-wedding-intro">
+                    <div class="joy-wedding-intro invisible fadeInOnLoad">
                         <div class="intro-contents">
                             <!-- -->
                             <div id="wedding-text" class="">
-                                <h1 class="left ng-binding ng-scope" style="">
+                                <h1 class="left wedding-names ng-binding ng-scope" style="">
                                     Niko &amp;
                                     <br> Carina
                                 </h1>
                                 <!-- ngIf: ownerName.split(' ')[0].length >= fianceeName.split(' ')[0].length -->
-                                <h3 class="right ng-isolate-scope" tabindex="0">
+                                <h3 class="right wedding-message ng-isolate-scope" tabindex="0">
                                     <p class="ng-scope">Wir freuen uns schon, diesen besonderen Tag mit euch zu verbringen! :-)</p>
                                 </h3>
                             </div>
@@ -64,7 +68,7 @@
                             
                             <countdown-timer class="countdown-timer-wrapper ng-isolate-scope invisible" target-time="1527332400000" id="wedding-countdown">
                                 <div class="countdown-timer vertical" ng-class="{vertical: !horizontal, horizontal: horizontal}">
-                                    <div class="counter ng-scope">
+                                    <div class="counter ng-scope invisible fadeInOnLoad">
                                         <div class="time-unit">
                                             <h1 class="time-left ng-binding">--</h1><h1 class="unit ng-scope">tage</h1>
                                         </div>
@@ -101,12 +105,12 @@
                             <!-- ng-style="{'background-image': weddingInfo && weddingInfo.primaryPhoto ? 'url(' + weddingInfo.primaryPhoto.getRenditionUrlSync('m') + ')' : 'url(' + assets.sampleWeddingPlaceholder4 + ')'}"> -->
                         </div>
                         <div class="joy-wedding-intro ng-scope" >
-                            <h2 ng-show="activeItem !== 'schedule'" id="wedding-names" class="left ng-binding ng-scope" aria-hidden="false" style="">
+                            <h2 ng-show="activeItem !== 'schedule'" class="left wedding-names ng-binding ng-scope" aria-hidden="false" style="">
                                 Niko &amp;
                                 <br> Carina
                             </h2>
                             <!-- ngIf: ownerName.split(' ')[0].length >= fianceeName.split(' ')[0].length -->
-                            <h3 id="wedding-message" class="right ng-isolate-scope" ng-click="$event.stopPropagation()" marked="eventMessage.substring(0,140)"
+                            <h3 class="right wedding-message ng-isolate-scope" ng-click="$event.stopPropagation()" marked="eventMessage.substring(0,140)"
                                 compile="true" role="button" tabindex="0">
                                 <p class="ng-scope">Wir freuen uns schon, diesen besonderen Tag mit euch zu verbringen! :-)</p>
                             </h3>
@@ -114,7 +118,7 @@
                     </div>
                     <div id="welcome" data-scrolltarget="wedding-text" class="joy-content-card joy-content-intro active" ng-style="eventTheme.primary"
                         style="background-color: rgb(222, 192, 254); border-color: rgb(58, 60, 62); color: rgb(58, 60, 62);">
-                        <div class="welcomeDetails">
+                        <div class="welcomeDetails invisible fadeInOnLoad">
                             <!-- monogram -->
                             <h1 ng-show="welcomeDetails.initials" style="text-align:center; font-size: 320%; letter-spacing: 5px; margin: 0;" class="ng-binding ng-hide"
                                 aria-hidden="true">
@@ -133,7 +137,7 @@
                             </h4>
                             <countdown-timer class="countdown-timer-wrapper ng-isolate-scope" target-time="1527332400000" horizontal="true">
                                 <div class="countdown-timer horizontal">
-                                    <div class="counter ng-scope">
+                                    <div class="counter ng-scope invisible fadeInOnLoad">
                                         <div class="time-unit">
                                             <h1 class="time-left ng-binding">--</h1><h1 class="unit ng-scope">tage</h1>
                                         </div>
@@ -151,7 +155,7 @@
                             </countdown-timer>
                         </div>
                         <rsvp-button>
-                            <div id="cta-update" class="button-container">
+                            <div id="cta-update" class="button-container invisible fadeInOnLoad">
                                 <cta-prompt eventid="eventid" class="ng-isolate-scope">
                                     <div class="cta-prompt-independent joykit-minilabel rsvp-button color-thief ng-binding"><!--Hallo Niko!--></div>
                                 </cta-prompt>
@@ -185,16 +189,17 @@
                                             <div class="event">
                                                 <div class="name ng-binding ng-scope" >Eintreffen</div>
                                                 <div class="location ng-scope" >
-                                                    <a href="" ng-click="getDirections(vevent.location, 'scheduleEvent')"
-                                                        class="ng-binding">Stiftskirche Klosterneuburg, 3400 Klosterneuburg</a>
+                                                    <a href="https://www.google.com/maps?daddr=Stiftskirche+Klosterneuburg,+Stiftsplatz,+Klosterneuburg,+Austria" target="_blank" class="ng-binding">Stiftskirche Klosterneuburg</a>
                                                 </div>
                                                 <div class="dress-code ng-binding ng-scope" >
                                                     <span>Dress Code:</span> Elegant
                                                 </div>
                                             </div>
                                         </div>
-                                        <iframe width="620" height="280" frameborder="0" style="border:0" 
-                                        src="https://www.google.com/maps/embed/v1/place?q=Stift%20Klosterneuburg&key=AIzaSyDZz1G-HBdRfAeCMgtTE_TytLWuFVozlcM" allowfullscreen></iframe>
+                                        <div class="intrinsic-container intrinsic-container-16x9">
+                                          <iframe frameborder="0" style="border:0" class="vidDefer"
+                                          data-src="https://www.google.com/maps/embed/v1/place?q=Stift%20Klosterneuburg&key=AIzaSyDZz1G-HBdRfAeCMgtTE_TytLWuFVozlcM" allowfullscreen></iframe>
+                                        </div>
                                     </div>
                                     <div class="slot ng-scope" >
                                         <div class="information">
@@ -208,8 +213,7 @@
                                             <div class="event">
                                                 <div class="name ng-binding ng-scope" >Trauung</div>
                                                 <div class="location ng-scope" >
-                                                    <a href="" ng-click="getDirections(vevent.location, 'scheduleEvent')"
-                                                        class="ng-binding">Stiftskirche Klosterneuburg, 3400 Klosterneuburg</a>
+                                                    <a href="https://www.google.com/maps?daddr=Stiftskirche+Klosterneuburg,+Stiftsplatz,+Klosterneuburg,+Austria" target="_blank" class="ng-binding">Stiftskirche Klosterneuburg</a>
                                                 </div>
                                             </div>
                                         </div>
@@ -226,8 +230,7 @@
                                             <div class="event">
                                                 <div class="name ng-binding ng-scope" >Auszug &amp; Gruppenfoto</div>
                                                 <div class="location ng-scope" >
-                                                    <a href="" ng-click="getDirections(vevent.location, 'scheduleEvent')"
-                                                        class="ng-binding">Stiftskirche Klosterneuburg</a>
+                                                    <a href="https://www.google.com/maps?daddr=Stiftskirche+Klosterneuburg,+Stiftsplatz,+Klosterneuburg,+Austria" target="_blank" class="ng-binding">Stiftskirche Klosterneuburg</a>
                                                 </div>
                                                 <div class="details ng-binding ng-scope" >
                                                     <p>Direkt nach der Trauung und unserem festlichen Auszug würden wir gerne
@@ -249,8 +252,7 @@
                                             <div class="event">
                                                 <div class="name ng-binding ng-scope" >Agape</div>
                                                 <div class="location ng-scope" >
-                                                    <a href="" ng-click="getDirections(vevent.location, 'scheduleEvent')"
-                                                        class="ng-binding">Café Escorial, Stiftsplatz, Klosterneuburg, Österreich</a>
+                                                    <a href="https://www.google.com/maps?daddr=Cafe+Escorial,+Stiftsplatz,+Klosterneuburg,+Austria" target="_blank" class="ng-binding">Café Escorial, Stiftsplatz, Klosterneuburg</a>
                                                 </div>
                                             </div>
                                         </div>
@@ -267,13 +269,14 @@
                                             <div class="event">
                                                 <div class="name ng-binding ng-scope" >Sektempfang</div>
                                                 <div class="location ng-scope" >
-                                                    <a href="" ng-click="getDirections(vevent.location, 'scheduleEvent')" class="ng-binding">Imperial Riding School Renaissance Vienna Hotel, Ungargasse, Vienna,
-                                                        Austria</a>
+                                                    <a href="https://www.google.com/maps?daddr=Imperial+Riding+School+Renaissance+Hotel,+Wien,+Austria" target="_blank" class="ng-binding">Imperial Riding School Renaissance Vienna Hotel, Ungargasse, Wien</a>
                                                 </div>
                                             </div>
                                         </div>
-                                        <iframe width="620" height="280" frameborder="0" style="border:0" 
-                                        src="https://www.google.com/maps/embed/v1/place?q=Imperial%20Riding%20School&key=AIzaSyDZz1G-HBdRfAeCMgtTE_TytLWuFVozlcM" allowfullscreen></iframe>
+                                        <div class="intrinsic-container intrinsic-container-16x9">
+                                          <iframe frameborder="0" style="border:0" class="vidDefer"
+                                          data-src="https://www.google.com/maps/embed/v1/place?q=Imperial%20Riding%20School&key=AIzaSyDZz1G-HBdRfAeCMgtTE_TytLWuFVozlcM" allowfullscreen></iframe>
+                                        </div>
                                     </div>
                                     <div class="slot ng-scope" >
                                         <div class="information">
@@ -287,8 +290,7 @@
                                             <div class="event">
                                                 <div class="name ng-binding ng-scope" >Abendessen</div>
                                                 <div class="location ng-scope" >
-                                                    <a href="" ng-click="getDirections(vevent.location, 'scheduleEvent')" class="ng-binding">Imperial Riding School Renaissance Vienna Hotel, Ungargasse, Vienna,
-                                                        Austria</a>
+                                                    <a href="https://www.google.com/maps?daddr=Imperial+Riding+School+Renaissance+Hotel,+Wien,+Austria" target="_blank" class="ng-binding">Imperial Riding School Renaissance Vienna Hotel, Ungargasse, Wien</a>
                                                 </div>
                                             </div>
                                         </div>
@@ -312,8 +314,7 @@
                                             <div class="event">
                                                 <div class="name ng-binding ng-scope" >Hochzeitsfrühstück</div>
                                                 <div class="location ng-scope" >
-                                                    <a href="" ng-click="getDirections(vevent.location, 'scheduleEvent')" class="ng-binding">Imperial Riding School Renaissance Vienna Hotel, Ungargasse, Vienna,
-                                                        Austria</a>
+                                                    <a href="https://www.google.com/maps?daddr=Imperial+Riding+School+Renaissance+Hotel,+Wien,+Austria" target="_blank" class="ng-binding">Imperial Riding School Renaissance Vienna Hotel, Ungargasse, Wien</a>
                                                 </div>
                                             </div>
                                         </div>
@@ -341,9 +342,9 @@
                                 <section class="ng-scope">
                                     <img src="svg/iconTravelHotel.svg" class="ng-scope">
                                     <div class="name ng-binding">Imperial Riding School Renaissance Vienna Hotel</div>
-                                    <div class="address colored ng-binding ng-scope" ng-click="getDirections(item.address, item.type)"
+                                    <a class="address colored ng-binding ng-scope" href="https://www.google.com/maps?daddr=Imperial+Riding+School+Renaissance+Hotel,+Wien,+Austria" target="_blank"
                                         style="white-space: pre-line;" title="Get directions to Imperial Riding School Renaissance Vienna Hotel"
-                                        role="button" tabindex="0">Ungargasse 60, 1030 Wien</div>
+                                        role="button" tabindex="0">Ungargasse 60, 1030 Wien</a>
                                     <div class="ng-binding ng-scope">
                                         <p>Kontaktperson: Doris Kustanci
                                             <br>Telefonnummer: +43 (0)1 711 75 8236
