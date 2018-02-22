@@ -59,7 +59,7 @@ function rsvpInit() {
       var notAttending = $("input[value=notAttending]")[0].checked;
       $(".attending-only").toggleClass("force-hide", notAttending);
       $("#thanks").html(notAttending ? 
-                            "Schade, wir hätten dich <b>sooo</b> gern dabei gehabt :'(<br>Wenn du es dir doch noch einrichten kannst, würden wir uns sehr freuen!" : 
+                            "Schade, wir hätten dich wirklich gern dabei gehabt :'(<br>Wenn du es dir doch noch einrichten kannst, würden wir uns sehr freuen!" : 
                             "<b>Schön, dass du kommen wirst - wir freuen uns schon auf dich :D</b>");
     };
     
