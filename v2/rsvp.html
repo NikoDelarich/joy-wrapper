@@ -88,6 +88,11 @@
                     </div>
                 </div>
                 
+                <div style="color: rgb(136, 136, 136); text-align: center;" id="loggedIn" class="ng-hide">
+                    Du bist als <span class="fullName" style="text-transform: capitalize;"></span> (<span class="email"></span>) eingeloggt.<br>
+                    Klick bitte <a href="javascript:firebase.auth().signOut().then(function(){location.href=location.href;});" title="Logout" style="text-decoration: underline;">hier</a> um dich abzumelden.
+                </div>
+                
                 <!-- Text -->
                 <div class="col-list-item form-item active-item" id="nameAndEmail">
                     <form name="nameAndEmail">

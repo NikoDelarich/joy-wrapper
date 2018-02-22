@@ -44,19 +44,37 @@ function rsvpInit() {
       }
     };
     
-    // firebase.auth().signOut(); //XXX
+    var loadData = function(cb) {
+      var user = firebase.auth().currentUser;
+      if(!user) return;
+      var email = user.email;
+      firebase.database().ref('/users/' + user.uid).once('value').then(function(snapshot) {
+        var data = snapshot.val();
+        if(!data) {
+          data = {
+            firstName: "?",
+            lastName: "",
+            email: email
+          };
+          setData({email: email});
+        } else {
+          setData(data);
+        }
+        
+        $(".fullName").text(data.firstName + " " + data.lastName);
+        $(".email").text(data.email);
+        $("#loggedIn").removeClass("ng-hide");
+        if(cb) cb();
+      });
+    };
     
-    firebase.auth().onAuthStateChanged(function(user) {
+    var unsubscribeFn = firebase.auth().onAuthStateChanged(function(user) {
       if (user) {
         console.log(user.email + " signed in!");
-        firebase.database().ref('/users/' + user.uid).once('value').then(function(snapshot) {
-          var data = snapshot.val();
-          setData(data);
-        });
-        
+        loadData();
+        unsubscribeFn();
       } else {
         console.log("Signed out!");
-        //TODO reload page?
       }
     }); 
 
@@ -64,7 +82,11 @@ function rsvpInit() {
       var current = $(this).closest('.form-item');
       var form = $(this).closest('form');
       var data = form.serializeArray().reduce(function(acc,cur) { acc[cur.name] = cur.value; return acc; }, {});
+      var next = current.next();
       
+      ev.preventDefault();
+      if(!next || next.hasClass("active-item")) next = null;
+            
       if(current[0].id == "nameAndEmail") {
         var email = $("#email").val();
         
@@ -80,6 +102,7 @@ function rsvpInit() {
                 }).then(function() {
                   var user = firebase.auth().currentUser;
                   firebase.database().ref('users/' + user.uid).set(data);
+                  if(next) setActiveStep(next);
                 });
             } else {
               console.log(error.code + " - " + error.message);
@@ -87,18 +110,18 @@ function rsvpInit() {
             }
           }).then(function() {
             var user = firebase.auth().currentUser;
-            firebase.database().ref('users/' + user.uid).update(data);
+            loadData(function() {
+              firebase.database().ref('users/' + user.uid).update(data);
+              if(next) setActiveStep(next);
+            });
           });
+          
+          return;
       } else {
         var user = firebase.auth().currentUser;
         firebase.database().ref('users/' + user.uid).update(data);
+        if(next) setActiveStep(next);
       }
-      
-      var next = current.next();
-      if(!next || next.hasClass("active-item")) return;
-      
-      ev.preventDefault();
-      setActiveStep(next);
     }
     
     function activateStep(ev) {
