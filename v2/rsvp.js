@@ -1,37 +1,18 @@
-function rsvpIinit() {
-    var rsvpSteps = [
-        {
-            id: "nameAndEmail",
-        },
-        {
-            id: "attending",
-        },
-        {
-            id: "team",
-        },
-        {
-            id: "song",
-        },
-        {
-            id: "honeymoon",
-        },
-        {
-            id: "advice",
-        },
-        {
-            id: "hotel",
-        },
-        {
-            id: "transport",
-        },
-        {
-            id: "message",
-        },
-    ];
+function rsvpInit() {
+    var rsvpSteps = $(".form-item");
 
-    var activateStep = function(idx) {
-        
+    window.activateStep = function(idx) {
+      var previous = $(".active-item");
+      var next = $("#" + rsvpSteps[idx].id);
+      
+      if(previous) {
+        previous.addClass("saving-item").removeClass("active-item");
+        previous.find('input, textarea, button, select').attr('disabled','disabled');
+      }
+    
+      next.removeClass("ng-hide").addClass("active-item");
+      next.find('input, textarea, button, select').removeAttr('disabled');
     };
 
-    activateStep(1);
+    activateStep(0);
 }

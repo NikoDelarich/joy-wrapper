@@ -73,7 +73,8 @@
                     </div>
                 </div>
                 
-                <div class="col-list-item active-item" id="nameAndEmail">
+                <!-- Text -->
+                <div class="col-list-item form-item active-item" id="nameAndEmail">
                     <form class="ng-pristine ng-valid-email ng-valid ng-valid-required ng-submitted" name="nameAndEmail">
                         <div class="col-12 question-title">Bitte verrate uns deinen Namen und deine E-Mail Adresse.</div>
                         <div class="col-12 d-flex text-container flex-column">
@@ -110,7 +111,7 @@
                 </div>
 
                 <!-- Multiple Choice -->
-                <div class="col-list-item ng-scope saving-item" id="rsvp" role="button" tabindex="0">
+                <div class="col-list-item ng-scope form-item ng-hide" id="rsvp" tabindex="0">
                     <form class="ng-scope ng-dirty ng-valid-parse ng-valid ng-valid-required" name="singleChoiceForm">
                         <div class="col-12 question-title ng-binding">Wirst du zu unserer Hochzeit kommen?</div>
                         <div class="choices-container">
@@ -126,7 +127,8 @@
                     </form>
                 </div>
 
-                <div class="col-list-item ng-scope saving-item" id="weddingTeam" role="button" tabindex="0">
+                <!-- Multiple Choice -->
+                <div class="col-list-item ng-scope form-item ng-hide" id="weddingTeam" tabindex="0">
                     <form class="ng-scope ng-dirty ng-valid-parse ng-valid ng-valid-required" name="singleChoiceForm">
                         <div class="col-12 question-title ng-binding">Bist du verwandt/befreundet mit ...?</div>
                         <div class="choices-container">
@@ -146,7 +148,8 @@
                     </form>
                 </div>
 
-                <div class="col-list-item ng-scope saving-item active-item" role="button" tabindex="0">
+                <!-- Text -->
+                <div class="col-list-item ng-scope form-item ng-hide" id="song" tabindex="0">
                     <form class="ng-pristine ng-valid ng-scope ng-submitted" name="textForm">
                         <div class="col-12 question-title ng-binding">Welches Lied bringt dich zum Tanzen?</div>
                         <div class="col-12 d-flex text-container">
@@ -154,30 +157,41 @@
                         </div>
                         <div class="submission-control d-flex justify-content-center ng-scope" ng-if="activeQuestion === question.id">
                             <input class="joy-event-button" value="save" ng-disabled="savingQuestions[question.id]" aria-disabled="false" type="submit">
-                            <input class="joy-event-button no-background" type="button" value="skip">
+                        </div>
+                        <div class="submission-control d-flex justify-content-center">
+                            <input class="joy-event-button" value="save" type="submit">
                         </div>
                     </form>
                 </div>
 
-                <div class="col-list-item ng-scope saving-item" role="button" tabindex="0">
+                <!-- Text -->
+                <div class="col-list-item ng-scope form-item ng-hide" id="honeymoon" tabindex="0">
                     <form class="ng-pristine ng-valid ng-scope ng-submitted" name="textForm">
                         <div class="col-12 question-title ng-binding">Wo sollten wir deiner Meinung nach die Flitterwochen verbringen?</div>
                         <div class="col-12 d-flex text-container">
                             <textarea class="f-1 ng-pristine ng-valid ng-empty ng-touched" placeholder="Gib deine Antwort hier ein" rows="5"></textarea>
                         </div>
+                        <div class="submission-control d-flex justify-content-center">
+                            <input class="joy-event-button" value="save" type="submit">
+                        </div>
                     </form>
                 </div>
 
-                <div class="col-list-item ng-scope saving-item" role="button" tabindex="0">
+                <!-- Text -->
+                <div class="col-list-item ng-scope form-item ng-hide" id="advice" tabindex="0">
                     <form class="ng-pristine ng-valid ng-scope ng-submitted" name="textForm">
                         <div class="col-12 question-title ng-binding">Nur spaßhalber: Was wäre dein Ratschlag für eine glückliche Ehe?</div>
                         <div class="col-12 d-flex text-container">
                             <textarea class="f-1 ng-pristine ng-valid ng-empty ng-touched" placeholder="Gib deine Antwort hier ein" rows="5"></textarea>
                         </div>
+                        <div class="submission-control d-flex justify-content-center">
+                            <input class="joy-event-button" value="save" type="submit">
+                        </div>
                     </form>
                 </div>
 
-                <div class="col-list-item ng-scope saving-item" role="button" tabindex="0">
+                <!-- Multiple Choice -->
+                <div class="col-list-item ng-scope form-item attending-only ng-hide" id="hotel" tabindex="0">
                     <form class="ng-scope ng-dirty ng-valid-parse ng-valid ng-valid-required" name="singleChoiceForm">
                         <div class="col-12 question-title ng-binding">Wirst du mit uns bis in die frühen Morgenstunden feiern und dich danach ins kuschelige Hotelbett
                             fallen lassen?</div>
@@ -202,7 +216,8 @@
                     </form>
                 </div>
 
-                <div class="col-list-item ng-scope saving-item" role="button" tabindex="0">
+                <!-- Multiple Choice -->
+                <div class="col-list-item ng-scope form-item attending-only ng-hide" id="transport" tabindex="0">
                     <form class="ng-scope ng-dirty ng-valid-parse ng-valid ng-valid-required" name="singleChoiceForm">
                         <div class="col-12 question-title ng-binding">Wie fährst du von der Kirche zum Hotel?</div>
                         <div class="choices-container">
@@ -230,16 +245,21 @@
                     </form>
                 </div>
 
-                <div class="col-list-item ng-scope saving-item" id="funFact" role="button" tabindex="0">
+                <!-- Text -->
+                <div class="col-list-item ng-scope form-item ng-hide" id="message" tabindex="0">
                     <form class="ng-pristine ng-valid ng-scope ng-submitted" name="textForm">
                         <div class="col-12 question-title ng-binding">Willst du uns noch eine Nachricht hinterlassen?</div>
                         <div class="col-12 d-flex text-container">
                             <textarea id="field-funFact" class="f-1 ng-pristine ng-valid ng-empty ng-touched" placeholder="Gib deine Antwort hier ein" rows="5"></textarea>
                         </div>
+                        <div class="submission-control d-flex justify-content-center">
+                            <input class="joy-event-button" value="save" type="submit">
+                        </div>
                     </form>
                 </div>
 
-                <div id="saveAndContinue" class="col-list-item active-item ng-scope">
+                <!-- Save -->
+                <div id="saveAndContinue" class="col-list-item form-item ng-hide ng-scope">
                     <form class="ng-pristine ng-valid" name="actionForm">
                         <div class="col-12 d-flex flex-column action-container align-items-center">
                             <div style="padding-bottom: 20px;" class="ng-binding">Vielen Dank - Wir haben deine Angaben gespeichert!
