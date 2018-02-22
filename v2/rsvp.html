@@ -45,8 +45,9 @@
             color: #232323 !important;
         }
     </style>
-
+    
     <script type="text/javascript" src="jquery-3.3.1.min.js"></script>
+    <script type="text/javascript" src="md5.min.js"></script>
     <script type="text/javascript" src="rsvp.js"></script>
     
     <script src="https://www.gstatic.com/firebasejs/4.10.0/firebase.js"></script>
@@ -94,17 +95,17 @@
                         <div class="col-12 d-flex text-container flex-column">
                             <div class="input-container">
                                 <label for="firstName">
-                                    <input id="firstName" placeholder="Vorname" required="" value="" type="firstname">
+                                    <input id="firstName" name="firstName" placeholder="Vorname" required="" value="" type="firstname">
                                 </label>
                             </div>
                             <div class="input-container">
                                 <label for="lastName">
-                                    <input id="lastName" placeholder="Nachname" required="" value="" type="lastname">
+                                    <input id="lastName" name="lastName" placeholder="Nachname" required="" value="" type="lastname">
                                 </label>
                             </div>
                             <div class="input-container">
                                 <label for="email">
-                                    <input id="email" placeholder="E-Mail" required="" value="" type="email">
+                                    <input id="email" name="email" placeholder="E-Mail" required="" value="" type="email">
                                 </label>
                                 <div class="col-12 ng-hide">
                                 </div>
@@ -125,13 +126,16 @@
                         <div class="col-12 question-title ng-binding">Wirst du zu unserer Hochzeit kommen?</div>
                         <div class="choices-container">
                             <label joy-radio-button="" class="joy-radio-button ng-binding">
-                                <input id="field-rsvp" value="attending" name="rsvp" type="radio"> Ja :D
+                                <input id="field-rsvp" name="rsvp" value="attending" type="radio"> Ja :D
                                 <div class="check"></div>
                             </label>
                             <label joy-radio-button="" class="joy-radio-button ng-binding">
                                 <input id="field-rsvp" name="rsvp" value="notAttending" type="radio"> Nein, leider nicht :-(
                                 <div class="check"></div>
                             </label>
+                        </div>
+                        <div class="submission-control d-flex justify-content-center">
+                            <input class="joy-event-button" value="Weiter" type="submit">
                         </div>
                     </form>
                 </div>
@@ -142,17 +146,20 @@
                         <div class="col-12 question-title ng-binding">Bist du verwandt/befreundet mit ...?</div>
                         <div class="choices-container">
                             <label joy-radio-button="" class="joy-radio-button ng-binding">
-                                <input id="field-weddingTeam" value="niko" type="radio"> Niko
+                                <input id="field-weddingTeam" name="team" value="niko" type="radio"> Niko
                                 <div class="check"></div>
                             </label>
                             <label joy-radio-button="" class="joy-radio-button ng-binding">
-                                <input id="field-weddingTeam" value="carina" type="radio"> Carina
+                                <input id="field-weddingTeam" name="team" value="carina" type="radio"> Carina
                                 <div class="check"></div>
                             </label>
                             <label joy-radio-button="" class="joy-radio-button ng-binding">
-                                <input id="field-weddingTeam" value="both" type="radio"> Niko &amp Carina
+                                <input id="field-weddingTeam" name="team" value="both" type="radio"> Niko &amp Carina
                                 <div class="check"></div>
                             </label>
+                        </div>
+                        <div class="submission-control d-flex justify-content-center">
+                            <input class="joy-event-button" value="Weiter" type="submit">
                         </div>
                     </form>
                 </div>
@@ -162,7 +169,7 @@
                     <form name="textForm">
                         <div class="col-12 question-title ng-binding">Welches Lied bringt dich zum Tanzen?</div>
                         <div class="col-12 d-flex text-container">
-                            <textarea class="f-1 ng-empty ng-touched" placeholder="Gib deine Antwort hier ein" rows="5"></textarea>
+                            <textarea name="song" class="f-1 ng-empty ng-touched" placeholder="Gib deine Antwort hier ein" rows="5"></textarea>
                         </div>
                         <div class="submission-control d-flex justify-content-center">
                             <input class="joy-event-button" value="Weiter" type="submit">
@@ -175,7 +182,7 @@
                     <form name="textForm">
                         <div class="col-12 question-title ng-binding">Wo sollten wir deiner Meinung nach die Flitterwochen verbringen?</div>
                         <div class="col-12 d-flex text-container">
-                            <textarea class="f-1 ng-empty ng-touched" placeholder="Gib deine Antwort hier ein" rows="5"></textarea>
+                            <textarea name="honeymoon" class="f-1 ng-empty ng-touched" placeholder="Gib deine Antwort hier ein" rows="5"></textarea>
                         </div>
                         <div class="submission-control d-flex justify-content-center">
                             <input class="joy-event-button" value="Weiter" type="submit">
@@ -188,7 +195,7 @@
                     <form name="textForm">
                         <div class="col-12 question-title ng-binding">Nur spaßhalber: Was wäre dein Ratschlag für eine glückliche Ehe?</div>
                         <div class="col-12 d-flex text-container">
-                            <textarea class="f-1 ng-empty ng-touched" placeholder="Gib deine Antwort hier ein" rows="5"></textarea>
+                            <textarea name="advice" class="f-1 ng-empty ng-touched" placeholder="Gib deine Antwort hier ein" rows="5"></textarea>
                         </div>
                         <div class="submission-control d-flex justify-content-center">
                             <input class="joy-event-button" value="Weiter" type="submit">
@@ -203,21 +210,24 @@
                             fallen lassen?</div>
                         <div class="choices-container">
                             <label joy-radio-button="" class="joy-radio-button ng-binding">
-                                <input value="yes" type="radio"> Ja
+                                <input value="yes" name="hotel" type="radio"> Ja
                                 <div class="check"></div>
                             </label>
                             <label joy-radio-button="" class="joy-radio-button ng-binding">
-                                <input value="yes" type="radio"> Ja, Ja und nochmals JA!
+                                <input value="yes-oh-yes" name="hotel" type="radio"> Ja, Ja und nochmals JA!
                                 <div class="check"></div>
                             </label>
                             <label joy-radio-button="" class="joy-radio-button ng-binding">
-                                <input value="no" type="radio"> Ich brauche kein Bett - ich feiere durch, bis das Frühstück serviert wird :D
+                                <input value="no-party-till-dawn" name="hotel" type="radio"> Ich brauche kein Bett - ich feiere durch, bis das Frühstück serviert wird :D
                                 <div class="check"></div>
                             </label>
                             <label joy-radio-button="" class="joy-radio-button ng-binding">
-                                <input value="no" type="radio"> Nein, ich schlafe lieber daheim
+                                <input value="no-sleep-home" name="hotel" type="radio"> Nein, ich schlafe lieber daheim
                                 <div class="check"></div>
                             </label>
+                        </div>
+                        <div class="submission-control d-flex justify-content-center">
+                            <input class="joy-event-button" value="Weiter" type="submit">
                         </div>
                     </form>
                 </div>
@@ -228,25 +238,28 @@
                         <div class="col-12 question-title ng-binding">Wie fährst du von der Kirche zum Hotel?</div>
                         <div class="choices-container">
                             <label joy-radio-button="" class="joy-radio-button ng-binding">
-                                <input value="share" type="radio"> Ich fahre mit dem Auto und könnte jemanden mitnehmen :)
+                                <input value="would-share" name="transport" type="radio"> Ich fahre mit dem Auto und könnte jemanden mitnehmen :)
                                 <div class="check"></div>
                             </label>
                             <label joy-radio-button="" class="joy-radio-button ng-binding">
-                                <input value="full" type="radio"> Ich fahre mit dem Auto, habe aber leider keinen Platz mehr frei
+                                <input value="car-full" name="transport" type="radio"> Ich fahre mit dem Auto, habe aber leider keinen Platz mehr frei
                                 <div class="check"></div>
                             </label>
                             <label joy-radio-button="" class="joy-radio-button ng-binding">
-                                <input value="hitched" type="radio"> Ich habe bereits eine Mitfahrgelegenheit
+                                <input value="has-ride" name="transport" type="radio"> Ich habe bereits eine Mitfahrgelegenheit
                                 <div class="check"></div>
                             </label>
                             <label joy-radio-button="" class="joy-radio-button ng-binding">
-                                <input value="hitch" type="radio"> Ich würde mich über eine Mitfahrgelegenheit freuen :)
+                                <input value="needs-ride" name="transport" type="radio"> Ich würde mich über eine Mitfahrgelegenheit freuen :)
                                 <div class="check"></div>
                             </label>
                             <label joy-radio-button="" class="joy-radio-button ng-binding">
-                                <input value="public" type="radio"> Ich darf nicht mit Fremden mitfahren und fahr daher lieber öffentlich :P
+                                <input value="public-transport" name="transport" type="radio"> Ich darf nicht mit Fremden mitfahren und fahr daher lieber öffentlich :P
                                 <div class="check"></div>
                             </label>
+                        </div>
+                        <div class="submission-control d-flex justify-content-center">
+                            <input class="joy-event-button" value="Weiter" type="submit">
                         </div>
                     </form>
                 </div>
@@ -256,7 +269,7 @@
                     <form name="textForm">
                         <div class="col-12 question-title ng-binding">Willst du uns noch eine Nachricht hinterlassen?</div>
                         <div class="col-12 d-flex text-container">
-                            <textarea id="field-funFact" class="f-1 ng-empty ng-touched" placeholder="Gib deine Antwort hier ein" rows="5"></textarea>
+                            <textarea name="message" id="field-funFact" class="f-1 ng-empty ng-touched" placeholder="Gib deine Antwort hier ein" rows="5"></textarea>
                         </div>
                         <div class="submission-control d-flex justify-content-center">
                             <input class="joy-event-button" value="Weiter" type="submit">
