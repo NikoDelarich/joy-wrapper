@@ -1,18 +1,26 @@
+function logout() {
+  firebase.auth().signOut().then(function() {
+    location.href = location.href;
+  });
+}
+
 function rsvpInit() {
+    var lastData = null;
+  
     window.setActiveStep = function(next) {
       var previous = $(".active-item");
       
       if(previous) {
         previous.addClass("saving-item").removeClass("active-item");
-        // previous.find('input, textarea, button, select').attr('disabled','disabled');
       }
     
       next.removeClass("ng-hide").addClass("active-item");
       next[0].scrollIntoView({behavior: "smooth", block: "center"})
-      // next.find('input, textarea, button, select').removeAttr('disabled');
     };
     
     var setData = function(data) {
+      lastData = data;
+      
       var textFields = $(
         ".form-item textarea, " +
         ".form-item input[type=text], " +
@@ -42,6 +50,17 @@ function rsvpInit() {
       if($(".form-item.ng-hide:not(#saveAndContinue)").length == 0) {
         $("#saveAndContinue").removeClass("ng-hide").addClass("saving-item");
       }
+      
+      updateQuestions();
+    };
+    
+    function updateQuestions() {
+      if(!lastData) return;
+      var notAttending = $("input[value=notAttending]")[0].checked;
+      $(".attending-only").toggleClass("force-hide", notAttending);
+      $("#thanks").html(notAttending ? 
+                            "Schade, wir hätten dich <b>sooo</b> gern dabei gehabt :'(<br>Wenn du es dir doch noch einrichten kannst, würden wir uns sehr freuen!" : 
+                            "<b>Schön, dass du kommen wirst - wir freuen uns schon auf dich :D</b>");
     };
     
     var loadData = function(cb) {
@@ -81,11 +100,18 @@ function rsvpInit() {
     function onSubmit(ev) {
       var current = $(this).closest('.form-item');
       var form = $(this).closest('form');
-      var data = form.serializeArray().reduce(function(acc,cur) { acc[cur.name] = cur.value; return acc; }, {});
-      var next = current.next();
+      var notAttending = $("input[value=notAttending]")[0].checked;
+      var data = form.serializeArray().reduce(function(acc,cur) {
+        acc[cur.name] = cur.value; return acc;
+      }, {});
+      var next = current;
       
       ev.preventDefault();
-      if(!next || next.hasClass("active-item")) next = null;
+      
+      do {
+         next = next.next();
+         if(!next || !notAttending || !next.hasClass("attending-only")) break;
+      } while(next);
             
       if(current[0].id == "nameAndEmail") {
         var email = $("#email").val();
@@ -131,7 +157,13 @@ function rsvpInit() {
       ev.preventDefault();
       setActiveStep(item);
     }
+    
+    function radioClicked(ev) {
+      updateQuestions();
+      $.proxy(onSubmit, this)(ev);
+    }
 
     $(".form-item form").submit(onSubmit);
     $(".form-item").click(activateStep);
+    $(".form-item input[type=radio]").change(radioClicked);
 }

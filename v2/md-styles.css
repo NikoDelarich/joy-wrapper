@@ -12516,6 +12516,10 @@ body.md-default-theme.md-hue-3, body.md-hue-3,html.md-default-theme.md-hue-3, ht
   display: none !important;
 }
 
+.force-hide {
+  display: none !important;
+}
+
 ng\:form {
   display: block;
 }
@@ -12653,6 +12657,7 @@ body.md-dialog-is-showing {
   position: relative;
   height: 0;
   overflow: hidden;
+	margin-bottom: 2em;
 }
  
 /* 16x9 Aspect Ratio */

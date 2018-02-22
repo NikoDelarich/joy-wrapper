@@ -35,6 +35,23 @@ function domReadyFn() {
   updateCountdown();
   setInterval(updateCountdown, 1000);
   
+  firebase.auth().onAuthStateChanged(function(user) {
+    var cta = $("cta-prompt");
+    if (user) {
+      firebase.database().ref('/users/' + user.uid).once('value').then(function(snapshot) {
+        var data = snapshot.val();
+        if(data) {
+          cta.find("div").text("Hallo " + data.firstName + "!");
+          cta.removeClass("invisible");
+          
+          $(".rsvp-button.btn > span").text(data.hasOwnProperty("rsvp") ? "Antwort ändern" : "Antworten");
+        }
+      });
+    } else {
+      cta.addClass("invisible");
+      $(".rsvp-button.btn > span").text("Antworten");
+    }
+  }); 
 }
 
 function mainInit() {
@@ -102,9 +119,9 @@ function mainInit() {
 }
 
 function goToRSVP() {
-  if(RegExp(/iP(ad|hone|od).+Version\/[\d\.]+.*Safari/i).test(navigator.userAgent)) {
-    location.href = "https://withjoy.com/niko-und-carina/rsvp";
-  } else {
+  // if(RegExp(/iP(ad|hone|od).+Version\/[\d\.]+.*Safari/i).test(navigator.userAgent)) {
+  //   location.href = "https://withjoy.com/niko-und-carina/rsvp";
+  // } else {
     location.href = "https://niko-carina.wedding/rsvp.html";
-  }
+  // }
 }
