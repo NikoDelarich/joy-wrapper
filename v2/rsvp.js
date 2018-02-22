@@ -1,9 +1,8 @@
 function rsvpInit() {
-    var rsvpSteps = $(".form-item");
 
-    window.activateStep = function(idx) {
+    window.activateStep = function(id) {
       var previous = $(".active-item");
-      var next = $("#" + rsvpSteps[idx].id);
+      var next = $("#" + id);
       
       if(previous) {
         previous.addClass("saving-item").removeClass("active-item");
@@ -11,8 +10,15 @@ function rsvpInit() {
       }
     
       next.removeClass("ng-hide").addClass("active-item");
+      next[0].scrollIntoView({behavior: "smooth", block: "center"})
       next.find('input, textarea, button, select').removeAttr('disabled');
     };
 
-    activateStep(0);
+    function nextStep(ev) {
+      ev.preventDefault();
+      var next = $(this).closest('.form-item').next();
+      if(next) activateStep(next[0].id);
+    };
+
+    $(".form-item form").submit(nextStep);
 }

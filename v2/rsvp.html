@@ -16,7 +16,7 @@
 
     <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Parisienne:400">
 
-    <style class="ng-binding ng-scope">
+    <style class="ng-binding">
         .joy-color.bg-color {
             background-color: rgba(222, 192, 254, 1);
         }
@@ -34,7 +34,7 @@
         }
     </style>
 
-    <style class="ng-binding ng-scope">
+    <style class="ng-binding">
         .hero h1 {
             font-family: Parisienne;
             font-weight: 400;
@@ -48,21 +48,35 @@
 
     <script type="text/javascript" src="jquery-3.3.1.min.js"></script>
     <script type="text/javascript" src="rsvp.js"></script>
+    
+    <script src="https://www.gstatic.com/firebasejs/4.10.0/firebase.js"></script>
+    <script>
+      // Initialize Firebase
+      var config = {
+        apiKey: "AIzaSyAGpkTicRevjeG-LbpFdSaoJBBhjfOCrao",
+        authDomain: "wedding-6f4cc.firebaseapp.com",
+        databaseURL: "https://wedding-6f4cc.firebaseio.com",
+        projectId: "wedding-6f4cc",
+        storageBucket: "wedding-6f4cc.appspot.com",
+        messagingSenderId: "514215369773"
+      };
+      firebase.initializeApp(config);
+    </script>
 </head>
 <body onload="rsvpInit()">
-    <div class="joy-stage ng-scope" ui-view="">
-        <ui-view class="ng-scope">
-            <div class="rsvp-backdrop ng-scope" style="position:fixed;top:0;bottom:0;left:0;right:0;"></div>
-            <div class="rsvp-header ng-scope">
-                <a class="rsvp-tl rsvp-t ng-scope" href="https://niko-carina.wedding/">Zurück</a>
-                <div class="rsvp-tr rsvp-t ng-binding ng-scope ng-hide  ">dfg dfg (1 of 1)</div>
+    <div class="joy-stage">
+        <ui-view>
+            <div class="rsvp-backdrop" style="position:fixed;top:0;bottom:0;left:0;right:0;"></div>
+            <div class="rsvp-header">
+                <a class="rsvp-tl rsvp-t" href="https://niko-carina.wedding/">Zurück</a>
+                <div class="rsvp-tr rsvp-t ng-binding ng-hide  ">NAME</div>
             </div>
 
-            <div class="event-rsvp d-flex flex-column align-items-center col-list ng-scope" style="position:relative">
+            <div class="event-rsvp d-flex flex-column align-items-center col-list" style="position:relative">
                 <div class="col-list-item col-list-item-header">
                     <div class="joy-event-welcome-banner d-flex flex-column align-items-center">
                         <div class="hero center">
-                            <h1 id="wedding-names" class="left ng-binding ng-scope">
+                            <h1 id="wedding-names" class="left ng-binding">
                                 Niko &amp;
                                 <br> Carina
                             </h1>
@@ -75,29 +89,24 @@
                 
                 <!-- Text -->
                 <div class="col-list-item form-item active-item" id="nameAndEmail">
-                    <form class="ng-pristine ng-valid-email ng-valid ng-valid-required ng-submitted" name="nameAndEmail">
+                    <form name="nameAndEmail">
                         <div class="col-12 question-title">Bitte verrate uns deinen Namen und deine E-Mail Adresse.</div>
                         <div class="col-12 d-flex text-container flex-column">
                             <div class="input-container">
                                 <label for="firstName">
-                                    <input id="firstName" placeholder="Vorname" name="first_name" required="" class="ng-pristine ng-untouched ng-not-empty ng-valid ng-valid-required" value="" type="firstname">
+                                    <input id="firstName" placeholder="Vorname" required="" value="" type="firstname">
                                 </label>
-                                <div class="col-12 ng-hide ng-inactive">
-                                    <!-- ngMessage: required -->
-                                </div>
                             </div>
                             <div class="input-container">
                                 <label for="lastName">
-                                    <input id="lastName" placeholder="Nachname" name="last_name" class="ng-pristine ng-untouched ng-valid ng-not-empty" value="" type="lastname">
+                                    <input id="lastName" placeholder="Nachname" required="" value="" type="lastname">
                                 </label>
-                                <div class="col-12 ng-inactive ng-hide">
-                                    <!--<div >This is required.</div>--></div>
                             </div>
                             <div class="input-container">
                                 <label for="email">
-                                    <input id="email" placeholder="Email" name="email" class="ng-pristine ng-untouched ng-valid ng-valid-email ng-not-empty" value="" type="email">
+                                    <input id="email" placeholder="E-Mail" required="" value="" type="email">
                                 </label>
-                                <div class="col-12 ng-inactive ng-hide">
+                                <div class="col-12 ng-hide">
                                 </div>
                             </div>
                             <div class="saving ng-hide">
@@ -105,43 +114,43 @@
                             </div>
                         </div>
                         <div class="submission-control d-flex justify-content-center">
-                            <input class="joy-event-button" value="save" type="submit">
+                            <input class="joy-event-button" value="Weiter" type="submit">
                         </div>
                     </form>
                 </div>
 
-                <!-- Multiple Choice -->
-                <div class="col-list-item ng-scope form-item ng-hide" id="rsvp" tabindex="0">
-                    <form class="ng-scope ng-dirty ng-valid-parse ng-valid ng-valid-required" name="singleChoiceForm">
+                <!-- Choice -->
+                <div class="col-list-item form-item ng-hide" id="rsvp" tabindex="0">
+                    <form name="singleChoiceForm">
                         <div class="col-12 question-title ng-binding">Wirst du zu unserer Hochzeit kommen?</div>
                         <div class="choices-container">
-                            <label joy-radio-button="" class="joy-radio-button ng-scope ng-binding">
-                                <input id="field-rsvp" class="ng-pristine ng-untouched ng-not-empty ng-valid ng-valid-required" value="attending" type="radio"> Ja :D
+                            <label joy-radio-button="" class="joy-radio-button ng-binding">
+                                <input id="field-rsvp" value="attending" name="rsvp" type="radio"> Ja :D
                                 <div class="check"></div>
                             </label>
-                            <label joy-radio-button="" class="joy-radio-button ng-scope ng-binding">
-                                <input id="field-rsvp" class="ng-untouched ng-not-empty ng-dirty ng-valid-parse ng-valid ng-valid-required" value="notAttending" type="radio"> Nein, leider nicht :-(
+                            <label joy-radio-button="" class="joy-radio-button ng-binding">
+                                <input id="field-rsvp" name="rsvp" value="notAttending" type="radio"> Nein, leider nicht :-(
                                 <div class="check"></div>
                             </label>
                         </div>
                     </form>
                 </div>
 
-                <!-- Multiple Choice -->
-                <div class="col-list-item ng-scope form-item ng-hide" id="weddingTeam" tabindex="0">
-                    <form class="ng-scope ng-dirty ng-valid-parse ng-valid ng-valid-required" name="singleChoiceForm">
+                <!-- Choice -->
+                <div class="col-list-item form-item ng-hide" id="weddingTeam" tabindex="0">
+                    <form name="singleChoiceForm">
                         <div class="col-12 question-title ng-binding">Bist du verwandt/befreundet mit ...?</div>
                         <div class="choices-container">
-                            <label joy-radio-button="" class="joy-radio-button ng-scope ng-binding">
-                                <input id="field-weddingTeam" class="ng-pristine ng-untouched ng-not-empty ng-valid ng-valid-required" value="niko" type="radio"> Niko
+                            <label joy-radio-button="" class="joy-radio-button ng-binding">
+                                <input id="field-weddingTeam" value="niko" type="radio"> Niko
                                 <div class="check"></div>
                             </label>
-                            <label joy-radio-button="" class="joy-radio-button ng-scope ng-binding">
-                                <input id="field-weddingTeam" class="ng-pristine ng-untouched ng-not-empty ng-valid ng-valid-required" value="carina" type="radio"> Carina
+                            <label joy-radio-button="" class="joy-radio-button ng-binding">
+                                <input id="field-weddingTeam" value="carina" type="radio"> Carina
                                 <div class="check"></div>
                             </label>
-                            <label joy-radio-button="" class="joy-radio-button ng-scope ng-binding">
-                                <input id="field-weddingTeam" class="ng-untouched ng-not-empty ng-dirty ng-valid-parse ng-valid ng-valid-required" value="both" type="radio"> Niko &amp Carina
+                            <label joy-radio-button="" class="joy-radio-button ng-binding">
+                                <input id="field-weddingTeam" value="both" type="radio"> Niko &amp Carina
                                 <div class="check"></div>
                             </label>
                         </div>
@@ -149,96 +158,93 @@
                 </div>
 
                 <!-- Text -->
-                <div class="col-list-item ng-scope form-item ng-hide" id="song" tabindex="0">
-                    <form class="ng-pristine ng-valid ng-scope ng-submitted" name="textForm">
+                <div class="col-list-item form-item ng-hide" id="song" tabindex="0">
+                    <form name="textForm">
                         <div class="col-12 question-title ng-binding">Welches Lied bringt dich zum Tanzen?</div>
                         <div class="col-12 d-flex text-container">
-                            <textarea class="f-1 ng-pristine ng-valid ng-empty ng-touched" placeholder="Gib deine Antwort hier ein" rows="5"></textarea>
-                        </div>
-                        <div class="submission-control d-flex justify-content-center ng-scope" ng-if="activeQuestion === question.id">
-                            <input class="joy-event-button" value="save" ng-disabled="savingQuestions[question.id]" aria-disabled="false" type="submit">
+                            <textarea class="f-1 ng-empty ng-touched" placeholder="Gib deine Antwort hier ein" rows="5"></textarea>
                         </div>
                         <div class="submission-control d-flex justify-content-center">
-                            <input class="joy-event-button" value="save" type="submit">
+                            <input class="joy-event-button" value="Weiter" type="submit">
                         </div>
                     </form>
                 </div>
 
                 <!-- Text -->
-                <div class="col-list-item ng-scope form-item ng-hide" id="honeymoon" tabindex="0">
-                    <form class="ng-pristine ng-valid ng-scope ng-submitted" name="textForm">
+                <div class="col-list-item form-item ng-hide" id="honeymoon" tabindex="0">
+                    <form name="textForm">
                         <div class="col-12 question-title ng-binding">Wo sollten wir deiner Meinung nach die Flitterwochen verbringen?</div>
                         <div class="col-12 d-flex text-container">
-                            <textarea class="f-1 ng-pristine ng-valid ng-empty ng-touched" placeholder="Gib deine Antwort hier ein" rows="5"></textarea>
+                            <textarea class="f-1 ng-empty ng-touched" placeholder="Gib deine Antwort hier ein" rows="5"></textarea>
                         </div>
                         <div class="submission-control d-flex justify-content-center">
-                            <input class="joy-event-button" value="save" type="submit">
+                            <input class="joy-event-button" value="Weiter" type="submit">
                         </div>
                     </form>
                 </div>
 
                 <!-- Text -->
-                <div class="col-list-item ng-scope form-item ng-hide" id="advice" tabindex="0">
-                    <form class="ng-pristine ng-valid ng-scope ng-submitted" name="textForm">
+                <div class="col-list-item form-item ng-hide" id="advice" tabindex="0">
+                    <form name="textForm">
                         <div class="col-12 question-title ng-binding">Nur spaßhalber: Was wäre dein Ratschlag für eine glückliche Ehe?</div>
                         <div class="col-12 d-flex text-container">
-                            <textarea class="f-1 ng-pristine ng-valid ng-empty ng-touched" placeholder="Gib deine Antwort hier ein" rows="5"></textarea>
+                            <textarea class="f-1 ng-empty ng-touched" placeholder="Gib deine Antwort hier ein" rows="5"></textarea>
                         </div>
                         <div class="submission-control d-flex justify-content-center">
-                            <input class="joy-event-button" value="save" type="submit">
+                            <input class="joy-event-button" value="Weiter" type="submit">
                         </div>
                     </form>
                 </div>
 
-                <!-- Multiple Choice -->
-                <div class="col-list-item ng-scope form-item attending-only ng-hide" id="hotel" tabindex="0">
-                    <form class="ng-scope ng-dirty ng-valid-parse ng-valid ng-valid-required" name="singleChoiceForm">
+                <!-- Choice -->
+                <div class="col-list-item form-item attending-only ng-hide" id="hotel" tabindex="0">
+                    <form name="singleChoiceForm">
                         <div class="col-12 question-title ng-binding">Wirst du mit uns bis in die frühen Morgenstunden feiern und dich danach ins kuschelige Hotelbett
                             fallen lassen?</div>
                         <div class="choices-container">
-                            <label joy-radio-button="" class="joy-radio-button ng-scope ng-binding">
-                                <input class="ng-pristine ng-untouched ng-not-empty ng-valid ng-valid-required" value="yes" type="radio"> Ja
+                            <label joy-radio-button="" class="joy-radio-button ng-binding">
+                                <input value="yes" type="radio"> Ja
                                 <div class="check"></div>
                             </label>
-                            <label joy-radio-button="" class="joy-radio-button ng-scope ng-binding">
-                                <input class="ng-pristine ng-untouched ng-not-empty ng-valid ng-valid-required" value="yes" type="radio"> Ja, Ja und nochmals JA!
+                            <label joy-radio-button="" class="joy-radio-button ng-binding">
+                                <input value="yes" type="radio"> Ja, Ja und nochmals JA!
                                 <div class="check"></div>
                             </label>
-                            <label joy-radio-button="" class="joy-radio-button ng-scope ng-binding">
-                                <input class="ng-pristine ng-untouched ng-not-empty ng-valid ng-valid-required" value="no" type="radio"> Ich brauche kein Bett - ich feiere durch, bis das Frühstück serviert wird :D
+                            <label joy-radio-button="" class="joy-radio-button ng-binding">
+                                <input value="no" type="radio"> Ich brauche kein Bett - ich feiere durch, bis das Frühstück serviert wird :D
                                 <div class="check"></div>
                             </label>
-                            <label joy-radio-button="" class="joy-radio-button ng-scope ng-binding">
-                                <input class="ng-untouched ng-not-empty ng-dirty ng-valid-parse ng-valid ng-valid-required" value="no" type="radio"> Nein, ich schlafe lieber daheim
+                            <label joy-radio-button="" class="joy-radio-button ng-binding">
+                                <input value="no" type="radio"> Nein, ich schlafe lieber daheim
                                 <div class="check"></div>
                             </label>
                         </div>
                     </form>
                 </div>
 
-                <!-- Multiple Choice -->
-                <div class="col-list-item ng-scope form-item attending-only ng-hide" id="transport" tabindex="0">
-                    <form class="ng-scope ng-dirty ng-valid-parse ng-valid ng-valid-required" name="singleChoiceForm">
+                <!-- Choice -->
+                <div class="col-list-item form-item attending-only ng-hide" id="transport" tabindex="0">
+                    <form name="singleChoiceForm">
                         <div class="col-12 question-title ng-binding">Wie fährst du von der Kirche zum Hotel?</div>
                         <div class="choices-container">
-                            <label joy-radio-button="" class="joy-radio-button ng-scope ng-binding">
-                                <input class="ng-pristine ng-untouched ng-not-empty ng-valid ng-valid-required" value="share" type="radio"> Ich fahre mit dem Auto und könnte jemanden mitnehmen :)
+                            <label joy-radio-button="" class="joy-radio-button ng-binding">
+                                <input value="share" type="radio"> Ich fahre mit dem Auto und könnte jemanden mitnehmen :)
                                 <div class="check"></div>
                             </label>
-                            <label joy-radio-button="" class="joy-radio-button ng-scope ng-binding">
-                                <input class="ng-pristine ng-untouched ng-not-empty ng-valid ng-valid-required" value="full" type="radio"> Ich fahre mit dem Auto, habe aber leider keinen Platz mehr frei
+                            <label joy-radio-button="" class="joy-radio-button ng-binding">
+                                <input value="full" type="radio"> Ich fahre mit dem Auto, habe aber leider keinen Platz mehr frei
                                 <div class="check"></div>
                             </label>
-                            <label joy-radio-button="" class="joy-radio-button ng-scope ng-binding">
-                                <input class="ng-pristine ng-untouched ng-not-empty ng-valid ng-valid-required" value="hitched" type="radio"> Ich habe bereits eine Mitfahrgelegenheit
+                            <label joy-radio-button="" class="joy-radio-button ng-binding">
+                                <input value="hitched" type="radio"> Ich habe bereits eine Mitfahrgelegenheit
                                 <div class="check"></div>
                             </label>
-                            <label joy-radio-button="" class="joy-radio-button ng-scope ng-binding">
-                                <input class="ng-pristine ng-untouched ng-not-empty ng-valid ng-valid-required" value="hitch" type="radio"> Ich würde mich über eine Mitfahrgelegenheit freuen :)
+                            <label joy-radio-button="" class="joy-radio-button ng-binding">
+                                <input value="hitch" type="radio"> Ich würde mich über eine Mitfahrgelegenheit freuen :)
                                 <div class="check"></div>
                             </label>
-                            <label joy-radio-button="" class="joy-radio-button ng-scope ng-binding">
-                                <input class="ng-untouched ng-not-empty ng-dirty ng-valid-parse ng-valid ng-valid-required" value="public" type="radio"> Ich darf nicht mit Fremden mitfahren und fahr daher lieber öffentlich :P
+                            <label joy-radio-button="" class="joy-radio-button ng-binding">
+                                <input value="public" type="radio"> Ich darf nicht mit Fremden mitfahren und fahr daher lieber öffentlich :P
                                 <div class="check"></div>
                             </label>
                         </div>
@@ -246,21 +252,21 @@
                 </div>
 
                 <!-- Text -->
-                <div class="col-list-item ng-scope form-item ng-hide" id="message" tabindex="0">
-                    <form class="ng-pristine ng-valid ng-scope ng-submitted" name="textForm">
+                <div class="col-list-item form-item ng-hide" id="message" tabindex="0">
+                    <form name="textForm">
                         <div class="col-12 question-title ng-binding">Willst du uns noch eine Nachricht hinterlassen?</div>
                         <div class="col-12 d-flex text-container">
-                            <textarea id="field-funFact" class="f-1 ng-pristine ng-valid ng-empty ng-touched" placeholder="Gib deine Antwort hier ein" rows="5"></textarea>
+                            <textarea id="field-funFact" class="f-1 ng-empty ng-touched" placeholder="Gib deine Antwort hier ein" rows="5"></textarea>
                         </div>
                         <div class="submission-control d-flex justify-content-center">
-                            <input class="joy-event-button" value="save" type="submit">
+                            <input class="joy-event-button" value="Weiter" type="submit">
                         </div>
                     </form>
                 </div>
 
                 <!-- Save -->
-                <div id="saveAndContinue" class="col-list-item form-item ng-hide ng-scope">
-                    <form class="ng-pristine ng-valid" name="actionForm">
+                <div id="saveAndContinue" class="col-list-item form-item ng-hide">
+                    <form name="actionForm">
                         <div class="col-12 d-flex flex-column action-container align-items-center">
                             <div style="padding-bottom: 20px;" class="ng-binding">Vielen Dank - Wir haben deine Angaben gespeichert!
                                 <!-- TODO: Add sad/happy response depending on RSVP outcome? -->
