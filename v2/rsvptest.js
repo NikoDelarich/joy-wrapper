@@ -123,6 +123,8 @@ function rsvpInit() {
       for(var o in formData) {
         if(!formData.hasOwnProperty(o)) continue;
         if(lastData && lastData.hasOwnProperty(o) && lastData[o] == formData[o]) continue;
+        if(!lastData) lastData = {};
+        lastData[o] = formData[o];
         updates[o + "/" + key] = {
           timestamp: firebase.database.ServerValue.TIMESTAMP,
           value: formData[o]
