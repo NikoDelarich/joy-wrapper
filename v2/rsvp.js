@@ -9,10 +9,7 @@ function rsvpInit() {
   
     window.setActiveStep = function(next) {
       var previous = $(".active-item");
-      
-      if(previous) {
-        previous.addClass("saving-item").removeClass("active-item");
-      }
+      if(previous) previous.addClass("saving-item").removeClass("active-item");
     
       next.removeClass("ng-hide").addClass("active-item");
       next[0].scrollIntoView({behavior: "smooth", block: "center"})
@@ -21,22 +18,28 @@ function rsvpInit() {
     var setData = function(data) {
       lastData = data;
       
-      var textFields = $(
-        ".form-item textarea, " +
-        ".form-item input[type=text], " +
-        ".form-item input[type*=name], " +
-        ".form-item input[type=email]" +
-      "");
+      var showPrev = function(elem) {
+        elem.closest('.form-item').prevAll(".form-item")
+          .removeClass("ng-hide").addClass("saving-item");
+      };
       
+      /* Get text fields */
+      var textFields = $(".form-item textarea, " +
+                         ".form-item input[type=text], " +
+                         ".form-item input[type*=name], " +
+                         ".form-item input[type=email]");
+      
+      /* Update text fields */
       for(i = 0; i < textFields.length; i++) {
         var name = $(textFields[i]).attr('name');
         if(!data.hasOwnProperty(name)) continue;
         
         var elem = $("[name=" + name + "]");
         elem.val(data[name]);
-        elem.closest('.form-item').removeClass("ng-hide").addClass("saving-item");
+        showPrev(elem);
       }
       
+      /* Update radios */
       var radios = $(".form-item .choices-container > label:first-child > input[type=radio]:first-child");
       for(i = 0; i < radios.length; i++) {
         var name = $(radios[i]).attr('name');
@@ -44,13 +47,15 @@ function rsvpInit() {
         
         var elem = $("[name*=" + name + "][value=" + data[name] + "]");
         elem.attr("checked", "checked");
-        elem.closest('.form-item').removeClass("ng-hide").addClass("saving-item");
+        showPrev(elem);
       }
       
+      /* Show final element if all steps were completed */
       if($(".form-item.ng-hide:not(#saveAndContinue)").length == 0) {
         $("#saveAndContinue").removeClass("ng-hide").addClass("saving-item");
       }
       
+      /* Update question texts & show/hide filtered questions */
       updateQuestions();
     };
     
@@ -68,20 +73,28 @@ function rsvpInit() {
       if(!user) return;
       var email = user.email;
       firebase.database().ref('/users/' + user.uid).once('value').then(function(snapshot) {
-        var data = snapshot.val();
-        if(!data) {
-          data = {
-            firstName: "?",
-            lastName: "",
-            email: email
-          };
-          setData({email: email});
+        var data;
+        if(!snapshot.val()) {
+          data = { email: email };
         } else {
+          var rawData = snapshot.val();
+          data = {};
+          for(var o in rawData) {
+            if(!rawData.hasOwnProperty(o)) continue;
+            var k = Object.keys(rawData[o]).sort();
+            data[o] = rawData[o][k[k.length - 1]].value;
+          }
           setData(data);
         }
         
-        $(".fullName").text(data.firstName + " " + data.lastName);
-        $(".email").text(data.email);
+        if(data.firstName || data.lastName) {
+          $(".fullName").text((data.firstName || "") + " " + (data.lastName || ""));
+          $(".email").text("("+data.email+")");
+        } else {
+          $(".fullName").text("");
+          $(".email").text(data.email);
+        }
+        
         $("#loggedIn").removeClass("ng-hide");
         if(cb) cb();
       });
@@ -90,13 +103,35 @@ function rsvpInit() {
     var unsubscribeFn = firebase.auth().onAuthStateChanged(function(user) {
       if (user) {
         console.log(user.email + " signed in!");
-        loadData();
+        loadData(function() {
+          pushData({email: user.email}, user, function() {
+            loadData();
+          });
+        });
         unsubscribeFn();
       } else {
         console.log("Signed out!");
       }
     }); 
-
+    
+    var pushData = function(formData, user, cb) {
+      var ref = firebase.database().ref('users/' + user.uid);
+      var key = ref.push().key;
+      var updates = {};
+      
+      for(var o in formData) {
+        if(!formData.hasOwnProperty(o)) continue;
+        if(lastData && lastData.hasOwnProperty(o) && lastData[o] == formData[o]) continue;
+        if(!lastData) lastData = {};
+        lastData[o] = formData[o];
+        updates[o + "/" + key] = {
+          timestamp: firebase.database.ServerValue.TIMESTAMP,
+          value: formData[o]
+        };
+      }
+      ref.update(updates);
+    };
+    
     function onSubmit(ev) {
       var current = $(this).closest('.form-item');
       var form = $(this).closest('form');
@@ -113,7 +148,7 @@ function rsvpInit() {
          if(!next || !notAttending || !next.hasClass("attending-only")) break;
       } while(next);
             
-      if(current[0].id == "nameAndEmail") {
+      if(current[0].id == "nameAndEmail" && !firebase.auth().currentUser) {
         var email = $("#email").val();
         
         /* Log In or create new user */
@@ -126,8 +161,7 @@ function rsvpInit() {
                   console.log(error.code + " - " + error.message);
                   alert(error.message);
                 }).then(function() {
-                  var user = firebase.auth().currentUser;
-                  firebase.database().ref('users/' + user.uid).set(data);
+                  pushData(data, firebase.auth().currentUser);
                   if(next) setActiveStep(next);
                 });
             } else {
@@ -137,7 +171,7 @@ function rsvpInit() {
           }).then(function() {
             var user = firebase.auth().currentUser;
             loadData(function() {
-              firebase.database().ref('users/' + user.uid).update(data);
+              pushData(data, firebase.auth().currentUser);
               if(next) setActiveStep(next);
             });
           });
@@ -145,7 +179,10 @@ function rsvpInit() {
           return;
       } else {
         var user = firebase.auth().currentUser;
-        firebase.database().ref('users/' + user.uid).update(data);
+        if(current[0].id == "nameAndEmail" && user.email != data.email) {
+          user.updateEmail(data.email);
+        }
+        pushData(data, user);
         if(next) setActiveStep(next);
       }
     }
@@ -161,12 +198,28 @@ function rsvpInit() {
     function radioClicked(ev) {
       updateQuestions();
       $.proxy(onSubmit, this)(ev);
+      ev.preventDefault();
+    }
+
+    function formClicked(ev) {
+      var el = $(ev.target);
+      var form = el.closest(".form-item");
+      
+      if($(form).hasClass("active-item")) {
+        if(el.is("input[type=radio]") && el[0].checked) {
+          el.trigger("change");
+        }
+      } else {
+        setActiveStep($(form));
+        ev.preventDefault();
+      }
     }
 
     $(".form-item form").submit(onSubmit);
-    $(".form-item").click(activateStep);
     $(".form-item input[type=radio]").change(radioClicked);
-
+    $(document).on("click", ".form-item", formClicked);
+    
+    
     setTimeout(function() {
       var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
       (function(){
