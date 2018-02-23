@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Niko &amp; Carina - 26. Mai 2018</title>
+
+    <link rel="stylesheet" type="text/css" href="v2/md-styles.css">
+    <link rel="stylesheet" type="text/css" href="v2/joy.css">
+
+    <link rel="stylesheet" type="text/css" href="v2/base.css">
+    <link rel="stylesheet" type="text/css" href="v2/color.css">
+
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Parisienne:400">
+
+    <style class="ng-binding">
+        .joy-color.bg-color {
+            background-color: rgba(222, 192, 254, 1);
+        }
+
+        .joy-color.ft-color {
+            color: rgba(58, 60, 62, 1);
+        }
+
+        .joy-color.border-color {
+            border-color: rgba(58, 60, 62, 1);
+        }
+
+        .joy-color.bg-color-transparent {
+            background-color: rgba(222, 192, 254, 0.6);
+        }
+    </style>
+
+    <style class="ng-binding">
+        .hero h1 {
+            font-family: Parisienne;
+            font-weight: 400;
+            text-transform: undefined !important;
+            line-height: 1.0 !important;
+            font-size: 74px !important;
+            letter-spacing: -0.5px !important;
+            color: #232323 !important;
+        }
+        
+        table {
+        	width: 90%;
+          margin: 0 auto;
+          text-align: center;
+        }
+        
+        table th {
+        	text-transform: capitalize;
+        }
+    </style>
+    
+    <script type="text/javascript" src="v2/jquery-3.3.1.min.js"></script>
+    <script type="text/javascript" src="v2/sha256.min.js"></script>
+    <script type="text/javascript" src="v2/admin.js"></script>
+    
+    <script src="https://www.gstatic.com/firebasejs/4.10.0/firebase.js"></script>
+    <script>
+      // Initialize Firebase
+      var config = {
+        apiKey: "AIzaSyAGpkTicRevjeG-LbpFdSaoJBBhjfOCrao",
+        authDomain: "wedding-6f4cc.firebaseapp.com",
+        databaseURL: "https://wedding-6f4cc.firebaseio.com",
+        projectId: "wedding-6f4cc",
+        storageBucket: "wedding-6f4cc.appspot.com",
+        messagingSenderId: "514215369773"
+      };
+      firebase.initializeApp(config);
+    </script>
+</head>
+<body onload="adminInit()">
+    <div class="joy-stage">
+        <ui-view>
+            <div class="rsvp-backdrop" style="position:fixed;top:0;bottom:0;left:0;right:0;"></div>
+            <div class="rsvp-header">
+                <a class="rsvp-tl rsvp-t" href="https://niko-carina.wedding/">Zurück</a>
+            </div>
+
+            <div class="event-rsvp d-flex flex-column align-items-center col-list" style="position:relative">
+                <div class="col-list-item col-list-item-header">
+                    <div class="joy-event-welcome-banner d-flex flex-column align-items-center">
+                        <div class="hero center">
+                            <h1 id="wedding-names" class="left ng-binding">
+                                Niko &amp; Carina
+                            </h1>
+                        </div>
+                    </div>
+                </div>
+                <div style="width:100%">
+                  <table id="adminTable">
+                  </table>
+                </div>
+            </div>
+        </ui-view>
+    </div>
+</body>
+
+</html>
