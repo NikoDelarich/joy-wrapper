@@ -130,6 +130,17 @@ function rsvpInit() {
         };
       }
       ref.update(updates);
+      
+      var tawkData = {
+        email: user.email,
+        hash: sha256.hmac("e96bbf508ea3734b431f55b068c8702161fcc0f7", user.email)
+      };
+      if(lastData.firstName || lastData.lastName) {
+        tawkData.name = (lastData.firstName||"") + " " + (lastData.lastName||"");
+      } else {
+        tawkData.name = user.email;
+      }
+      Tawk_API.setAttributes(tawkData, function(error){ console.log(error); });
     };
     
     function onSubmit(ev) {
@@ -152,11 +163,11 @@ function rsvpInit() {
         var email = $("#email").val();
         
         /* Log In or create new user */
-        firebase.auth().signInWithEmailAndPassword(email, md5("niko-carina.wedding"))
+        firebase.auth().signInWithEmailAndPassword(email, sha256("niko-carina.wedding"))
           .catch(function(error) {
             if(error.code == "auth/user-not-found") {
               console.log("Creating new user...");
-              firebase.auth().createUserWithEmailAndPassword(email, md5("niko-carina.wedding"))
+              firebase.auth().createUserWithEmailAndPassword(email, sha256("niko-carina.wedding"))
                 .catch(function(error) {
                   console.log(error.code + " - " + error.message);
                   alert(error.message);
@@ -220,7 +231,7 @@ function rsvpInit() {
     $(document).on("click", ".form-item", formClicked);
     
     
-    setTimeout(function() {
+    window.requestAnimationFrame(function() {
       var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
       (function(){
         var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
@@ -230,5 +241,5 @@ function rsvpInit() {
         s1.setAttribute('crossorigin','*');
         s0.parentNode.insertBefore(s1,s0);
       })();
-    }, 500);
+    });
 }

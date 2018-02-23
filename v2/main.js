@@ -35,22 +35,43 @@ function domReadyFn() {
   updateCountdown();
   setInterval(updateCountdown, 1000);
   
+  var getField = function(data, field) {
+    var k = Object.keys(data[field]).sort();
+    return data[field][k[k.length - 1]].value;
+  };
+  
   firebase.auth().onAuthStateChanged(function(user) {
     var cta = $("cta-prompt");
     if (user) {
+      var tawkData = {
+        email: user.email,
+        hash: sha256.hmac("e96bbf508ea3734b431f55b068c8702161fcc0f7", user.email)
+      };
       firebase.database().ref('/users/' + user.uid).once('value').then(function(snapshot) {
         var data = snapshot.val();
         if(data) {
           if(data.hasOwnProperty("firstName")) {
-            var k = Object.keys(data.firstName).sort();
-            var firstName = data.firstName[k[k.length - 1]].value;
-            
+            var firstName = getField(data, "firstName");
+            var lastName = getField(data, "lastName");
+            if( (firstName && firstName.length > 0) || 
+                (lastName && lastName.length > 0) )
+            {
+              tawkData.name = (firstName||"") + " " + (lastName||"");
+            } else {
+              tawkData.name = user.email;
+            }
             cta.find("div").text("Hallo " + firstName + "!");
             cta.removeClass("invisible");
           }
           
+          Tawk_API.setAttributes(tawkData, function(error){ console.log(error); });
+          
           $(".rsvp-button.btn > span").text(data.hasOwnProperty("rsvp") ? "Antwort ändern" : "Antworten");
         }
+      }, function(error) {
+        Tawk_API.setAttributes(tawkData, function(error){
+          console.log(error);
+        });
       });
     } else {
       cta.addClass("invisible");
