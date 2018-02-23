@@ -117,11 +117,11 @@ function rsvpInit() {
         var email = $("#email").val();
         
         /* Log In or create new user */
-        firebase.auth().signInWithEmailAndPassword(email, md5(email))
+        firebase.auth().signInWithEmailAndPassword(email, md5("niko-carina.wedding"))
           .catch(function(error) {
             if(error.code == "auth/user-not-found") {
               console.log("Creating new user...");
-              firebase.auth().createUserWithEmailAndPassword(email, md5(email))
+              firebase.auth().createUserWithEmailAndPassword(email, md5("niko-carina.wedding"))
                 .catch(function(error) {
                   console.log(error.code + " - " + error.message);
                   alert(error.message);
