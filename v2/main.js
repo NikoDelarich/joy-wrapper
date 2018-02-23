@@ -41,8 +41,13 @@ function domReadyFn() {
       firebase.database().ref('/users/' + user.uid).once('value').then(function(snapshot) {
         var data = snapshot.val();
         if(data) {
-          cta.find("div").text("Hallo " + data.firstName + "!");
-          cta.removeClass("invisible");
+          if(data.hasOwnProperty("firstName")) {
+            var k = Object.keys(data.firstName).sort();
+            var firstName = data.firstName[k[k.length - 1]].value;
+            
+            cta.find("div").text("Hallo " + firstName + "!");
+            cta.removeClass("invisible");
+          }
           
           $(".rsvp-button.btn > span").text(data.hasOwnProperty("rsvp") ? "Antwort ändern" : "Antworten");
         }
