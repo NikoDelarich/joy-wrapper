@@ -20,16 +20,18 @@ function adminInit() {
     ];
   
     var loadData = function(cb) {
-      var html = "<table><thead><th>" + fields.join("</th><th>") + "</th></thead>";
       var user = firebase.auth().currentUser;
       if(!user) return;
       var email = user.email;
-      firebase.database().ref('/users').once('value').then(function(snapshot) {
+      firebase.database().ref('/users').on('value', function(snapshot) {
+        var html = "<table><thead><th>UID</th><th>" + fields.join("</th><th>") + "</th></thead>";
+        
         var data = snapshot.val();
         if(!data) return;
           
         for(var uid in data) {
           var user = data[uid]
+          html += "<td>" + uid + "</td>";
           for(var i=0; i < fields.length; i++) {
             var prop = fields[i];
             if(user.hasOwnProperty(prop)) {
