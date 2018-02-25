@@ -5,18 +5,18 @@ function adminInit() {
     };
     
     var fields = [
-      "firstName", 
-      "lastName", 
-      "email",
-      "rsvp",
-      "team", 
-      "song",
-      "hotel",
-      "transport",
-      "honeymoon", 
-      "advice", 
-      "children", 
-      "message",
+      ["firstName",  "Vorname"],
+      ["lastName",  "Nachname"],
+      ["email", "E-Mail"],
+      ["rsvp", "RSVP"],
+      ["team",  "Team"],
+      ["song", "Lied"],
+      ["honeymoon",  "Flitterwochen"],
+      ["advice",  "Ratschlag"],
+      ["hotel", "Hotel"],
+      ["transport", "Transport"],
+      ["children",  "Kinder?"],
+      ["message", "Nachricht"],
     ];
   
     var loadData = function(cb) {
@@ -24,26 +24,30 @@ function adminInit() {
       if(!user) return;
       var email = user.email;
       firebase.database().ref('/users').on('value', function(snapshot) {
-        var html = "<table><thead><th>UID</th><th>" + fields.join("</th><th>") + "</th></thead>";
+        var mapFields = function(m) { return "<th tablesaw-columntoggle data-tablesaw-sortable-col>" + m[1] + "</th>"; };
         
         var data = snapshot.val();
         if(!data) return;
+        
+        var html = "<table><thead>" + fields.map(mapFields).join("") + "</thead>";
           
         for(var uid in data) {
           var user = data[uid]
-          html += "<td>" + uid + "</td>";
+          html += "<tr title='" + uid + "'>";
           for(var i=0; i < fields.length; i++) {
-            var prop = fields[i];
+            var prop = fields[i][0];
             if(user.hasOwnProperty(prop)) {
               html += "<td>" + getField(user, prop) + "</td>";
             } else {
-              html += "<td>???</td>";
+              html += "<td>&mdash;</td>";
             }
+            
           }
-          
-          html += "</tbody></table>";
-          $("#adminTable").html(html);
+          html += "</tr>";
         }
+        html += "</tbody></table>";
+        $("#adminTable").html(html);
+        Tablesaw.init();
           
         // data = {};
         // for(var o in rawData) {

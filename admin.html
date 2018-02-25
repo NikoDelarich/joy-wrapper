@@ -56,9 +56,13 @@
         }
     </style>
     
+    <link rel="stylesheet" href="v2/tablesaw/tablesaw.css">
     <script type="text/javascript" src="v2/jquery-3.3.1.min.js"></script>
     <script type="text/javascript" src="v2/sha256.min.js"></script>
     <script type="text/javascript" src="v2/admin.js"></script>
+    
+    <script src="v2/tablesaw/tablesaw.jquery.js"></script>
+    <!-- <script src="v2/tablesaw/tablesaw-init.js"></script> -->
     
     <script src="https://www.gstatic.com/firebasejs/4.10.0/firebase.js"></script>
     <script>
@@ -120,7 +124,7 @@
                 </div>
                 <div id="loginDiv"></div>
                 <div style="width:100%">
-                  <table id="adminTable">
+                  <table id="adminTable" class="tablesaw tablesaw-stack tablesaw-sortable" data-tablesaw-sortable="" data-tablesaw-sortable-switch="" data-tablesaw-mode="stack">
                   </table>
                 </div>
             </div>
