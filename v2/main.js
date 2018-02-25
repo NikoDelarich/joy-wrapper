@@ -144,13 +144,21 @@ function mainInit() {
     });
     
     if($(window).width() >= 770) {
-      $("html, body").delay(1500).animate({scrollTop: 200 }, 500);
-      $("html, body").delay(750).animate({scrollTop: 0 }, 1000);
+      var autoscroll = function() {
+        $("html, body").delay(1500).animate({scrollTop: 200 }, 500);
+        $("html, body").delay(750).animate({scrollTop: 0 }, 1000);
+      };
+      if(typeof Pace != "undefined") {
+        Pace.on("hide", autoscroll);
+      } else {
+        autoscroll();
+      }
     }
     
     $(".scrollarrow").click(function() {
         $(".schedule")[0].scrollIntoView({behavior: "smooth", block: "center"})
     });
+    
 }
 
 function goToRSVP() {
