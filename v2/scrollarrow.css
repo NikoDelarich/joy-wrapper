@@ -1,6 +1,6 @@
 .scrollarrow {
-  position: absolute;
-  bottom: 130px;
+  position: relative;
+  bottom: -50px;
   z-index: 2;
   display: inline-block;
   -webkit-transform: translate(0, -50%);
@@ -68,5 +68,12 @@
   }
   100% {
     opacity: 0;
+  }
+}
+
+
+@media screen and (max-width: 769px) {
+  .scrollarrow {
+      display: none;
   }
 }

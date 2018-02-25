@@ -142,14 +142,10 @@ function mainInit() {
       })();
     });
     
-    $("html, body").delay(1500).animate({scrollTop: 200 }, 500);
-    $("html, body").delay(750).animate({scrollTop: 0 }, 1000);
-    setTimeout(function(){
-      // $(".start-time")[0].scrollIntoView({behavior: "smooth", block: "end"})
-      setTimeout(function(){
-        // $("#cta-update")[0].scrollIntoView({behavior: "smooth", block: "end"})
-      }, 1500);
-    }, 1500);
+    if($(window).width() >= 770) {
+      $("html, body").delay(1500).animate({scrollTop: 200 }, 500);
+      $("html, body").delay(750).animate({scrollTop: 0 }, 1000);
+    }
     
     $(".scrollarrow").click(function() {
         $(".schedule")[0].scrollIntoView({behavior: "smooth", block: "center"})
