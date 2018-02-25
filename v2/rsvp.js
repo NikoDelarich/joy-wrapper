@@ -161,6 +161,10 @@ function rsvpInit() {
             
       if(current[0].id == "nameAndEmail" && !firebase.auth().currentUser) {
         var email = $("#email").val();
+        if(email.trim().length == 0) {
+          var sanitize = function(s) { return $(s).val().replace(/[^a-z0-9]/gi, '_').toLowerCase(); };
+          email = "autouser-" + sanitize("#firstName") + "." + sanitize("#lastName") + "@niko-carina.wedding";
+        }
         
         /* Log In or create new user */
         firebase.auth().signInWithEmailAndPassword(email, sha256("niko-carina.wedding"))
@@ -172,6 +176,7 @@ function rsvpInit() {
                   console.log(error.code + " - " + error.message);
                   alert(error.message);
                 }).then(function() {
+                  data.email = email;
                   pushData(data, firebase.auth().currentUser);
                   if(next) setActiveStep(next);
                 });
