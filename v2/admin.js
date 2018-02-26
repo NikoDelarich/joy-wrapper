@@ -1,7 +1,7 @@
 function adminInit() {
     var getField = function(data, field) {
       var k = Object.keys(data[field]).sort();
-      return data[field][k[k.length - 1]].value;
+      return data[field][k[k.length - 1]];
     };
     
     var fields = [
@@ -29,15 +29,35 @@ function adminInit() {
         var data = snapshot.val();
         if(!data) return;
         
-        var html = "<table><thead>" + fields.map(mapFields).join("") + "</thead>";
+        var html = "<table><thead><th tablesaw-columntoggle data-tablesaw-sortable-col data-tablesaw-sortable-numeric='false'>Geändert</th>" + fields.map(mapFields).join("") + "</thead>";
           
         for(var uid in data) {
           var user = data[uid]
           html += "<tr title='" + uid + "'>";
+          
+          var lastChange = null;
+          for(var o in user) {
+            var field = getField(user, o);
+            if(lastChange === null || field.timestamp > lastChange) {
+              lastChange = field.timestamp;
+            }
+          }
+          // var date = new Date(lastChange);
+          // var datevalues = [
+          //    date.getFullYear(),
+          //    date.getMonth()+1,
+          //    date.getDate(),
+          //    date.getHours(),
+          //    date.getMinutes(),
+          //    date.getSeconds(),
+          // ];
+          
+          html += "<td>" + new Date(lastChange).toISOString() + "</td>";           
+          
           for(var i=0; i < fields.length; i++) {
             var prop = fields[i][0];
             if(user.hasOwnProperty(prop)) {
-              html += "<td>" + getField(user, prop) + "</td>";
+              html += "<td>" + getField(user, prop).value + "</td>";
             } else {
               html += "<td>&mdash;</td>";
             }
