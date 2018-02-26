@@ -693,6 +693,7 @@ a.tablesaw-btn {
   text-align: inherit;
   font: inherit;
   text-transform: inherit;
+  white-space: nowrap;
 }
 
 .tablesaw-sortable-arrow:after {

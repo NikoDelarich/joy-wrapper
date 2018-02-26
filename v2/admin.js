@@ -48,14 +48,8 @@ function adminInit() {
         html += "</tbody></table>";
         $("#adminTable").html(html);
         Tablesaw.init();
-          
-        // data = {};
-        // for(var o in rawData) {
-        //   if(!rawData.hasOwnProperty(o)) continue;
-        //   var k = Object.keys(rawData[o]).sort();
-        //   data[o] = rawData[o][k[k.length - 1]].value;
-        // }
-        // setData(data);
+        
+        $("#loginDiv").hide();
       });
     };
     
