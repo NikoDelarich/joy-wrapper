@@ -21,19 +21,22 @@ function domReadyFn() {
     $(".counter > .time-unit:nth-child(2) > h1:first-child").text(hours);
     $(".counter > .time-unit:nth-child(3) > h1:first-child").text(minutes);
     $(".counter > .time-unit:nth-child(4) > h1:first-child").text(seconds);
-    
-    // $(".counter").removeClass("invisible");
-
-    // If the count down is finished, write some text
-    // if (distance < 0) {
-    //   clearInterval(x);
-    //   document.getElementById("demo").innerHTML = "EXPIRED";
-    // }
   };
   
   // Update the count down every 1 second
   updateCountdown();
   setInterval(updateCountdown, 1000);
+  
+  window.Tawk_API = (typeof Tawk_API != "undefined") ? Tawk_API : {};
+  window.Tawk_LoadStart = new Date();
+  (function(){
+    var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+    s1.async=true;
+    s1.src='https://embed.tawk.to/5a847c74d7591465c707abcf/default';
+    s1.charset='UTF-8';
+    s1.setAttribute('crossorigin','*');
+    s0.parentNode.insertBefore(s1,s0);
+  })();
   
   var getField = function(data, field) {
     var k = Object.keys(data[field]).sort();
@@ -64,14 +67,12 @@ function domReadyFn() {
             cta.removeClass("invisible");
           }
           
-          Tawk_API.setAttributes(tawkData, function(error){ console.log(error); });
-          
           $(".rsvp-button.btn > span").text(data.hasOwnProperty("rsvp") ? "Antwort ändern" : "Antworten");
+          
+          Tawk_API.setAttributes(tawkData, function(error){ console.log(error); });
         }
       }, function(error) {
-        Tawk_API.setAttributes(tawkData, function(error){
-          console.log(error);
-        });
+        Tawk_API.setAttributes(tawkData, function(error){ console.log(error); });
       });
     } else {
       cta.addClass("invisible");
@@ -106,7 +107,6 @@ function mainInit() {
       var id = last.getAttribute("data-scrollTarget");
 
       if (lastId !== id) {
-        console.log(id);
         lastId = id;
         // Set/remove active class
         
@@ -130,28 +130,30 @@ function mainInit() {
       }
       
       $(".fadeInOnLoad").removeClass("invisible");
-      
-      window.Tawk_API = (typeof Tawk_API != "undefined") ? Tawk_API : {};
-      window.Tawk_LoadStart = new Date();
-      (function(){
-        var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
-        s1.async=true;
-        s1.src='https://embed.tawk.to/5a847c74d7591465c707abcf/default';
-        s1.charset='UTF-8';
-        s1.setAttribute('crossorigin','*');
-        s0.parentNode.insertBefore(s1,s0);
-      })();
     });
     
     if($(window).width() >= 770) {
-      var autoscroll = function() {
-        $("html, body").delay(1500).animate({scrollTop: 200 }, 500);
-        $("html, body").delay(750).animate({scrollTop: 0 }, 1000);
-      };
-      if(typeof Pace != "undefined") {
-        Pace.on("hide", autoscroll);
-      } else {
-        autoscroll();
+      var page = $("html, body");
+      if(page[0].scrollTop < 100) {
+        var scrollEnabled = true;
+        page.on("scroll mousedown wheel DOMMouseScroll mousewheel keyup touchmove", function(){
+          scrollEnabled = false;
+          page.stop();
+        });
+
+        var autoscroll = function() {
+          if(scrollEnabled) {
+            page.delay(1500).animate({scrollTop: 200 }, 500);
+            page.delay(750).animate({scrollTop: 0 }, 1000, function(){
+              page.off("scroll mousedown wheel DOMMouseScroll mousewheel keyup touchmove");
+            });
+          }
+        };
+        if(typeof Pace != "undefined") {
+          Pace.on("hide", autoscroll);
+        } else {
+          autoscroll();
+        }
       }
     }
     
@@ -162,9 +164,5 @@ function mainInit() {
 }
 
 function goToRSVP() {
-  // if(RegExp(/iP(ad|hone|od).+Version\/[\d\.]+.*Safari/i).test(navigator.userAgent)) {
-  //   location.href = "https://withjoy.com/niko-und-carina/rsvp";
-  // } else {
-    location.href = "https://niko-carina.wedding/rsvp.html";
-  // }
+  location.href = "https://niko-carina.wedding/rsvp.html";
 }
