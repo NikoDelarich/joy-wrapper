@@ -42,15 +42,6 @@ function adminInit() {
               lastChange = field.timestamp;
             }
           }
-          // var date = new Date(lastChange);
-          // var datevalues = [
-          //    date.getFullYear(),
-          //    date.getMonth()+1,
-          //    date.getDate(),
-          //    date.getHours(),
-          //    date.getMinutes(),
-          //    date.getSeconds(),
-          // ];
           
           html += "<td>" + new Date(lastChange).toISOString() + "</td>";           
           
