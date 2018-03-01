@@ -29,7 +29,7 @@ function adminInit() {
         var data = snapshot.val();
         if(!data) return;
         
-        var html = "<table><thead><th tablesaw-columntoggle data-tablesaw-sortable-col data-tablesaw-sortable-numeric='false'>Geändert</th>" + fields.map(mapFields).join("") + "</thead>";
+        var html = "<table><thead><th tablesaw-columntoggle data-tablesaw-sortable-col data-tablesaw-sortable-default-col data-tablesaw-sortable-numeric='false'>Geändert</th>" + fields.map(mapFields).join("") + "</thead>";
           
         for(var uid in data) {
           var user = data[uid]
@@ -58,7 +58,10 @@ function adminInit() {
         }
         html += "</tbody></table>";
         $("#adminTable").html(html);
-        Tablesaw.init();
+        Tablesaw.Table($("#adminTable"));
+        
+        $("th[data-tablesaw-sortable-default-col] > button").trigger("click");
+        
         
         $("#loginDiv").hide();
       });
