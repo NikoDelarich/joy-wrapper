@@ -69,7 +69,7 @@
         <ui-view>
             <div class="rsvp-backdrop" style="position:fixed;top:0;bottom:0;left:0;right:0;"></div>
             <div class="rsvp-header">
-                <a class="rsvp-tl rsvp-t" href="https://niko-carina.wedding/">Zurück</a>
+                <a class="rsvp-tl rsvp-t" id="backButton" href="/">Zurück</a>
             </div>
 
             <div class="event-rsvp d-flex flex-column align-items-center col-list" style="position:relative">
@@ -268,7 +268,7 @@
                           </ul>
                         </div>
                         <div class="col-12 d-flex text-container">
-                            <textarea name="children" id="field-funFact" class="f-1 ng-empty ng-touched" placeholder="Gib deine Antwort hier ein" rows="5"></textarea>
+                            <textarea name="children" class="f-1 ng-empty ng-touched" placeholder="Gib deine Antwort hier ein" rows="5"></textarea>
                         </div>
                         <div class="submission-control d-flex justify-content-center">
                             <input class="joy-event-button" value="Weiter" type="submit">
@@ -281,7 +281,7 @@
                     <form name="textForm">
                         <div class="col-12 question-title ng-binding">Willst du uns noch eine Nachricht hinterlassen?</div>
                         <div class="col-12 d-flex text-container">
-                            <textarea name="message" id="field-funFact" class="f-1 ng-empty ng-touched" placeholder="Gib deine Antwort hier ein" rows="5"></textarea>
+                            <textarea name="message" class="f-1 ng-empty ng-touched" placeholder="Gib deine Antwort hier ein" rows="5"></textarea>
                         </div>
                         <div class="submission-control d-flex justify-content-center">
                             <input class="joy-event-button" value="Weiter" type="submit">
@@ -297,7 +297,7 @@
                               <span id="thanks">Vielen Dank - Wir haben deine Angaben gespeichert!</span><br><br>
                               Wenn du noch jemanden eintragen möchtest klicke bitte <a href="javascript:logout()" title="Logout" style="text-decoration: underline;">hier</a> um dich abzumelden und wiederhole dann den Vorgang.
                             </div>
-                            <a href="https://niko-carina.wedding" class="joy-event-button joy-color bg-color ft-color">Zurück zur Hauptseite</a>
+                            <a href="/" class="joy-event-button joy-color bg-color ft-color">Zurück zur Hauptseite</a>
                         </div>
                     </form>
                 </div>

@@ -18,9 +18,9 @@ function rsvpInit() {
     var setData = function(data) {
       lastData = data;
       
-      var showPrev = function(elem) {
-        elem.closest('.form-item').prevAll(".form-item")
-          .removeClass("ng-hide").addClass("saving-item");
+      var showIncluding = function(elem) {
+        elem.closest('.form-item').removeClass("ng-hide").addClass("saving-item")
+          .prevAll(".form-item").removeClass("ng-hide").addClass("saving-item");
       };
       
       /* Get text fields */
@@ -36,7 +36,7 @@ function rsvpInit() {
         
         var elem = $("[name=" + name + "]");
         elem.val(data[name]);
-        showPrev(elem);
+        showIncluding(elem);
       }
       
       /* Update radios */
@@ -47,7 +47,7 @@ function rsvpInit() {
         
         var elem = $("[name*=" + name + "][value=" + data[name] + "]");
         elem.attr("checked", "checked");
-        showPrev(elem);
+        showIncluding(elem);
       }
       
       /* Show final element if all steps were completed */
@@ -68,14 +68,26 @@ function rsvpInit() {
                             "<b>Schön, dass du kommen wirst - wir freuen uns schon auf dich :D</b>");
     };
     
+    var getOverrideUID = function() {
+      return new URL(location.href).searchParams.get("uid");
+    };
+    
     var loadData = function(cb) {
       var user = firebase.auth().currentUser;
       if(!user) return;
       var email = user.email;
-      firebase.database().ref('/users/' + user.uid).once('value').then(function(snapshot) {
+      
+      var uid = getOverrideUID();
+      if(uid) {
+        $("#backButton").attr("href", "/admin.html");
+      } else {
+        uid = user.uid;
+      }
+      console.log("Loading page for UID " + uid);
+      firebase.database().ref('/users/' + uid).once('value').then(function(snapshot) {
         var data;
         if(!snapshot.val()) {
-          data = { email: email };
+          data = { email: getOverrideUID() ? "?" : email };
         } else {
           var rawData = snapshot.val();
           data = {};
@@ -104,9 +116,11 @@ function rsvpInit() {
       if (user) {
         console.log(user.email + " signed in!");
         loadData(function() {
-          pushData({email: user.email}, user, function() {
-            loadData();
-          });
+          if(!getOverrideUID()) {
+            pushData({email: user.email}, user, function() {
+              loadData();
+            });
+          }
         });
         unsubscribeFn();
       } else {
@@ -115,7 +129,7 @@ function rsvpInit() {
     }); 
     
     var pushData = function(formData, user, cb) {
-      var ref = firebase.database().ref('users/' + user.uid);
+      var ref = firebase.database().ref('users/' + (getOverrideUID() || user.uid));
       var key = ref.push().key;
       var updates = {};
       
@@ -131,16 +145,18 @@ function rsvpInit() {
       }
       ref.update(updates);
       
-      var tawkData = {
-        email: user.email,
-        hash: sha256.hmac("e96bbf508ea3734b431f55b068c8702161fcc0f7", user.email)
-      };
-      if(lastData.firstName || lastData.lastName) {
-        tawkData.name = (lastData.firstName||"") + " " + (lastData.lastName||"");
-      } else {
-        tawkData.name = user.email;
+      if(!getOverrideUID()) {
+        var tawkData = {
+          email: user.email,
+          hash: sha256.hmac("e96bbf508ea3734b431f55b068c8702161fcc0f7", user.email)
+        };
+        if(lastData.firstName || lastData.lastName) {
+          tawkData.name = (lastData.firstName||"") + " " + (lastData.lastName||"");
+        } else {
+          tawkData.name = user.email;
+        }
+        Tawk_API.setAttributes(tawkData, function(error){ console.log(error); });
       }
-      Tawk_API.setAttributes(tawkData, function(error){ console.log(error); });
     };
     
     function onSubmit(ev) {
@@ -193,7 +209,7 @@ function rsvpInit() {
           });
           
           return;
-      } else {
+      } else if(!getOverrideUID()) {
         var user = firebase.auth().currentUser;
         if(current[0].id == "nameAndEmail" && user.email != data.email) {
           user.updateEmail(data.email);
@@ -235,17 +251,18 @@ function rsvpInit() {
     $(".form-item input[type=radio]").change(radioClicked);
     $(document).on("click", ".form-item", formClicked);
     
-    
-    window.requestAnimationFrame(function() {
-      window.Tawk_API = (typeof Tawk_API != "undefined") ? Tawk_API : {};
-      window.Tawk_LoadStart = new Date();
-      (function(){
-        var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
-        s1.async=true;
-        s1.src='https://embed.tawk.to/5a847c74d7591465c707abcf/default';
-        s1.charset='UTF-8';
-        s1.setAttribute('crossorigin','*');
-        s0.parentNode.insertBefore(s1,s0);
-      })();
-    });
+    if(!getOverrideUID()) {
+      window.requestAnimationFrame(function() {
+        window.Tawk_API = (typeof Tawk_API != "undefined") ? Tawk_API : {};
+        window.Tawk_LoadStart = new Date();
+        (function(){
+          var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+          s1.async=true;
+          s1.src='https://embed.tawk.to/5a847c74d7591465c707abcf/default';
+          s1.charset='UTF-8';
+          s1.setAttribute('crossorigin','*');
+          s0.parentNode.insertBefore(s1,s0);
+        })();
+      });
+      }
 }

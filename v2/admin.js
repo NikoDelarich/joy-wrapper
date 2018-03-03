@@ -47,12 +47,18 @@ function adminInit() {
           
           for(var i=0; i < fields.length; i++) {
             var prop = fields[i][0];
+            var value;
             if(user.hasOwnProperty(prop)) {
-              html += "<td>" + getField(user, prop).value + "</td>";
+              value = getField(user, prop).value;
             } else {
-              html += "<td>&mdash;</td>";
+              value = "&mdash;";
             }
             
+            if(prop == "firstName") {
+              value = "<a href='/rsvp.html?uid=" + uid + "'>" + value + "</a>";
+            }
+            
+            html += "<td>" + value + "</td>";
           }
           html += "</tr>";
         }

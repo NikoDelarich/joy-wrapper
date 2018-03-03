@@ -164,5 +164,5 @@ function mainInit() {
 }
 
 function goToRSVP() {
-  location.href = "https://niko-carina.wedding/rsvp.html";
+  location.href = "/rsvp.html";
 }
