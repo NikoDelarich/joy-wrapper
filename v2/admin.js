@@ -20,20 +20,29 @@ function adminInit() {
     ];
   
     var loadData = function(cb) {
+      var mapFields = function(m) { return "<th tablesaw-columntoggle data-tablesaw-sortable-col>" + m[1] + "</th>"; };
+      
       var user = firebase.auth().currentUser;
       if(!user) return;
       var email = user.email;
+      
+      var html =  "<table>" + 
+                    "<thead>" +
+                      "<th tablesaw-columntoggle data-tablesaw-sortable-col data-tablesaw-sortable-default-col data-tablesaw-sortable-numeric='false'>Geändert</th>" + 
+                      fields.map(mapFields).join("") +
+                    "</thead>" +
+                    "<tbody>" +
+                    "</tbody>" +
+                  "</table>";
+      $("#adminTable").html(html);
+
       firebase.database().ref('/users').on('value', function(snapshot) {
-        var mapFields = function(m) { return "<th tablesaw-columntoggle data-tablesaw-sortable-col>" + m[1] + "</th>"; };
-        
         var data = snapshot.val();
         if(!data) return;
-        
-        var html = "<table><thead><th tablesaw-columntoggle data-tablesaw-sortable-col data-tablesaw-sortable-default-col data-tablesaw-sortable-numeric='false'>Geändert</th>" + fields.map(mapFields).join("") + "</thead>";
           
         for(var uid in data) {
           var user = data[uid]
-          html += "<tr title='" + uid + "'>";
+          var row = "<tr title='" + uid + "'>";
           
           var lastChange = null;
           for(var o in user) {
@@ -43,7 +52,7 @@ function adminInit() {
             }
           }
           
-          html += "<td>" + new Date(lastChange).toISOString() + "</td>";           
+          row += "<td>" + new Date(lastChange).toISOString() + "</td>";           
           
           for(var i=0; i < fields.length; i++) {
             var prop = fields[i][0];
@@ -58,18 +67,24 @@ function adminInit() {
               value = "<a href='/rsvp.html?uid=" + uid + "'>" + value + "</a>";
             }
             
-            html += "<td>" + value + "</td>";
+            row += "<td>" + value + "</td>";
           }
-          html += "</tr>";
+          row += "</tr>";
+          
+          var rowEl = $("[title=" + uid + "]");
+          if(rowEl.length) {
+            rowEl.replaceWith(row);
+          } else {
+            $("#adminTable tbody").prepend(row);
+          }
         }
-        html += "</tbody></table>";
-        $("#adminTable").html(html);
-        Tablesaw.Table($("#adminTable"));
+        // $("#adminTable").html(html);
         
-        $("th[data-tablesaw-sortable-default-col] > button").trigger("click");
-        
-        
-        $("#loginDiv").hide();
+        if($("#loginDiv:visible")) {
+          Tablesaw.Table($("#adminTable"));
+          $("th[data-tablesaw-sortable-default-col] > button").trigger("click");
+          $("#loginDiv").hide();
+        }
       });
     };
     
