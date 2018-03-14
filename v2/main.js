@@ -122,13 +122,6 @@ function mainInit() {
     });
     
     window.requestAnimationFrame(function() {
-      var vidDefer = document.getElementsByTagName('iframe');
-      for(var i = 0; i < vidDefer.length; i++) {
-        if(vidDefer[i].getAttribute('data-src')) {
-          vidDefer[i].setAttribute('src',vidDefer[i].getAttribute('data-src'));
-        }
-      }
-      
       $(".fadeInOnLoad").removeClass("invisible");
     });
     
@@ -147,6 +140,12 @@ function mainInit() {
             page.delay(750).animate({scrollTop: 0 }, 1000, function(){
               page.off("scroll mousedown wheel DOMMouseScroll mousewheel keyup touchmove");
             });
+          }
+          var vidDefer = document.getElementsByTagName('iframe');
+          for(var i = 0; i < vidDefer.length; i++) {
+            if(vidDefer[i].getAttribute('data-src')) {
+              vidDefer[i].setAttribute('src',vidDefer[i].getAttribute('data-src'));
+            }
           }
         };
         if(typeof Pace != "undefined") {
