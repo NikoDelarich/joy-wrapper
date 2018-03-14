@@ -1,7 +1,24 @@
 function adminInit() {
+    var showHistory = function() {
+      return true;
+      // return new URL(location.href).searchParams.get("hist");
+    };
+    
+    var sanitize = function(unsafestring) {
+      return $('<div>').text(unsafestring).html();
+    };
+    
     var getField = function(data, field) {
       var k = Object.keys(data[field]).sort();
-      return data[field][k[k.length - 1]];
+      var arr = [];
+      for(var i = 0; i < k.length; i++) {
+        arr.push(data[field][k[i]]);
+      }
+      return arr.reverse();
+    };
+    
+    var getFieldLatest = function(data, field) {
+      return getField(data, field)[0];
     };
     
     var fields = [
@@ -46,7 +63,7 @@ function adminInit() {
           
           var lastChange = null;
           for(var o in user) {
-            var field = getField(user, o);
+            var field = getFieldLatest(user, o);
             if(lastChange === null || field.timestamp > lastChange) {
               lastChange = field.timestamp;
             }
@@ -58,7 +75,21 @@ function adminInit() {
             var prop = fields[i][0];
             var value;
             if(user.hasOwnProperty(prop)) {
-              value = getField(user, prop).value;
+              if(showHistory()) {
+                var fieldValues = getField(user, prop);
+                if(fieldValues.length == 1) {
+                  value = sanitize(fieldValues[0].value) || "<i style='color:grey'>leer</i>";
+                } else {
+                  value = "<ol reversed>";
+                  for(var x = 0; x < fieldValues.length; x++) {
+                    var field = fieldValues[x];
+                    value += "<li title='" + new Date(field.timestamp).toISOString() + "'>" + (sanitize(field.value) || "\"\"") + "</li>";
+                  }
+                  value += "</ol>";
+                }
+              } else {
+                value = sanitize(getFieldLatest(user, prop).value);
+              }
             } else {
               value = "&mdash;";
             }
