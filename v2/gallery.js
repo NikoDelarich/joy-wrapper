@@ -1,0 +1,7 @@
+(function($) {
+
+  var images = [
+    ["",""],
+  ];
+
+})(jQuery);

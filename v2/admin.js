@@ -52,7 +52,11 @@ function adminInit() {
                     "</tbody>" +
                   "</table>";
       $("#adminTable").html(html);
-
+      
+      firebase.database().ref('/b2data').on('value', function(snapshot) {
+        g_b2data = snapshot.val();
+      });
+      
       firebase.database().ref('/users').on('value', function(snapshot) {
         var data = snapshot.val();
         if(!data) return;
@@ -124,37 +128,58 @@ function adminInit() {
         console.log(user.email + " signed in!");
         loadData();
         unsubscribeFn();
+        
       } else {
         console.log("Signed out!");
       }
     }); 
-    // 
-    // var pushData = function(formData, user, cb) {
-    //   var ref = firebase.database().ref('users/' + user.uid);
-    //   var key = ref.push().key;
-    //   var updates = {};
-    // 
-    //   for(var o in formData) {
-    //     if(!formData.hasOwnProperty(o)) continue;
-    //     if(lastData && lastData.hasOwnProperty(o) && lastData[o] == formData[o]) continue;
-    //     if(!lastData) lastData = {};
-    //     lastData[o] = formData[o];
-    //     updates[o + "/" + key] = {
-    //       timestamp: firebase.database.ServerValue.TIMESTAMP,
-    //       value: formData[o]
-    //     };
-    //   }
-    //   ref.update(updates);
-    // 
-    //   var tawkData = {
-    //     email: user.email,
-    //     hash: sha256.hmac("e96bbf508ea3734b431f55b068c8702161fcc0f7", user.email)
-    //   };
-    //   if(lastData.firstName || lastData.lastName) {
-    //     tawkData.name = (lastData.firstName||"") + " " + (lastData.lastName||"");
-    //   } else {
-    //     tawkData.name = user.email;
-    //   }
-    //   Tawk_API.setAttributes(tawkData, function(error){ console.log(error); });
-    // };
+    
+    var encrypt = function(data, pw, idx) {
+      var key = aesjs.utils.hex.toBytes(sha256(pw));
+      var aesCtr = new aesjs.ModeOfOperation.ctr(key, new aesjs.Counter(idx));
+      return aesjs.utils.hex.fromBytes(aesCtr.encrypt(aesjs.utils.utf8.toBytes(data)));
+    };
+    
+    var decrypt = function(str, pw, idx) {
+      var key = aesjs.utils.hex.toBytes(sha256(pw));
+      var data = aesjs.utils.hex.toBytes(str);
+      var aesCtr = new aesjs.ModeOfOperation.ctr(key, new aesjs.Counter(idx));
+      var decryptedBytes = aesCtr.decrypt(data);
+      
+      return aesjs.utils.utf8.fromBytes(decryptedBytes);
+    };
+    
+    $("#cryptSection > button").on("click", function() {
+      $.ajax("https://api.backblazeb2.com/b2api/v1/b2_authorize_account", {
+        headers: {
+          "Authorization": "Basic " + btoa(g_b2data.account + ":" + g_b2data.appkey),
+        },
+        success: function(data) {
+          credentials = data;
+          console.log(credentials);
+          
+          $.ajax(credentials.apiUrl + '/b2api/v1/b2_list_file_names', {
+            headers: {
+              "Authorization": credentials.authorizationToken
+            },
+            data: {
+              bucketId: "e3e751d55368470969440917"
+            },
+            success: function(data) {
+              var files = data.files;
+              var listOfFilesInBucket = [encrypt(g_b2data.cryptPW, g_b2data.cryptPW, 1)];
+              files.forEach(function (element, index) {
+                  if(!element.fileName.endsWith(".jpg")) return;
+                  var url = credentials.downloadUrl + "/file/bestwedding/" + element.fileName;
+                  listOfFilesInBucket.push(encrypt(url, g_b2data.cryptPW, index + 1));
+              })
+              listOfFilesInBucket.forEach(function (element, index) {
+                  console.log(decrypt(element, g_b2data.cryptPW, index + 1));
+              })
+              $("#cryptSection > textarea").text(listOfFilesInBucket.join("\n"));
+            }
+          });
+        }
+      });
+    });
 }
