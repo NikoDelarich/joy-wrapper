@@ -171,5 +171,5 @@ function mainInit() {
 }
 
 function goToRSVP() {
-  location.href = "/rsvp.html";
+  location.href = "/rsvp";
 }
