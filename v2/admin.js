@@ -163,20 +163,38 @@ function adminInit() {
               "Authorization": credentials.authorizationToken
             },
             data: {
-              bucketId: "e3e751d55368470969440917"
+              bucketId: "e3e751d55368470969440917",
+              prefix: "photobooth/",
+              delimiter: "/",
+              maxFileCount: 1000
             },
             success: function(data) {
               var files = data.files;
-              var listOfFilesInBucket = [encrypt(g_b2data.cryptPW, g_b2data.cryptPW, 1)];
+              var plainData = {
+                fileUrl: credentials.downloadUrl,
+                basePath: "/file/bestwedding/",
+                fileNames: []
+              };
+              
               files.forEach(function (element, index) {
-                  if(!element.fileName.endsWith(".jpg")) return;
-                  var url = credentials.downloadUrl + "/file/bestwedding/" + element.fileName;
-                  listOfFilesInBucket.push(encrypt(url, g_b2data.cryptPW, index + 1));
-              })
-              listOfFilesInBucket.forEach(function (element, index) {
-                  console.log(decrypt(element, g_b2data.cryptPW, index + 1));
-              })
-              $("#cryptSection > textarea").text(listOfFilesInBucket.join("\n"));
+                if(!element.fileName.endsWith(".jpg")) return;
+                plainData.fileNames.push(element.fileName);
+              });
+              var plainString = JSON.stringify(plainData);
+              var cryptData = encrypt(plainString, g_b2data.cryptPW, 1);
+              var plainCompare = decrypt(cryptData, g_b2data.cryptPW, 1);
+              if(plainCompare != plainString) {
+                alert("Verification failed! Data does not match!");
+              } else {
+                var obj = null;
+                try {
+                  obj = JSON.parse(plainCompare);
+                } catch(ex) { }
+                if(obj === null) alert("Could not parse decrypted object!");
+              }
+              
+              var plainCompare = decrypt(cryptData, g_b2data.cryptPW, 1);
+              $("#cryptSection > textarea").text(cryptData);
             }
           });
         }
