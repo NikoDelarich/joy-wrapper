@@ -1,9 +1,14 @@
 
 function loadAsync() {
   var allimages= document.getElementsByTagName('img');
+  var idx=0;
   for (var i=0; i<allimages.length; i++) {
     if (allimages[i].getAttribute('data-src')) {
-      allimages[i].setAttribute('src', allimages[i].getAttribute('data-src'));
+      var img = allimages[i];
+      setTimeout($.proxy(function() {
+        this.setAttribute('src', this.getAttribute('data-src'));
+      }, img), idx*30);
+      idx++;
     }
   }
 }
