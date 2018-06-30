@@ -6,13 +6,13 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Niko &amp; Carina - 26. Mai 2018</title>
+    <title>Niko &amp; Carina - 26. Mai 2018 - RSVP</title>
 
-    <link rel="stylesheet" type="text/css" href="v2/md-styles.css">
-    <link rel="stylesheet" type="text/css" href="v2/joy.css">
+    <link rel="stylesheet" type="text/css" href="/v2/md-styles.css">
+    <link rel="stylesheet" type="text/css" href="/v2/joy.css">
 
-    <link rel="stylesheet" type="text/css" href="v2/base.css">
-    <link rel="stylesheet" type="text/css" href="v2/color.css">
+    <link rel="stylesheet" type="text/css" href="/v2/base.css">
+    <link rel="stylesheet" type="text/css" href="/v2/color.css">
 
     <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Parisienne:400">
 
@@ -46,22 +46,13 @@
         }
     </style>
     
-    <script type="text/javascript" src="v2/jquery-3.3.1.min.js"></script>
-    <script type="text/javascript" src="v2/md5.min.js"></script>
-    <script type="text/javascript" src="v2/rsvptest.js"></script>
+    <script type="text/javascript" src="/v2/jquery-3.3.1.min.js"></script>
+    <script type="text/javascript" src="/v2/sha256.min.js"></script>
+    <script type="text/javascript" src="/v2/rsvp.js"></script>
     
     <script src="https://www.gstatic.com/firebasejs/4.10.0/firebase.js"></script>
     <script>
       // Initialize Firebase
-      // Initialize Firebase
-      var testConfig = {
-        apiKey: "AIzaSyB013U9stlkVGvygG9vGm5hxTrMiRiWQ58",
-        authDomain: "test-494b5.firebaseapp.com",
-        databaseURL: "https://test-494b5.firebaseio.com",
-        projectId: "test-494b5",
-        storageBucket: "test-494b5.appspot.com",
-        messagingSenderId: "984659654110"
-      };
       var config = {
         apiKey: "AIzaSyAGpkTicRevjeG-LbpFdSaoJBBhjfOCrao",
         authDomain: "wedding-6f4cc.firebaseapp.com",
@@ -70,7 +61,7 @@
         storageBucket: "wedding-6f4cc.appspot.com",
         messagingSenderId: "514215369773"
       };
-      firebase.initializeApp(testConfig);
+      firebase.initializeApp(config);
     </script>
 </head>
 <body onload="rsvpInit()">
@@ -78,7 +69,7 @@
         <ui-view>
             <div class="rsvp-backdrop" style="position:fixed;top:0;bottom:0;left:0;right:0;"></div>
             <div class="rsvp-header">
-                <a class="rsvp-tl rsvp-t" href="https://niko-carina.wedding/">Zurück</a>
+                <a class="rsvp-tl rsvp-t" id="backButton" href="/">Zurück</a>
             </div>
 
             <div class="event-rsvp d-flex flex-column align-items-center col-list" style="position:relative">
@@ -118,7 +109,7 @@
                             </div>
                             <div class="input-container">
                                 <label for="email">
-                                    <input id="email" name="email" placeholder="E-Mail" required="" value="" type="email">
+                                    <input id="email" name="email" placeholder="E-Mail" value="" type="email">
                                 </label>
                                 <div class="col-12 ng-hide">
                                 </div>
@@ -277,7 +268,7 @@
                           </ul>
                         </div>
                         <div class="col-12 d-flex text-container">
-                            <textarea name="children" id="field-funFact" class="f-1 ng-empty ng-touched" placeholder="Gib deine Antwort hier ein" rows="5"></textarea>
+                            <textarea name="children" class="f-1 ng-empty ng-touched" placeholder="Gib deine Antwort hier ein" rows="5"></textarea>
                         </div>
                         <div class="submission-control d-flex justify-content-center">
                             <input class="joy-event-button" value="Weiter" type="submit">
@@ -290,7 +281,7 @@
                     <form name="textForm">
                         <div class="col-12 question-title ng-binding">Willst du uns noch eine Nachricht hinterlassen?</div>
                         <div class="col-12 d-flex text-container">
-                            <textarea name="message" id="field-funFact" class="f-1 ng-empty ng-touched" placeholder="Gib deine Antwort hier ein" rows="5"></textarea>
+                            <textarea name="message" class="f-1 ng-empty ng-touched" placeholder="Gib deine Antwort hier ein" rows="5"></textarea>
                         </div>
                         <div class="submission-control d-flex justify-content-center">
                             <input class="joy-event-button" value="Weiter" type="submit">
@@ -306,7 +297,7 @@
                               <span id="thanks">Vielen Dank - Wir haben deine Angaben gespeichert!</span><br><br>
                               Wenn du noch jemanden eintragen möchtest klicke bitte <a href="javascript:logout()" title="Logout" style="text-decoration: underline;">hier</a> um dich abzumelden und wiederhole dann den Vorgang.
                             </div>
-                            <a href="https://niko-carina.wedding" class="joy-event-button joy-color bg-color ft-color">Zurück zur Hauptseite</a>
+                            <a href="/" class="joy-event-button joy-color bg-color ft-color">Zurück zur Hauptseite</a>
                         </div>
                     </form>
                 </div>

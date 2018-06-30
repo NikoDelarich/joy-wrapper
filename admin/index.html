@@ -8,11 +8,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Niko &amp; Carina - 26. Mai 2018 - Admin</title>
 
-    <link rel="stylesheet" type="text/css" href="v2/md-styles.css">
-    <link rel="stylesheet" type="text/css" href="v2/joy.css">
+    <link rel="stylesheet" type="text/css" href="/v2/md-styles.css">
+    <link rel="stylesheet" type="text/css" href="/v2/joy.css">
 
-    <link rel="stylesheet" type="text/css" href="v2/base.css">
-    <link rel="stylesheet" type="text/css" href="v2/color.css">
+    <link rel="stylesheet" type="text/css" href="/v2/base.css">
+    <link rel="stylesheet" type="text/css" href="/v2/color.css">
 
     <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Parisienne:400">
 
@@ -79,13 +79,15 @@
         }
     </style>
     
-    <link rel="stylesheet" href="v2/tablesaw/tablesaw.css">
-    <script type="text/javascript" src="v2/jquery-3.3.1.min.js"></script>
-    <script type="text/javascript" src="v2/sha256.min.js"></script>
-    <script type="text/javascript" src="v2/admin.js"></script>
+    <link rel="stylesheet" href="/v2/tablesaw/tablesaw.css">
+    <script type="text/javascript" src="/v2/jquery-3.3.1.min.js"></script>
+    <script type="text/javascript" src="/v2/aes.js"></script>
+    <script type="text/javascript" src="/v2/sha256.min.js"></script>
+    <script type="text/javascript" src="/v2/crypto.js"></script>
+    <script type="text/javascript" src="/v2/admin.js"></script>
     
-    <script src="v2/tablesaw/tablesaw.jquery.js"></script>
-    <!-- <script src="v2/tablesaw/tablesaw-init.js"></script> -->
+    <script src="/v2/tablesaw/tablesaw.jquery.js"></script>
+    <!-- <script src="/v2/tablesaw/tablesaw-init.js"></script> -->
     
     <script src="https://www.gstatic.com/firebasejs/4.10.0/firebase.js"></script>
     <script>
@@ -146,6 +148,10 @@
                     </div>
                 </div>
                 <div id="loginDiv"></div>
+                <div id="cryptSection" style="width:100%">
+                  <textarea style="width: 100%; border: 1px solid #fff; font-family: mono; font-size: small">crypto goes here</textarea>
+                  <br><button>Convert</button>
+                </div>
                 <div style="width:100%">
                   <table id="adminTable" class="tablesaw tablesaw-stack tablesaw-sortable" data-tablesaw-sortable="" data-tablesaw-sortable-switch="" data-tablesaw-mode="stack">
                   </table>

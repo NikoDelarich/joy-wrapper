@@ -7,7 +7,7 @@ function domReadyFn() {
     var now = new Date().getTime();
 
     // Find the distance between now an the count down date
-    var distance = countDownDate - now;
+    var distance = Math.abs(countDownDate - now);
 
     // Time calculations for days, hours, minutes and seconds
     var days = Math.floor(distance / (1000 * 60 * 60 * 24));
@@ -16,27 +16,27 @@ function domReadyFn() {
     var seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
     // Display the result in the element with id="demo"
-    $(".counter > .time-unit:nth-child(1) > h1:first-child").text(days);
-    $(".counter > .time-unit:nth-child(1) > h1:nth-child(2)").text(days == 1 ? "Tag" : "Tage");
-    $(".counter > .time-unit:nth-child(2) > h1:first-child").text(hours);
-    $(".counter > .time-unit:nth-child(3) > h1:first-child").text(minutes);
-    $(".counter > .time-unit:nth-child(4) > h1:first-child").text(seconds);
+    $(".counter > .time-unit:nth-of-type(1) > h1:first-child").text(days);
+    $(".counter > .time-unit:nth-of-type(1) > h1:nth-child(2)").text(days == 1 ? "Tag" : "Tagen");
+    $(".counter > .time-unit:nth-of-type(2) > h1:first-child").text(hours);
+    $(".counter > .time-unit:nth-of-type(3) > h1:first-child").text(minutes);
+    $(".counter > .time-unit:nth-of-type(4) > h1:first-child").text(seconds);
   };
   
   // Update the count down every 1 second
   updateCountdown();
   setInterval(updateCountdown, 1000);
-  
-  window.Tawk_API = (typeof Tawk_API != "undefined") ? Tawk_API : {};
-  window.Tawk_LoadStart = new Date();
-  (function(){
-    var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
-    s1.async=true;
-    s1.src='https://embed.tawk.to/5a847c74d7591465c707abcf/default';
-    s1.charset='UTF-8';
-    s1.setAttribute('crossorigin','*');
-    s0.parentNode.insertBefore(s1,s0);
-  })();
+  // 
+  // window.Tawk_API = (typeof Tawk_API != "undefined") ? Tawk_API : {};
+  // window.Tawk_LoadStart = new Date();
+  // (function(){
+  //   var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+  //   s1.async=true;
+  //   s1.src='https://embed.tawk.to/5a847c74d7591465c707abcf/default';
+  //   s1.charset='UTF-8';
+  //   s1.setAttribute('crossorigin','*');
+  //   s0.parentNode.insertBefore(s1,s0);
+  // })();
   
   var getField = function(data, field) {
     var k = Object.keys(data[field]).sort();
@@ -158,11 +158,11 @@ function mainInit() {
         }
       }
     };
-    if(typeof Pace != "undefined") {
-      Pace.on("hide", showMaps);
-    } else {
-      showMaps();
-    }
+    // if(typeof Pace != "undefined") {
+    //   Pace.on("hide", showMaps);
+    // } else {
+    //   showMaps();
+    // }
     
     $(".scrollarrow").click(function() {
         $(".schedule")[0].scrollIntoView({behavior: "smooth", block: "center"})
@@ -171,5 +171,5 @@ function mainInit() {
 }
 
 function goToRSVP() {
-  location.href = "/rsvp.html";
+  location.href = "/rsvp";
 }
