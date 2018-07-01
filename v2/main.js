@@ -69,10 +69,10 @@ function domReadyFn() {
           
           $(".rsvp-button.btn > span").text(data.hasOwnProperty("rsvp") ? "Antwort ändern" : "Antworten");
           
-          Tawk_API.setAttributes(tawkData, function(error){ console.log(error); });
+          // Tawk_API.setAttributes(tawkData, function(error){ console.log(error); });
         }
       }, function(error) {
-        Tawk_API.setAttributes(tawkData, function(error){ console.log(error); });
+        // Tawk_API.setAttributes(tawkData, function(error){ console.log(error); });
       });
     } else {
       cta.addClass("invisible");

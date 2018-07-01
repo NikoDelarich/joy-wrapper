@@ -6,9 +6,10 @@
 -->
 <html>
 	<head>
-		<title>Lens by HTML5 UP</title>
+	<title>[PhotoBooth Gallery] Niko &amp; Carina - 26. Mai 2018</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
 		<link rel="stylesheet" href="assets/css/main.css" />
 		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
 	</head>
@@ -19,13 +20,13 @@
 
 				<!-- Header -->
 					<header id="header">
-						<h1>Lens</h1>
-						<p>Just another fine responsive site template by <a href="http://html5up.net">HTML5 UP</a></p>
+						<h1>PhotoBooth</h1>
+						<p>Danke für die vielen tollen Fotos, die im Laufe des Abends entstanden sind.</p>
 						<ul class="icons">
-							<li><a href="#" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
-							<li><a href="#" class="icon fa-instagram"><span class="label">Instagram</span></a></li>
-							<li><a href="#" class="icon fa-github"><span class="label">Github</span></a></li>
-							<li><a href="#" class="icon fa-envelope-o"><span class="label">Email</span></a></li>
+							<li><a href="javascript:downloadPicture()" class="icon fas fa-file-download" title="Bild herunterladen"><span class="label">Download</span></a></li>
+							<li><a href="#" id="zipLink" class="icon fas fa-file-archive" title="Alle Bilder herunterladen"><span class="label">Archiv</span></a></li>
+							<li><a href="/" class="icon fas fa-home" title="Zurück zur Hauptseite"><span class="label">Homepage</span></a></li>
+							<li><a href="mailto:niko.carina.hochzeit@gmail.com" class="icon fas fa-envelope" title="Schreib uns eine E-Mail :-)"><span class="label">Email</span></a></li>
 						</ul>
 					</header>
 
@@ -39,7 +40,7 @@
 				<!-- Footer -->
 					<footer id="footer">
 						<ul class="copyright">
-							<li>&copy; Untitled.</li><li>Design: <a href="http://html5up.net">HTML5 UP</a>.</li>
+							<li>&copy; Niko Delarich.</li><li>Design: <a href="http://html5up.net">HTML5 UP</a>.</li>
 						</ul>
 					</footer>
 
@@ -52,6 +53,7 @@
 	    <script src="/v2/aes.js"></script>
 	    <script src="/v2/sha256.min.js"></script>
 	    <script src="/v2/crypto.js"></script>
+	    <script src="/v2/FileSaver.js"></script>
 			<script src="/v2/gallery.js"></script>
 			<script src="assets/js/main.js"></script>
 

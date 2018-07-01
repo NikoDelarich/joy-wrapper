@@ -443,7 +443,7 @@ var main = (function($) { var _ = {
 						if (_.settings.preload) {
 
 							// Force image to download.
-								var $img = $('<img src="' + s.url + '" />');
+								 var $img = $('<img src="' + s.url + '" />');
 
 							// Set slide's background image to it.
 								s.$slideImage
@@ -464,7 +464,7 @@ var main = (function($) { var _ = {
 				});
 
 	},
-
+	
 	/**
 	 * Initialize stuff.
 	 */
@@ -575,7 +575,8 @@ var main = (function($) { var _ = {
 
 										// Mark as active.
 											newSlide.$slide.addClass('active');
-
+											try {$('<img src="' + _.slides[index + 1].url + '" />');} catch(e) {}
+											try {$('<img src="' + _.slides[index - 1].url + '" />');} catch(e) {}
 										// Unlock.
 											window.setTimeout(function() {
 												_.locked = false;
