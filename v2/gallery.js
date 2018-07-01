@@ -52,6 +52,8 @@ function downloadPicture() {
     }
     console.log("Success");
   } catch(e) {
+    alert("Passwort falsch! Du hast \"" + pw + "\" eingegeben!");
+    location=location.href;
     return;
   }
   
