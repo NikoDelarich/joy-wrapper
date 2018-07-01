@@ -14356,6 +14356,7 @@ account-icon img{
     }
 }
 .joy-wedding-page .joy-wedding-camera-icon{
+    font-size: 5em;
     position:absolute;
     display:-ms-flexbox;
     display:flex;
@@ -14366,13 +14367,30 @@ account-icon img{
     align-items:center;
     background:radial-gradient(ellipse at center,rgba(0,0,0,.1) 0,rgba(0,0,0,.1) 4%,transparent 60%);
     background-repeat:no-repeat
+    
+    
 }
+.joy-wedding-page .joy-wedding-camera-icon a {
+  -moz-transition: color 0.25s ease, border-bottom-color 0.25s ease;
+  -webkit-transition: color 0.25s ease, border-bottom-color 0.25s ease;
+  -ms-transition: color 0.25s ease, border-bottom-color 0.25s ease;
+  transition: color 0.25s ease, border-bottom-color 0.25s ease;
+  color: white;
+}
+
+@media only screen and (min-width:770px){
+  .joy-wedding-page .joy-wedding-camera-icon a:hover {
+    color: #dec0fe;
+  }
+}
+
 @media only screen and (min-width:319px) and (max-width:680px){
     .joy-wedding-page .joy-wedding-camera-icon{
         top:0;
         right:0
     }
 }
+
 .joy-wedding-page .joy-photo-menu{
     position:absolute;
     top:50px;
