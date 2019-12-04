@@ -62,7 +62,7 @@ function downloadPicture() {
   var articles = [];
   decryptedData.fileNames.forEach(function(obj) {
     /* Override URL */
-    decryptedData.fileUrl = "https://cdn.niko-carina.wedding";
+    decryptedData.fileUrl = "https://f001.backblazeb2.com";
     var url = decryptedData.fileUrl + decryptedData.basePath + obj;
     articles.push(""+
       "<article>" +

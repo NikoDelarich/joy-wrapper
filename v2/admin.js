@@ -157,7 +157,7 @@ function adminInit() {
               var files = data.files;
               var plainData = {
                 fileUrl: credentials.downloadUrl,
-                zipUrl: "https://cdn.niko-carina.wedding/file/bestwedding/photobooth/PhotoBooth.zip",
+                zipUrl: "https://f001.backblazeb2.com/file/bestwedding/photobooth/PhotoBooth.zip",
                 basePath: "/file/bestwedding/",
                 fileNames: []
               };
