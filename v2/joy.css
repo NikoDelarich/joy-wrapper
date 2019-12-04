@@ -2767,7 +2767,7 @@ md-input-container textarea.md-input{
     }
 }
 .joy-secondary-pane .desktop-preview-screen .joy-wedding-intro .wedding-message p,.joy-secondary-pane .desktop-preview-screen .joy-wedding-intro h3,.joy-secondary-pane .joy-wedding-page-preview .joy-wedding-intro .wedding-message p,.joy-secondary-pane .joy-wedding-page-preview .joy-wedding-intro h3{
-    font-family:proxima-nova,Helvetica Neue,sans-serif;
+    font-family: 'Montserrat', sans-serif;
     font-weight:300;
     line-height:120%;
     font-size:25px;
@@ -5329,7 +5329,7 @@ md-dialog.mdp-timepicker{
     margin-bottom:7px
 }
 .guestCounter .guestCounterCount{
-    font-family:proxima-nova,Helvetica Neue,sans-serif;
+    font-family: 'Montserrat', sans-serif;
     font-size:58px;
     margin-left:10px;
     line-height:34px
@@ -11349,7 +11349,7 @@ website-preview .joy-wedding-page h3{
 }
 .joy-website-preview .right-pane .joy-wedding-info #welcome h4{
     text-transform:capitalize;
-    font-family:proxima-nova,Helvetica Neue,sans-serif;
+    font-family: 'Montserrat', sans-serif;
     font-size:17px
 }
 .joy-website-preview .right-pane .joy-wedding-info #welcome .rsvp-button{
@@ -11583,7 +11583,7 @@ desktop-shell .joy-wedding-page h3{
 }
 .joy-desktop-preview .right-pane .joy-wedding-info #welcome h4{
     text-transform:capitalize;
-    font-family:proxima-nova,Helvetica Neue,sans-serif;
+    font-family: 'Montserrat', sans-serif;
     font-size:15px
 }
 .joy-desktop-preview .right-pane .joy-wedding-info #welcome .rsvp-button{
@@ -14092,7 +14092,7 @@ account-icon img{
     display:block;
     position:relative;
     height:100%;
-    font-family:proxima-nova,Helvetica Neue,sans-serif
+    font-family: 'Montserrat', sans-serif;
 }
 .joy-wedding-page .joy-wedding-menu{
     position:fixed;
@@ -14179,7 +14179,7 @@ account-icon img{
     line-height:44px;
     padding:0;
     margin:15px 0;
-    font-family:proxima-nova,Helvetica Neue,sans-serif
+    font-family: 'Montserrat', sans-serif;
 }
 @media only screen and (min-width:319px) and (max-width:680px){
     .joy-wedding-page .joy-wedding-menu .menu-content .menu-list{
@@ -14213,7 +14213,7 @@ account-icon img{
     margin-bottom:25px;
     padding-left:35px;
     position:relative;
-    font-family:proxima-nova,Helvetica Neue,sans-serif
+    font-family: 'Montserrat', sans-serif;
 }
 @media only screen and (min-width:319px) and (max-width:680px){
     .joy-wedding-page .joy-wedding-menu .menu-content .menu-signin{
@@ -15129,7 +15129,7 @@ account-icon img{
     }
 }
 .joy-wedding-info .joy-content-card.joy-content-intro:not(.joy-primary-pane-mobile) .countdown-timer.horizontal h1{
-    font-family:proxima-nova,Helvetica Neue,sans-serif!important;
+    font-family: 'Montserrat', sans-serif;!important;
     font-size:17px;
     font-weight:400;
     margin:0;
@@ -15300,7 +15300,7 @@ account-icon img{
     font-family:Georgia
 }
 .event-rsvp,.event-rsvp .input-container input,.event-rsvp textarea,.util-forcefont{
-    font-family:proxima-nova,Helvetica Neue,sans-serif
+    font-family: 'Montserrat', sans-serif;
 }
 .schedule-card #schedule-timeline{
     width:100%;
@@ -17730,7 +17730,7 @@ horizontal-grid{
     text-transform:uppercase
 }
 #md-dialog-join-wedding,#md-dialog-join-wedding .content,#md-dialog-request-wedding-code,#md-dialog-request-wedding-code .content{
-    font-family:proxima-nova,Helvetica Neue,sans-serif!important
+    font-family: 'Montserrat', sans-serif;!important
 }
 .lightbox-container .slideshow-button svg{
     height:25px;
